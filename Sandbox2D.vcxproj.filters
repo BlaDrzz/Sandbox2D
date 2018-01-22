@@ -5,108 +5,108 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source Files\LVN_engine">
-      <UniqueIdentifier>{d553e124-c94f-412d-ab5b-2a2386896fb8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\LVN_engine\Core">
-      <UniqueIdentifier>{0d4d987f-5a9d-4018-86a7-6808785dcc54}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\LVN_engine\Core\Widgets">
-      <UniqueIdentifier>{842205ba-695d-4df1-ab1b-41f827a3e7e9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\GameStates">
       <UniqueIdentifier>{97cd3d45-ba37-47e7-9e40-4f2fbd11e8ca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\LVN_engine\Core\Utility">
+    <Filter Include="Source Files\Sandbox2D">
+      <UniqueIdentifier>{d553e124-c94f-412d-ab5b-2a2386896fb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sandbox2D\Core">
+      <UniqueIdentifier>{0d4d987f-5a9d-4018-86a7-6808785dcc54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sandbox2D\Core\Widgets">
+      <UniqueIdentifier>{842205ba-695d-4df1-ab1b-41f827a3e7e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sandbox2D\Core\Utility">
       <UniqueIdentifier>{88b63d71-656a-4673-9139-af741e888b3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Structs.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Structs.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Bitmap.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Bitmap.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Font.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Font.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\InputManager.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\InputManager.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Observer.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Observer.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Any.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Any.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\GameSettings.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\GameSettings.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Graphics.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Graphics.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Cache.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Cache.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Widgets\ButtonWidget.h">
-      <Filter>Source Files\LVN_engine\Core\Widgets</Filter>
+    <ClInclude Include="Sandbox2D\Widgets\ButtonWidget.h">
+      <Filter>Source Files\Sandbox2D\Core\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Widgets\LabelWidget.h">
-      <Filter>Source Files\LVN_engine\Core\Widgets</Filter>
+    <ClInclude Include="Sandbox2D\Widgets\LabelWidget.h">
+      <Filter>Source Files\Sandbox2D\Core\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Widgets\PanelWidget.h">
-      <Filter>Source Files\LVN_engine\Core\Widgets</Filter>
+    <ClInclude Include="Sandbox2D\Widgets\PanelWidget.h">
+      <Filter>Source Files\Sandbox2D\Core\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Widgets\Widget.h">
-      <Filter>Source Files\LVN_engine\Core\Widgets</Filter>
+    <ClInclude Include="Sandbox2D\Widgets\Widget.h">
+      <Filter>Source Files\Sandbox2D\Core\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Widgets\BitmapWidget.h">
-      <Filter>Source Files\LVN_engine\Core\Widgets</Filter>
+    <ClInclude Include="Sandbox2D\Widgets\BitmapWidget.h">
+      <Filter>Source Files\Sandbox2D\Core\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\GameState.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\GameState.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\TextUtils.h">
-      <Filter>Source Files\LVN_engine\Core\Utility</Filter>
+    <ClInclude Include="Sandbox2D\TextUtils.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\PrecisionTimer.h">
-      <Filter>Source Files\LVN_engine\Core\Utility</Filter>
+    <ClInclude Include="Sandbox2D\PrecisionTimer.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Logging.h">
-      <Filter>Source Files\LVN_engine\Core\Utility</Filter>
+    <ClInclude Include="Sandbox2D\Logging.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\IniIO.h">
-      <Filter>Source Files\LVN_engine\Core\Utility</Filter>
+    <ClInclude Include="Sandbox2D\IniIO.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
     <ClInclude Include="EntryState.h">
       <Filter>Source Files\GameStates</Filter>
     </ClInclude>
-    <ClInclude Include="LVN\Sandbox2D.h">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClInclude Include="Sandbox2D\Sandbox2D.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClCompile>
-    <ClCompile Include="LVN\InputManager.cpp">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClCompile Include="Sandbox2D\InputManager.cpp">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClCompile>
-    <ClCompile Include="LVN\PrecisionTimer.cpp">
-      <Filter>Source Files\LVN_engine\Core\Utility</Filter>
+    <ClCompile Include="Sandbox2D\PrecisionTimer.cpp">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="LVN\IniIO.cpp">
-      <Filter>Source Files\LVN_engine\Core\Utility</Filter>
+    <ClCompile Include="Sandbox2D\IniIO.cpp">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClCompile>
     <ClCompile Include="EntryState.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="LVN\Sandbox2D.cpp">
-      <Filter>Source Files\LVN_engine\Core</Filter>
+    <ClCompile Include="Sandbox2D\Sandbox2D.cpp">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

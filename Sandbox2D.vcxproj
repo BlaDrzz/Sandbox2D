@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{600EF0F8-8FAF-4E6B-9F55-C9934808B611}</ProjectGuid>
-    <RootNamespace>LVN_engine</RootNamespace>
+    <RootNamespace>Sandbox2D</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>Sandbox2D</ProjectName>
   </PropertyGroup>
@@ -126,34 +126,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="LVN\IniIO.cpp" />
-    <ClCompile Include="LVN\InputManager.cpp" />
-    <ClCompile Include="LVN\Sandbox2D.cpp" />
-    <ClCompile Include="LVN\PrecisionTimer.cpp" />
+    <ClCompile Include="Sandbox2D\IniIO.cpp" />
+    <ClCompile Include="Sandbox2D\InputManager.cpp" />
+    <ClCompile Include="Sandbox2D\Sandbox2D.cpp" />
+    <ClCompile Include="Sandbox2D\PrecisionTimer.cpp" />
     <ClCompile Include="EntryState.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LVN\GameState.h" />
-    <ClInclude Include="LVN\Any.h" />
-    <ClInclude Include="LVN\Bitmap.h" />
-    <ClInclude Include="LVN\Cache.h" />
-    <ClInclude Include="LVN\Font.h" />
-    <ClInclude Include="LVN\Graphics.h" />
-    <ClInclude Include="LVN\IniIO.h" />
-    <ClInclude Include="LVN\InputManager.h" />
-    <ClInclude Include="LVN\Logging.h" />
-    <ClInclude Include="LVN\Sandbox2D.h" />
-    <ClInclude Include="LVN\GameSettings.h" />
-    <ClInclude Include="LVN\Observer.h" />
-    <ClInclude Include="LVN\PrecisionTimer.h" />
-    <ClInclude Include="LVN\Structs.h" />
-    <ClInclude Include="LVN\TextUtils.h" />
-    <ClInclude Include="LVN\Widgets\BitmapWidget.h" />
-    <ClInclude Include="LVN\Widgets\ButtonWidget.h" />
-    <ClInclude Include="LVN\Widgets\LabelWidget.h" />
-    <ClInclude Include="LVN\Widgets\PanelWidget.h" />
-    <ClInclude Include="LVN\Widgets\Widget.h" />
+    <ClInclude Include="Sandbox2D\GameState.h" />
+    <ClInclude Include="Sandbox2D\Any.h" />
+    <ClInclude Include="Sandbox2D\Bitmap.h" />
+    <ClInclude Include="Sandbox2D\Cache.h" />
+    <ClInclude Include="Sandbox2D\Font.h" />
+    <ClInclude Include="Sandbox2D\Graphics.h" />
+    <ClInclude Include="Sandbox2D\IniIO.h" />
+    <ClInclude Include="Sandbox2D\InputManager.h" />
+    <ClInclude Include="Sandbox2D\Logging.h" />
+    <ClInclude Include="Sandbox2D\Sandbox2D.h" />
+    <ClInclude Include="Sandbox2D\GameSettings.h" />
+    <ClInclude Include="Sandbox2D\Observer.h" />
+    <ClInclude Include="Sandbox2D\PrecisionTimer.h" />
+    <ClInclude Include="Sandbox2D\Structs.h" />
+    <ClInclude Include="Sandbox2D\TextUtils.h" />
+    <ClInclude Include="Sandbox2D\Widgets\BitmapWidget.h" />
+    <ClInclude Include="Sandbox2D\Widgets\ButtonWidget.h" />
+    <ClInclude Include="Sandbox2D\Widgets\LabelWidget.h" />
+    <ClInclude Include="Sandbox2D\Widgets\PanelWidget.h" />
+    <ClInclude Include="Sandbox2D\Widgets\Widget.h" />
     <ClInclude Include="EntryState.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
