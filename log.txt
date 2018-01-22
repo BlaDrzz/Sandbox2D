@@ -1,0 +1,4 @@
+19:23:38: ---[General Sandbox2D log]---
+19:23:38: [INFO] Logging started!
+19:23:40: [INFO] Graphics initialised successfully!
+19:23:41: [INFO] LVN engine initialised successfully!
