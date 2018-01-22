@@ -58,9 +58,9 @@ public:
 
 	// Public datamembers
 	// Game specific
-	Observer*		_keyboardObserver;
-	Observer*       _mouseObserver;
+	Observer*		_keyboardObserver = nullptr;
+	Observer*       _mouseObserver = nullptr;
 	InputManager*	_inputManager = nullptr;
-	Graphics*		_graphics;
+	Graphics*		_graphics = nullptr;
 
 };

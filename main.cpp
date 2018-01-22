@@ -1,7 +1,6 @@
 #pragma once
 
 #include "stdafx.h"
-#include "EntryState.h"
 
 // Memory management
 #define _CRTDBG_MAP_ALLOC
@@ -16,9 +15,8 @@ int main(int argc, char* args[])
 	// Memory management
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	// Create EntryState
+	// Create engine
 	if (S2D == nullptr) return 1; // There was an error creating the Sandbox2D object.
-	S2D->setInitialState(new EntryState());
 
 	// run main cycle
 	const int returnValue = S2D->run();

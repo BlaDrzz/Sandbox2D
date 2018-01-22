@@ -1,16 +1,15 @@
 #pragma once
 
-#include "..\stdafx.h"
+#include "../stdafx.h"
 #include "PrecisionTimer.h"
+#include "../EntryState.h"
+#include "IniIO.h"
 
 // Static Variable Initialization
 Sandbox2D* Sandbox2D::_LVN_enginePtr = nullptr;
 
 // Sandbox2D constructor/deconstructor
-Sandbox2D::Sandbox2D(): _cache(nullptr), _keyboardObserver(nullptr), _graphics(nullptr)
-{
-}
-
+Sandbox2D::Sandbox2D() {}
 Sandbox2D::~Sandbox2D() {}
 
 /*********************
@@ -21,25 +20,14 @@ Sandbox2D* Sandbox2D::GetSingleton()
 	return _LVN_enginePtr == nullptr ? _LVN_enginePtr = new Sandbox2D() : _LVN_enginePtr;
 }
 
-void Sandbox2D::setInitialState(GameState* gamePtr)
-{
-	_states.push_back(gamePtr);
-}
-
 int Sandbox2D::run()
 {
 	// Initialise the game
 	init();
 	
-	// User defined functions for start of game
+	// Start entry state
+	_states.push_back(new EntryState());
 	_states.back()->stateStart();
-
-	// Set time period to 1ms
-	#include <mmsystem.h>
-	#pragma comment (lib, "Winmm.lib")
-	TIMECAPS tc{};
-	timeGetDevCaps(&tc, sizeof(TIMECAPS));
-	timeBeginPeriod(tc.wPeriodMin);
 
 	// Main game loop
 	double previous = _gameTickTimerPtr->GetGameTime() - _maxFPS;
@@ -102,6 +90,9 @@ void Sandbox2D::init()
 	_gameTickTimerPtr = new PrecisionTimer();
 	_gameTickTimerPtr->Reset();
 
+	// Initialse Cache
+	_cache = new Cache();
+
 	// Initialise InputManager and InputEvents
 	_inputManager = new InputManager();
 
@@ -109,12 +100,12 @@ void Sandbox2D::init()
 	_mouseObserver = new Observer{ std::vector<Listener>() };
 
 	// TODO: change to reading from ini file
+	auto settings = IniIO("Settings/Settings.ini");
+
+
 	GameSettings gameSettings;
 	gameSettings.windowSize = { 1280,720 };
 	gameSettings.windowTitle = "S2D Test environment";
-
-	// Initialse Cache
-	_cache = new Cache();
 
 	// Initialise Graphics
 	_graphics = new Graphics();

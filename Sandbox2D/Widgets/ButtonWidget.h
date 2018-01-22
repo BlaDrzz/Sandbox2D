@@ -6,13 +6,9 @@ struct ButtonWidget : Widget
 {
 	Pixel _size = { 0, 0 };
 	RGBA _backColor = { 0, 0, 0, 0 };
-	RGBA _backColorHover = { 0, 0, 0, 0 };
 	RGBA _fontColor = { 0, 0, 0, 255 };
-	RGBA _fontColorHover = { 0, 0, 0, 255 };
 	std::string _text = "";
 	Rect<int> _textPadding = { 5, 5, 5, 5 };
-	HorizontalAlign _horizontalAlign = LEFT;
-	VerticalAlign _verticalAlign = TOP;
 	Observer *_ob = new Observer;
 
 	ButtonWidget(Pixel position)

@@ -88,6 +88,9 @@
     <ClInclude Include="Sandbox2D\Sandbox2D.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
+    <ClInclude Include="Sandbox2D\Geometry.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

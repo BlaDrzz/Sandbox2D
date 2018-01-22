@@ -64,18 +64,3 @@ inline void VecToFile(const std::string path, std::vector<std::string> data)
 	}
 	file.close();
 }
-
-enum HorizontalAlign
-{
-	LEFT,
-	CENTER,
-	RIGHT
-};
-
-enum VerticalAlign
-{
-	TOP,
-	MIDDLE,
-	BOTTOM
-};
-

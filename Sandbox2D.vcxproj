@@ -139,6 +139,7 @@
     <ClInclude Include="Sandbox2D\Bitmap.h" />
     <ClInclude Include="Sandbox2D\Cache.h" />
     <ClInclude Include="Sandbox2D\Font.h" />
+    <ClInclude Include="Sandbox2D\Geometry.h" />
     <ClInclude Include="Sandbox2D\Graphics.h" />
     <ClInclude Include="Sandbox2D\IniIO.h" />
     <ClInclude Include="Sandbox2D\InputManager.h" />
