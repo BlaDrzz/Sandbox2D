@@ -9,35 +9,41 @@ struct ButtonWidget : Widget
 	RGBA _fontColor = { 0, 0, 0, 255 };
 	std::string _text = "";
 	Rect<int> _textPadding = { 5, 5, 5, 5 };
-	Observer *_ob = new Observer;
+	// Observer *_ob = new Observer;
 
 	ButtonWidget(Pixel position)
 	{
 		_position = position;
 
-		On(S2D->_mouseObserver, "mousedown", [this](Event e)
-		{
-			// Find out if mouse is in button
-			auto mouse = S2D->_inputManager->GetMousePos();
-
-			Rect<int> selfRect = { absolutePosition(), absolutePosition() + _size };
-
-			if (Contains(selfRect, mouse))
-				Emit(_ob, Event{ "clicked", Any::Any(mouse) }, [](Any::Any any)
-			{
-				any.free<Pixel>();
-			});
-		});
+		//On(S2D->_mouseObserver, "mousedown", [this](Event e)
+		//{
+		//	// Find out if mouse is in button
+		//	auto mouse = S2D->_inputManager->GetMousePos();
+		//
+		//	Rect<int> selfRect = { absolutePosition(), absolutePosition() + _size };
+		//
+		//	if (Contains(selfRect, mouse))
+		//		Emit(_ob, Event{ "clicked", Any::Any(mouse) }, [](Any::Any any)
+		//	{
+		//		any.free<Pixel>();
+		//	});
+		//});
+	}
+	ButtonWidget(Pixel position, std::string text) : _text(text)
+	{
+		_position = position;
 	}
 	~ButtonWidget()
 	{
-		delete _ob;
+		// delete _ob;
 	}
 
 	void tick(double deltaTime) override {}
 
 	void draw() override
 	{
+		if (_hidden) return;
+
 		// Store initial state
 		const RGBA previousColor = S2D->_graphics->_currentDrawingColor;
 
@@ -69,5 +75,17 @@ struct ButtonWidget : Widget
 			_textPadding.x.x + textSize.x + _textPadding.y.x,
 			_textPadding.x.y + textSize.y + _textPadding.y.y
 		};
+	}
+
+	bool isPressed() const
+	{
+		const auto mousePos = S2D->_inputManager->GetMousePos();
+		const Rect<int> buttonRect = { absolutePosition(), absolutePosition() + _size };
+
+		if (Contains(buttonRect, mousePos) && S2D->_inputManager->IsMouseButtonReleased(SDL_BUTTON_LEFT))
+		{
+			return true;
+		}
+		return false;
 	}
 };

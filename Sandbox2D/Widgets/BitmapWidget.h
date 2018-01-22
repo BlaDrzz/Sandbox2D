@@ -18,6 +18,7 @@ struct BitmapWidget : Widget
 
 	void draw() override
 	{
+		if (_hidden) return;
 		S2D->_graphics->drawBitmap(_bitmap, absolutePosition());
 	}
 };

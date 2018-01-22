@@ -17,6 +17,7 @@ struct LabelWidget : Widget
 	void tick(double deltaTime) override {}
 	void draw() override
 	{
+		if (_hidden) return;
 		S2D->_graphics->drawString(_text, absolutePosition());
 	}
 };

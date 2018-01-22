@@ -79,9 +79,6 @@
     <ClInclude Include="Sandbox2D\Logging.h">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Sandbox2D\IniIO.h">
-      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="EntryState.h">
       <Filter>Source Files\GameStates</Filter>
     </ClInclude>
@@ -90,6 +87,9 @@
     </ClInclude>
     <ClInclude Include="Sandbox2D\Geometry.h">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="TestState.h">
+      <Filter>Source Files\GameStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -102,14 +102,14 @@
     <ClCompile Include="Sandbox2D\PrecisionTimer.cpp">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Sandbox2D\IniIO.cpp">
-      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
-    </ClCompile>
     <ClCompile Include="EntryState.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp">
       <Filter>Source Files\Sandbox2D\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="TestState.cpp">
+      <Filter>Source Files\GameStates</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -45,12 +45,11 @@ struct PanelWidget : Widget
 
 	void draw() override
 	{
-		if (!_hidden)
+		if (!_hidden) return;
+		
+		for (auto w : _widgets)
 		{
-			for (auto w : _widgets)
-			{
-				w->draw();
-			}
+			w->draw();
 		}
 	}
 };

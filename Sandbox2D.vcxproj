@@ -126,12 +126,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sandbox2D\IniIO.cpp" />
     <ClCompile Include="Sandbox2D\InputManager.cpp" />
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp" />
     <ClCompile Include="Sandbox2D\PrecisionTimer.cpp" />
     <ClCompile Include="EntryState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TestState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sandbox2D\GameState.h" />
@@ -141,7 +141,6 @@
     <ClInclude Include="Sandbox2D\Font.h" />
     <ClInclude Include="Sandbox2D\Geometry.h" />
     <ClInclude Include="Sandbox2D\Graphics.h" />
-    <ClInclude Include="Sandbox2D\IniIO.h" />
     <ClInclude Include="Sandbox2D\InputManager.h" />
     <ClInclude Include="Sandbox2D\Logging.h" />
     <ClInclude Include="Sandbox2D\Sandbox2D.h" />
@@ -156,6 +155,7 @@
     <ClInclude Include="Sandbox2D\Widgets\PanelWidget.h" />
     <ClInclude Include="Sandbox2D\Widgets\Widget.h" />
     <ClInclude Include="EntryState.h" />
+    <ClInclude Include="TestState.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

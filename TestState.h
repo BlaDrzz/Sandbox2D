@@ -5,17 +5,17 @@
 
 // Forward Declarations
 
-// EntryState class
-class EntryState : public GameState
+// StateWithWidgets class
+class TestState : public GameState
 {
 public:
 	// Constructor
-	EntryState();
-	virtual ~EntryState();
+	TestState();
+	virtual ~TestState();
 
 	// C++11 make class non-copyable
-	EntryState(const EntryState&) = delete;
-	EntryState& operator=(const EntryState&) = delete;
+	TestState(const TestState&) = delete;
+	TestState& operator=(const TestState&) = delete;
 
 	// General Methods
 	void stateStart() override;
@@ -27,5 +27,4 @@ private:
 	// Private functions
 
 	// Datamembers
-	ButtonWidget* _btnTestState = nullptr;
 };

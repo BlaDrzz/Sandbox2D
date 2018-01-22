@@ -3,7 +3,6 @@
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
 #include "../EntryState.h"
-#include "IniIO.h"
 
 // Static Variable Initialization
 Sandbox2D* Sandbox2D::_LVN_enginePtr = nullptr;
@@ -100,9 +99,6 @@ void Sandbox2D::init()
 	_mouseObserver = new Observer{ std::vector<Listener>() };
 
 	// TODO: change to reading from ini file
-	auto settings = IniIO("Settings/Settings.ini");
-
-
 	GameSettings gameSettings;
 	gameSettings.windowSize = { 1280,720 };
 	gameSettings.windowTitle = "S2D Test environment";
