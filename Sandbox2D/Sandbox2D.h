@@ -9,7 +9,7 @@ class Sandbox2D
 {
 private:
 	Sandbox2D();
-	static Sandbox2D* _LVN_enginePtr;
+	static Sandbox2D* _sandbox2DPtr;
 	virtual ~Sandbox2D();
 
 	void init();

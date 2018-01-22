@@ -5,7 +5,7 @@
 #include "../EntryState.h"
 
 // Static Variable Initialization
-Sandbox2D* Sandbox2D::_LVN_enginePtr = nullptr;
+Sandbox2D* Sandbox2D::_sandbox2DPtr = nullptr;
 
 // Sandbox2D constructor/deconstructor
 Sandbox2D::Sandbox2D() {}
@@ -16,7 +16,7 @@ Sandbox2D::~Sandbox2D() {}
 *********************/
 Sandbox2D* Sandbox2D::GetSingleton()
 {
-	return _LVN_enginePtr == nullptr ? _LVN_enginePtr = new Sandbox2D() : _LVN_enginePtr;
+	return _sandbox2DPtr == nullptr ? _sandbox2DPtr = new Sandbox2D() : _sandbox2DPtr;
 }
 
 int Sandbox2D::run()
@@ -158,10 +158,10 @@ void Sandbox2D::destroy()
 	LogInfo("SDL cleanup finished!");
 
 	// Delete engine singleton
-	if (_LVN_enginePtr != nullptr)
+	if (_sandbox2DPtr != nullptr)
 	{
-		delete _LVN_enginePtr;
-		_LVN_enginePtr = nullptr;
+		delete _sandbox2DPtr;
+		_sandbox2DPtr = nullptr;
 	}
 	LogInfo("Sandbox2D destroyed successfully!");
 }

@@ -20,6 +20,9 @@
     <Filter Include="Source Files\Sandbox2D\Core\Utility">
       <UniqueIdentifier>{88b63d71-656a-4673-9139-af741e888b3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Sandbox2D\Core\Physics">
+      <UniqueIdentifier>{16796675-ab1b-4808-936e-0720d9686919}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -85,11 +88,11 @@
     <ClInclude Include="Sandbox2D\Sandbox2D.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Sandbox2D\Geometry.h">
-      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="TestState.h">
       <Filter>Source Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Sandbox2D\Geometry.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

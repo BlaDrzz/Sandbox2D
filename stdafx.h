@@ -24,8 +24,8 @@
 #include <SDL_mixer.h>
 
 // S2D includes
-#include "Sandbox2D/Geometry.h"
 #include "Sandbox2D/Structs.h"
+#include "Sandbox2D/Geometry.h"
 #include "Sandbox2D/InputManager.h"
 #include "Sandbox2D/TextUtils.h"
 #include "Sandbox2D/Logging.h"

@@ -18,6 +18,15 @@ typedef Tuple<double> Vector2;
 template <typename P> using Line = Tuple<Tuple<P>>;
 template <typename P> using Rect = Line<P>;
 
+template <typename P>
+struct Circle
+{
+	double radius;
+	Tuple<P> position;
+};
+
+// Basic conversions
+
 inline Pixel ToPixel(Vector2 v)
 {
 	return Pixel{ static_cast<int>(floor(v.x + .5)), static_cast<int>(floor(v.y + .5)) };
@@ -27,6 +36,8 @@ inline Vector2 ToVector2(Pixel p)
 {
 	return Vector2{ static_cast<double>(p.x), static_cast<double>(p.y) };
 }
+
+// SDL conversions
 
 inline SDL_Rect ToSDL(Rect<int> orig)
 {
@@ -57,6 +68,8 @@ template <typename N = double,
 	return{ static_cast<N>(0), static_cast<N>(0) };
 }
 
+// Simple maths
+
 template <typename P>
 Tuple<P> Add(Tuple<P> a, Tuple<P> b)
 {
@@ -82,6 +95,12 @@ Tuple<P> operator*(Tuple<P> a, Tuple<P> b)
 }
 
 template <typename P>
+Tuple<P> operator*(Tuple<P> a, P b)
+{
+	return{ a.x * b, a.y * b };
+}
+
+template <typename P>
 Tuple<P> operator-(Tuple<P> tup) {
 	return{ -tup.x, -tup.y };
 }
@@ -90,6 +109,8 @@ template <typename P>
 Tuple<P> operator-(Tuple<P> a, Tuple<P> b) {
 	return{ a.x - b.x, a.y - b.y };
 }
+
+// Advanced maths
 
 template <typename P>
 Tuple<P> Normalize(Tuple<P> tup) {
@@ -130,11 +151,33 @@ std::ostream& operator<<(std::ostream& os, Tuple<P> p)
 	return os << "Tuple<" << typeid(P).name() << "> { " << p.x << ", " << p.y << " }";
 }
 
+// Checks if point is inside of rect
 template <typename P>
 bool Contains(Rect<P> rect, Tuple<P> point)
 {
 	return rect.x.x < point.x && rect.y.x > point.x
 		&& rect.x.y < point.y && rect.y.y > point.y;
+}
+
+// Checks if a overlaps b
+template <typename P>
+bool Contains(Rect<P> a, Rect<P> b)
+{
+	// Not intersecting if found seperated along axis
+	if (a.y.x < b.x.x || a.x.x > b.y.x) return false;
+	if (a.y.y < b.x.y || a.x.y > b.y.y) return false;
+
+	// There is at least one overlapping axis
+	return true;
+}
+
+// Checks if a overlaps b
+template <typename P>
+bool Contains(Circle<P> a, Circle<P> b)
+{
+	P r = a.radius + b.radius;
+	r *= r;
+	return r < pow(a.position.x + b.position.x, 2) + pow(a.position.y + b.position.y, 2);
 }
 
 template <typename P>
