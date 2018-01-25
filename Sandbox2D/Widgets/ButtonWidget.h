@@ -9,25 +9,28 @@ struct ButtonWidget : Widget
 	RGBA _fontColor = { 0, 0, 0, 255 };
 	std::string _text = "";
 	Rect<int> _textPadding = { 5, 5, 5, 5 };
-	// Observer *_ob = new Observer;
+	Observer *_ob = new Observer;
 
 	ButtonWidget(Pixel position)
 	{
 		_position = position;
 
-		//On(S2D->_mouseObserver, "mousedown", [this](Event e)
-		//{
-		//	// Find out if mouse is in button
-		//	auto mouse = S2D->_inputManager->GetMousePos();
-		//
-		//	Rect<int> selfRect = { absolutePosition(), absolutePosition() + _size };
-		//
-		//	if (Contains(selfRect, mouse))
-		//		Emit(_ob, Event{ "clicked", Any::Any(mouse) }, [](Any::Any any)
-		//	{
-		//		any.free<Pixel>();
-		//	});
-		//});
+		On(S2D->_mouseObserver, "mousedown", [this](Event e)
+		{
+			// Find out if mouse is in button
+			auto mouse = S2D->_inputManager->GetMousePos();
+		
+			Rect<int> selfRect = { absolutePosition(), absolutePosition() + _size };
+			
+
+			std::cout << "observer: " << _ob << " this: " << this << std::endl;
+
+			if (Contains(selfRect, mouse))
+				Emit(_ob, Event{ "clicked", Any::Any(mouse) }, [](Any::Any any)
+			{
+				any.free<Pixel>();
+			});
+		});
 	}
 	ButtonWidget(Pixel position, std::string text) : _text(text)
 	{
@@ -35,7 +38,8 @@ struct ButtonWidget : Widget
 	}
 	~ButtonWidget()
 	{
-		// delete _ob;
+		delete _ob;
+		_ob = nullptr;
 	}
 
 	void tick(double deltaTime) override {}

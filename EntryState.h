@@ -28,4 +28,8 @@ private:
 
 	// Datamembers
 	ButtonWidget* _btnTestState = nullptr;
+	ButtonWidget* _btnPlsDunBreak = nullptr;
+	LabelWidget* _lblInfo = nullptr;
+
+	Observer* _testOb = nullptr;
 };
