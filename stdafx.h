@@ -32,7 +32,6 @@
 #include "Sandbox2D/Any.h"
 #include "Sandbox2D/Font.h"
 #include "Sandbox2D/Bitmap.h"
-#include "Sandbox2D/Observer.h"
 #include "Sandbox2D/GameSettings.h"
 #include "Sandbox2D/GameState.h"
 #include "Sandbox2D/Cache.h"

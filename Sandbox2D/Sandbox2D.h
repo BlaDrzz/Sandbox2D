@@ -30,9 +30,6 @@ public:
 
 	//! Public functions used by main.cpp,
 	//! Using this outside of main.cpp will result in undefined beheaviour
-	void setInitialState(GameState* gamePtr);
-	//! Public functions used by main.cpp,
-	//! Using this outside of main.cpp will result in undefined beheaviour
 	int run();
 	//! Public functions used by main.cpp,
 	//! Using this outside of main.cpp will result in undefined beheaviour
@@ -58,8 +55,6 @@ public:
 
 	// Public datamembers
 	// Game specific
-	Observer*		_keyboardObserver = nullptr;
-	Observer*       _mouseObserver = nullptr;
 	InputManager*	_inputManager = nullptr;
 	Graphics*		_graphics = nullptr;
 

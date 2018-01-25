@@ -53,18 +53,6 @@ int Sandbox2D::run()
 			{
 				// User requests quit
 				if (event.type == SDL_QUIT) quit = true;
-				if (event.type == SDL_KEYDOWN) Emit(_keyboardObserver, Event { "keydown", Any::Any(event.key.keysym.sym) }, [](Any::Any any)
-				{
-					any.free<SDL_Keycode>();
-				});
-				if (event.type == SDL_KEYUP) Emit(_keyboardObserver, Event { "keyup", Any::Any(event.key.keysym.sym) }, [](Any::Any any)
-				{
-					any.free<SDL_Keycode>();
-				});
-				if (event.type == SDL_MOUSEBUTTONDOWN) Emit(_mouseObserver, Event { "mousedown", Any::Any(event.button.button) }, [](Any::Any any)
-				{
-					any.free<Uint8>();
-				});
 			}
 			_inputManager->SetCurrInputStates();
 
@@ -95,9 +83,6 @@ void Sandbox2D::init()
 	// Initialise InputManager and InputEvents
 	_inputManager = new InputManager();
 
-	_keyboardObserver = new Observer{ std::vector<Listener>() };
-	_mouseObserver = new Observer{ std::vector<Listener>() };
-
 	// TODO: change to reading from ini file
 	GameSettings gameSettings;
 	gameSettings.windowSize = { 1280,720 };
@@ -126,12 +111,6 @@ void Sandbox2D::destroy()
 		this->popState();
 
 	// Engine cleanup
-	delete _keyboardObserver;
-	_keyboardObserver = nullptr;
-
-	delete _mouseObserver;
-	_mouseObserver = nullptr;
-
 	delete _gameTickTimerPtr;
 	_gameTickTimerPtr = nullptr;
 

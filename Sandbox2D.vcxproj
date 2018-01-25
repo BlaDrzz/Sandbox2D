@@ -148,7 +148,6 @@
     <ClInclude Include="Sandbox2D\Pyshics\PhysicsObject.h" />
     <ClInclude Include="Sandbox2D\Sandbox2D.h" />
     <ClInclude Include="Sandbox2D\GameSettings.h" />
-    <ClInclude Include="Sandbox2D\Observer.h" />
     <ClInclude Include="Sandbox2D\PrecisionTimer.h" />
     <ClInclude Include="Sandbox2D\Structs.h" />
     <ClInclude Include="Sandbox2D\TextUtils.h" />

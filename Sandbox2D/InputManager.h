@@ -60,4 +60,3 @@ private:
 	void SetOldInputStates();
 	void SetCurrInputStates();
 };
-

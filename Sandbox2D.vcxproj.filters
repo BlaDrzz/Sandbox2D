@@ -40,9 +40,6 @@
     <ClInclude Include="Sandbox2D\InputManager.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Sandbox2D\Observer.h">
-      <Filter>Source Files\Sandbox2D\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Sandbox2D\Any.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
