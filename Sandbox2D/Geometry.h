@@ -21,7 +21,7 @@ template <typename P> using Rect = Line<P>;
 template <typename P>
 struct Circle
 {
-	double radius;
+	P radius;
 	Tuple<P> position;
 };
 
@@ -83,7 +83,7 @@ Tuple<P> operator+(Tuple<P> a, Tuple<P> b)
 }
 
 template <typename P>
-Tuple<P> Dot(Tuple<P> a, Tuple<P> b)
+Tuple<P> Multiply(Tuple<P> a, Tuple<P> b)
 {
 	return{ a.x * b.x, a.y * b.y };
 }
@@ -96,6 +96,12 @@ Tuple<P> operator*(Tuple<P> a, Tuple<P> b)
 
 template <typename P>
 Tuple<P> operator*(Tuple<P> a, P b)
+{
+	return{ a.x * b, a.y * b };
+}
+
+template <typename P>
+Tuple<P> operator*(P b, Tuple<P> a)
 {
 	return{ a.x * b, a.y * b };
 }
@@ -117,6 +123,12 @@ Tuple<P> Normalize(Tuple<P> tup) {
 	const double dist = Distance(MakeTuple<>(), tup);
 
 	return{ tup.x / dist, tup.y / dist };
+}
+
+template <typename P>
+P DotProduct(Tuple<P> a, Tuple<P> b)
+{
+	return a.x * b + a.y * b;
 }
 
 template <typename N,
@@ -163,12 +175,9 @@ bool Contains(Rect<P> rect, Tuple<P> point)
 template <typename P>
 bool Contains(Rect<P> a, Rect<P> b)
 {
-	// Not intersecting if found seperated along axis
-	if (a.y.x < b.x.x || a.x.x > b.y.x) return false;
-	if (a.y.y < b.x.y || a.x.y > b.y.y) return false;
-
 	// There is at least one overlapping axis
-	return true;
+	return !(a.y.x < b.x.x || a.x.x > b.y.x ||
+		a.y.y < b.x.y || a.x.y > b.y.y);
 }
 
 // Checks if a overlaps b
@@ -177,7 +186,7 @@ bool Contains(Circle<P> a, Circle<P> b)
 {
 	P r = a.radius + b.radius;
 	r *= r;
-	return r < pow(a.position.x + b.position.x, 2) + pow(a.position.y + b.position.y, 2);
+	return r < SQUARE(a.position.x + b.position.x) + SQUARE(a.position.y + b.position.y);
 }
 
 template <typename P>
