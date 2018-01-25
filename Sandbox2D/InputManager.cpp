@@ -2,64 +2,64 @@
 
 InputManager::InputManager()
 {
-	m_CurrKeyboardState = SDL_GetKeyboardState(&m_KeyboardStateLength);
-	m_OldKeyboardState = new Uint8[m_KeyboardStateLength];
+	_currKeyboardState = SDL_GetKeyboardState(&_keyboardStateLength);
+	_oldKeyboardState = new Uint8[_keyboardStateLength];
 
-	m_CurrMouseState = SDL_GetMouseState(&m_MouseLocation.x, &m_MouseLocation.y);
-	m_OldMouseState = m_CurrMouseState;
+	_currMouseState = SDL_GetMouseState(&_mouseLocation.x, &_mouseLocation.y);
+	_oldMouseState = _currMouseState;
 }
 
 InputManager::~InputManager()
 {
-	delete[] m_OldKeyboardState;
-	m_OldKeyboardState = nullptr;
+	delete[] _oldKeyboardState;
+	_oldKeyboardState = nullptr;
 }
 
-Pixel InputManager::GetMousePos() const
+Pixel InputManager::getMousePos() const
 {
-	return m_MouseLocation;
+	return _mouseLocation;
 }
 
-void InputManager::SetOldInputStates()
+void InputManager::setOldInputStates()
 {
 	// Set current states to old states
-	std::memcpy(m_OldKeyboardState, m_CurrKeyboardState, m_KeyboardStateLength);
-	m_OldMouseState = m_CurrMouseState;
+	std::memcpy(_oldKeyboardState, _currKeyboardState, _keyboardStateLength);
+	_oldMouseState = _currMouseState;
 }
 
-void InputManager::SetCurrInputStates()
+void InputManager::setCurrInputStates()
 {
 	// Fill up new states
-	m_CurrKeyboardState = SDL_GetKeyboardState(nullptr);
-	m_CurrMouseState = SDL_GetMouseState(&m_MouseLocation.x, &m_MouseLocation.y);
+	_currKeyboardState = SDL_GetKeyboardState(nullptr);
+	_currMouseState = SDL_GetMouseState(&_mouseLocation.x, &_mouseLocation.y);
 }
 
-bool InputManager::IsKeyboardKeyPressed(SDL_Scancode sc) const
+bool InputManager::isKeyboardKeyPressed(SDL_Scancode sc) const
 {
-	return (!m_OldKeyboardState[sc] && m_CurrKeyboardState[sc]);
+	return (!_oldKeyboardState[sc] && _currKeyboardState[sc]);
 }
 
-bool InputManager::IsKeyboardKeyDown(SDL_Scancode sc) const
+bool InputManager::isKeyboardKeyDown(SDL_Scancode sc) const
 {
-	return (m_OldKeyboardState[sc] && m_CurrKeyboardState[sc]);
+	return (_oldKeyboardState[sc] && _currKeyboardState[sc]);
 }
 
-bool InputManager::IsKeyboardKeyReleased(SDL_Scancode sc) const
+bool InputManager::isKeyboardKeyReleased(SDL_Scancode sc) const
 {
-	return (m_OldKeyboardState[sc] && !m_CurrKeyboardState[sc]);
+	return (_oldKeyboardState[sc] && !_currKeyboardState[sc]);
 }
 
-bool InputManager::IsMouseButtonPressed(int button) const
+bool InputManager::isMouseButtonPressed(int button) const
 {
-	return (!(m_OldMouseState & SDL_BUTTON(button)) && (m_CurrMouseState & SDL_BUTTON(button)));
+	return (!(_oldMouseState & SDL_BUTTON(button)) && (_currMouseState & SDL_BUTTON(button)));
 }
 
-bool InputManager::IsMouseButtonDown(int button) const
+bool InputManager::isMouseButtonDown(int button) const
 {
-	return ((m_OldMouseState & SDL_BUTTON(button)) && (m_CurrMouseState & SDL_BUTTON(button)));
+	return ((_oldMouseState & SDL_BUTTON(button)) && (_currMouseState & SDL_BUTTON(button)));
 }
 
-bool InputManager::IsMouseButtonReleased(int button) const
+bool InputManager::isMouseButtonReleased(int button) const
 {
-	return ((m_OldMouseState & SDL_BUTTON(button)) && !(m_CurrMouseState & SDL_BUTTON(button)));
+	return ((_oldMouseState & SDL_BUTTON(button)) && !(_currMouseState & SDL_BUTTON(button)));
 }

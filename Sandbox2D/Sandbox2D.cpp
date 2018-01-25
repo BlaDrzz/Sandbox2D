@@ -46,7 +46,7 @@ int Sandbox2D::run()
 		lag += elapsed;
 		while (lag >= _maxFPS)
 		{
-			_inputManager->SetOldInputStates();
+			_inputManager->setOldInputStates();
 			// Handle all events in queue
 			SDL_Event event;
 			while (SDL_PollEvent(&event))
@@ -54,7 +54,7 @@ int Sandbox2D::run()
 				// User requests quit
 				if (event.type == SDL_QUIT) quit = true;
 			}
-			_inputManager->SetCurrInputStates();
+			_inputManager->setCurrInputStates();
 
 			// Execute the game tick
 			_states.back()->stateTick(_maxFPS);

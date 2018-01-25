@@ -63,10 +63,10 @@ struct ButtonWidget : Widget
 
 	bool isPressed() const
 	{
-		const auto mousePos = S2D->_inputManager->GetMousePos();
+		const auto mousePos = S2D->_inputManager->getMousePos();
 		const Rect<int> buttonRect = { absolutePosition(), absolutePosition() + _size };
 
-		if (Contains(buttonRect, mousePos) && S2D->_inputManager->IsMouseButtonReleased(SDL_BUTTON_LEFT))
+		if (Contains(buttonRect, mousePos) && S2D->_inputManager->isMouseButtonReleased(SDL_BUTTON_LEFT))
 		{
 			return true;
 		}
