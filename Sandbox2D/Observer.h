@@ -22,6 +22,7 @@ struct Observer
 
 inline void Emit(Observer* ob, const Event evt, const std::function<void(Any::Any)>& deleter)
 {
+	if (ob == nullptr) return;
 	for (const auto& listener : ob->_listeners )
 	{
 		if (listener._flag == evt._flag)
