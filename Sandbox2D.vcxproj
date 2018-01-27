@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>SDL\include;$(IncludePath)</IncludePath>
-    <LibraryPath>SDL\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>Box2DInclude;SDL\include;$(IncludePath)</IncludePath>
+    <LibraryPath>Box2DLib;SDL\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>SDL\include;$(IncludePath)</IncludePath>
@@ -127,7 +127,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Sandbox2D\InputManager.cpp" />
-    <ClCompile Include="Sandbox2D\Pyshics\PhysicsObject.cpp" />
+    <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp" />
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp" />
     <ClCompile Include="Sandbox2D\PrecisionTimer.cpp" />
     <ClCompile Include="EntryState.cpp" />
@@ -144,8 +144,7 @@
     <ClInclude Include="Sandbox2D\Graphics.h" />
     <ClInclude Include="Sandbox2D\InputManager.h" />
     <ClInclude Include="Sandbox2D\Logging.h" />
-    <ClInclude Include="Sandbox2D\Pyshics\Physics.h" />
-    <ClInclude Include="Sandbox2D\Pyshics\PhysicsObject.h" />
+    <ClInclude Include="Sandbox2D\Physics\PhysicsObject.h" />
     <ClInclude Include="Sandbox2D\Sandbox2D.h" />
     <ClInclude Include="Sandbox2D\GameSettings.h" />
     <ClInclude Include="Sandbox2D\PrecisionTimer.h" />

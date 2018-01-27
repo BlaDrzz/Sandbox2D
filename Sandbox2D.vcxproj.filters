@@ -21,7 +21,7 @@
       <UniqueIdentifier>{88b63d71-656a-4673-9139-af741e888b3f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Sandbox2D\Core\Physics">
-      <UniqueIdentifier>{16796675-ab1b-4808-936e-0720d9686919}</UniqueIdentifier>
+      <UniqueIdentifier>{584842c9-5823-432a-8e3a-fa8c6539d31d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,10 +91,7 @@
     <ClInclude Include="Sandbox2D\Geometry.h">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="Sandbox2D\Pyshics\Physics.h">
-      <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
-    </ClInclude>
-    <ClInclude Include="Sandbox2D\Pyshics\PhysicsObject.h">
+    <ClInclude Include="Sandbox2D\Physics\PhysicsObject.h">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClInclude>
   </ItemGroup>
@@ -117,7 +114,7 @@
     <ClCompile Include="TestState.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
-    <ClCompile Include="Sandbox2D\Pyshics\PhysicsObject.cpp">
+    <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClCompile>
   </ItemGroup>

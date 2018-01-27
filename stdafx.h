@@ -17,15 +17,20 @@
 #include <streambuf>
 #include <unordered_map>
 
-// SDL
+// SDL includes
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 
-// S2D includes
+// Physics
+#include <Box2D/Box2D.h>
 #include "Sandbox2D/Structs.h"
 #include "Sandbox2D/Geometry.h"
+#include "Sandbox2D/Physics.h"
+#include "Sandbox2D/Physics/PhysicsObject.h"
+
+// S2D includes
 #include "Sandbox2D/InputManager.h"
 #include "Sandbox2D/TextUtils.h"
 #include "Sandbox2D/Logging.h"
@@ -38,9 +43,3 @@
 #include "Sandbox2D/Sandbox2D.h"
 #include "Sandbox2D/Graphics.h"
 #include "Sandbox2D/Widgets/Widget.h"
-
-// Testing
-#if TEST == 1
-	#include "S2D\Tests.h"
-#endif
-

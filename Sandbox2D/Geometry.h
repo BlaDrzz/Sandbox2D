@@ -128,7 +128,7 @@ Tuple<P> Normalize(Tuple<P> tup) {
 template <typename P>
 P DotProduct(Tuple<P> a, Tuple<P> b)
 {
-	return a.x * b + a.y * b;
+	return a.x * b.x + a.y * b.y;
 }
 
 template <typename N,
