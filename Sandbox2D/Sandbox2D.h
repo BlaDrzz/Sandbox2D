@@ -1,11 +1,13 @@
 #pragma once
 
-class GameState;
+#include "../stdafx.h"
+
+//class GameState;
 class PrecisionTimer;
 class InputManager;
 struct Graphics;
 
-class Sandbox2D 
+class Sandbox2D : public b2ContactListener, public b2DestructionListener
 {
 private:
 	Sandbox2D();
@@ -17,9 +19,15 @@ private:
 	// Private datamembers
 	// Engine specific
 	PrecisionTimer* _gameTickTimerPtr = nullptr;
-	double			_maxFPS = 1 / 144.000f; // Set to 99999999.00000000000000f for practically no FPS cap
+
 	Cache*			_cache = nullptr;
 	std::vector<GameState*> _states;
+
+	//! Box2D/physics
+	b2World* _box2DWorld;
+	double _box2DTime = 0;
+	double	_physicsTimeStep = 1 / 144.0; // cap FPS to run sync with physics
+	Vector2 _gravity;
 public:
 	// C++11 make class non-copyable
 	Sandbox2D(const Sandbox2D&) = delete;
@@ -53,9 +61,30 @@ public:
 	//! Create a font in _cache
 	void fontToCache(std::string name, std::string path, int size) const;
 
-	// Public datamembers
-	// Game specific
-	InputManager*	_inputManager = nullptr;
-	Graphics*		_graphics = nullptr;
+	// Box2D helpers
+	b2World* getb2World() const
+	{
+		return _box2DWorld;
+	}
+	void setGravity(const Vector2 gravity) 
+	{ 
+		_gravity = gravity; 
+		_box2DWorld->SetGravity(Tob2Vec2(gravity)); 
+	}
 
+	// Box2D overloads
+	// Box2D virtual overloads
+	void BeginContact(b2Contact* contactPtr) override;
+	void EndContact(b2Contact* contactPtr) override;
+	void PreSolve(b2Contact* contactPtr, const b2Manifold* oldManifoldPtr) override;
+	void PostSolve(b2Contact* contactPtr, const b2ContactImpulse* impulsePtr) override {};
+	void SayGoodbye(b2Joint* jointPtr) override;
+	void SayGoodbye(b2Fixture* fixturePtr) override;
+
+	// Public datamembers
+	
+	//! Handles all keyboard and mouse input
+	InputManager* _inputManager = nullptr;
+	//! Handles all drawing functions
+	Graphics* _graphics = nullptr;
 };

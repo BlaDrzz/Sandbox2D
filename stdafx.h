@@ -27,8 +27,10 @@
 #include <Box2D/Box2D.h>
 #include "Sandbox2D/Structs.h"
 #include "Sandbox2D/Geometry.h"
-#include "Sandbox2D/Physics.h"
+#include "Sandbox2D/Physics/Physics.h"
+#include "Sandbox2D/Physics/PhysicsJoint.h"
 #include "Sandbox2D/Physics/PhysicsObject.h"
+#include "Sandbox2D/Physics/ContactListener.h"
 
 // S2D includes
 #include "Sandbox2D/InputManager.h"

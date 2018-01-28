@@ -3,6 +3,7 @@
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
 #include "../EntryState.h"
+#include "Physics/ContactListener.h"
 
 // Static Variable Initialization
 Sandbox2D* Sandbox2D::_sandbox2DPtr = nullptr;
@@ -29,7 +30,7 @@ int Sandbox2D::run()
 	_states.back()->stateStart();
 
 	// Main game loop
-	double previous = _gameTickTimerPtr->GetGameTime() - _maxFPS;
+	double previous = _gameTickTimerPtr->GetGameTime() - _physicsTimeStep;
 	double lag = 0.00000; // Left over time
 	
 	// Main loop _flag
@@ -44,7 +45,8 @@ int Sandbox2D::run()
 		if (elapsed > 0.25) elapsed = 0.25; 
 		previous = current;
 		lag += elapsed;
-		while (lag >= _maxFPS)
+
+		while (lag >= _physicsTimeStep)
 		{
 			_inputManager->setOldInputStates();
 			// Handle all events in queue
@@ -57,12 +59,15 @@ int Sandbox2D::run()
 			_inputManager->setCurrInputStates();
 
 			// Execute the game tick
-			_states.back()->stateTick(_maxFPS);
+			_states.back()->stateTick(_physicsTimeStep);
+
+			// Do physics magic
+			_box2DWorld->Step(float(_physicsTimeStep), 6, 2);
 
 			// Execute the game paint
 			_graphics->renderAll(_states.back());
 			
-			lag -= _maxFPS;
+			lag -= _physicsTimeStep;
 		}
 	}
 	return 0;
@@ -92,6 +97,12 @@ void Sandbox2D::init()
 	_graphics = new Graphics();
 	_graphics->init(GetSingleton(), gameSettings, _cache);
 
+	// Initialise Box2D
+	_gravity = { 0, 9.81 };
+	_box2DWorld = new b2World(Tob2Vec2(_gravity));
+	_box2DWorld->SetContactListener(this);
+	_box2DWorld->SetDestructionListener(this);
+
 	// Initialize SDL_mixer
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
@@ -109,6 +120,10 @@ void Sandbox2D::destroy()
 	// Delete any left over gamestates
 	while (_states.size() > 0)
 		this->popState();
+
+	// Delete Box2D related stuff
+	delete _box2DWorld;
+	_box2DWorld = nullptr;
 
 	// Engine cleanup
 	delete _gameTickTimerPtr;
@@ -187,4 +202,133 @@ void Sandbox2D::bitmapToCache(std::string name, std::string path) const
 void Sandbox2D::fontToCache(std::string name, std::string path, int size) const
 {
 	_cache->fntCache.push(name, _cache->fntCache.CreateCachableFont(path, size));
+}
+
+void Sandbox2D::BeginContact(b2Contact* contactPtr)
+{
+	b2Fixture* fixContactListenerPtr = nullptr;
+	b2Fixture* fixOtherPtr = nullptr;
+
+	//is A a contactlistener?
+	if (contactPtr->GetFixtureA()->GetBody()->GetUserData() != nullptr)
+	{
+		fixContactListenerPtr = contactPtr->GetFixtureA();
+		fixOtherPtr = contactPtr->GetFixtureB();
+		// check for removed actors, this method can be called by Box2D when a PhysicsActor is being destroyed
+		if (fixContactListenerPtr->GetUserData() != nullptr && fixOtherPtr->GetUserData() != nullptr)
+		{
+			ContactListener* contactListenerPtr = reinterpret_cast<ContactListener*>(fixContactListenerPtr->GetBody()->GetUserData());
+			contactListenerPtr->beginContact(
+				reinterpret_cast<PhysicsObject*>(fixContactListenerPtr->GetUserData()),
+				reinterpret_cast<PhysicsObject*>(fixOtherPtr->GetUserData())
+			);
+		}
+	}
+	//is B a contactlistener?
+	if (contactPtr->GetFixtureB()->GetBody()->GetUserData() != nullptr)
+	{
+		fixContactListenerPtr = contactPtr->GetFixtureB();
+		fixOtherPtr = contactPtr->GetFixtureA();
+		// check for removed actors, this method can be called by Box2D when a PhysicsActor is being destroyed
+		if (fixContactListenerPtr->GetUserData() != nullptr && fixOtherPtr->GetUserData() != nullptr)
+		{
+			ContactListener * contactListenerPtr = reinterpret_cast<ContactListener *>(fixContactListenerPtr->GetBody()->GetUserData());
+			contactListenerPtr->beginContact(
+				reinterpret_cast<PhysicsObject*>(fixContactListenerPtr->GetUserData()),
+				reinterpret_cast<PhysicsObject*>(fixOtherPtr->GetUserData())
+			);
+		}
+	}
+}
+
+void Sandbox2D::EndContact(b2Contact* contactPtr)
+{
+	b2Fixture* fixContactListenerPtr = nullptr;
+	b2Fixture* fixOtherPtr = nullptr;
+
+	//is A a contactlistener?
+	if (contactPtr->GetFixtureA()->GetBody()->GetUserData() != nullptr)
+	{
+		fixContactListenerPtr = contactPtr->GetFixtureA();
+		fixOtherPtr = contactPtr->GetFixtureB();
+		// check for removed actors, this method can be called by Box2D when a PhysicsActor is being destroyed
+		if (fixContactListenerPtr->GetUserData() != nullptr && fixOtherPtr->GetUserData() != nullptr)
+		{
+			ContactListener* contactListenerPtr = reinterpret_cast<ContactListener*>(fixContactListenerPtr->GetBody()->GetUserData());
+			contactListenerPtr->endContact(
+				reinterpret_cast<PhysicsObject*>(fixContactListenerPtr->GetUserData()),
+				reinterpret_cast<PhysicsObject*>(fixOtherPtr->GetUserData())
+			);
+		}
+	}
+	//is B a contactlistener?
+	if (contactPtr->GetFixtureB()->GetBody()->GetUserData() != nullptr)
+	{
+		fixContactListenerPtr = contactPtr->GetFixtureB();
+		fixOtherPtr = contactPtr->GetFixtureA();
+		// check for removed actors, this method can be called by Box2D when a PhysicsActor is being destroyed
+		if (fixContactListenerPtr->GetUserData() != nullptr && fixOtherPtr->GetUserData() != nullptr)
+		{
+			ContactListener * contactListenerPtr = reinterpret_cast<ContactListener *>(fixContactListenerPtr->GetBody()->GetUserData());
+			contactListenerPtr->endContact(
+				reinterpret_cast<PhysicsObject*>(fixContactListenerPtr->GetUserData()),
+				reinterpret_cast<PhysicsObject*>(fixOtherPtr->GetUserData())
+			);
+		}
+	}
+}
+
+void Sandbox2D::PreSolve(b2Contact* contactPtr, const b2Manifold* oldManifoldPtr)
+{
+	b2Fixture * fixContactListenerPtr = nullptr;
+	b2Fixture * fixOtherPtr = nullptr;
+
+	//is A a contactlistener?
+	if (contactPtr->GetFixtureA()->GetBody()->GetUserData() != nullptr)
+	{
+		fixContactListenerPtr = contactPtr->GetFixtureA();
+		fixOtherPtr = contactPtr->GetFixtureB();
+		// check for removed actors, this method can be called from within the PhysicsActor destructor
+		// when one of two overlapping actors is deleted
+		if (fixContactListenerPtr->GetUserData() != nullptr && fixOtherPtr->GetUserData() != nullptr)
+		{
+			bool bEnableContact = true;
+			ContactListener* contactListenerPtr = reinterpret_cast<ContactListener*>(fixContactListenerPtr->GetBody()->GetUserData());
+			contactListenerPtr->preSolve(
+				reinterpret_cast<PhysicsObject*>(fixContactListenerPtr->GetUserData()),
+				reinterpret_cast<PhysicsObject*>(fixOtherPtr->GetUserData()),
+				bEnableContact
+			);
+			contactPtr->SetEnabled(bEnableContact);
+		}
+	}
+	//is B a contactlistener?
+	if (contactPtr->GetFixtureB()->GetBody()->GetUserData() != nullptr)
+	{
+		fixContactListenerPtr = contactPtr->GetFixtureB();
+		fixOtherPtr = contactPtr->GetFixtureA();
+		// check for removed actors, this method can be called from within the PhysicsActor destructor
+		// when one of two overlapping actors is deleted
+		if (fixContactListenerPtr->GetUserData() != nullptr && fixOtherPtr->GetUserData() != nullptr)
+		{
+			bool bEnableContact = true;
+			ContactListener* contactListenerPtr = reinterpret_cast<ContactListener*>(fixContactListenerPtr->GetBody()->GetUserData());
+			contactListenerPtr->preSolve(
+				reinterpret_cast<PhysicsObject*>(fixContactListenerPtr->GetUserData()),
+				reinterpret_cast<PhysicsObject*>(fixOtherPtr->GetUserData()),
+				bEnableContact
+			);
+			contactPtr->SetEnabled(bEnableContact);
+		}
+	}
+}
+
+void Sandbox2D::SayGoodbye(b2Joint* jointPtr)
+{
+	const auto joint = reinterpret_cast<PhysicsJoint*>(jointPtr->GetUserData());
+	if (joint != nullptr) joint->_deleted = true;
+}
+
+void Sandbox2D::SayGoodbye(b2Fixture* fixturePtr)
+{
 }

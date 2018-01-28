@@ -84,7 +84,7 @@
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;Box2DDebug.lib;Box2DRelease.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -132,7 +132,6 @@
     <ClCompile Include="Sandbox2D\PrecisionTimer.cpp" />
     <ClCompile Include="EntryState.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sandbox2D\GameState.h" />
@@ -144,6 +143,9 @@
     <ClInclude Include="Sandbox2D\Graphics.h" />
     <ClInclude Include="Sandbox2D\InputManager.h" />
     <ClInclude Include="Sandbox2D\Logging.h" />
+    <ClInclude Include="Sandbox2D\Physics.h" />
+    <ClInclude Include="Sandbox2D\Physics\ContactListener.h" />
+    <ClInclude Include="Sandbox2D\Physics\PhysicsJoint.h" />
     <ClInclude Include="Sandbox2D\Physics\PhysicsObject.h" />
     <ClInclude Include="Sandbox2D\Sandbox2D.h" />
     <ClInclude Include="Sandbox2D\GameSettings.h" />
@@ -156,7 +158,6 @@
     <ClInclude Include="Sandbox2D\Widgets\PanelWidget.h" />
     <ClInclude Include="Sandbox2D\Widgets\Widget.h" />
     <ClInclude Include="EntryState.h" />
-    <ClInclude Include="TestState.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -6,7 +6,7 @@
 // Forward Declarations
 
 // EntryState class
-class EntryState : public GameState
+class EntryState : public GameState, public ContactListener
 {
 public:
 	// Constructor
@@ -23,6 +23,13 @@ public:
 	void stateTick(double deltaTime) override;
 	void statePaint(Graphics* g) override;
 
+	//--------------------------------------------------------
+	// ContactListener overloaded member function declarations
+	//--------------------------------------------------------
+	void beginContact(PhysicsObject *actThisPtr, PhysicsObject *actOtherPtr) override;
+	void endContact(PhysicsObject *actThisPtr, PhysicsObject *actOtherPtr) override;
+	void contactImpulse(PhysicsObject *actThisPtr, double impulse) override;
+
 private:
 	// Private functions
 
@@ -30,4 +37,7 @@ private:
 	ButtonWidget* _btnTestState = nullptr;
 	ButtonWidget* _btnPlsDunBreak = nullptr;
 	LabelWidget* _lblInfo = nullptr;
+
+	PhysicsObject* _poTestObj = nullptr;
+	PhysicsObject* _poTestObj2 = nullptr;
 };

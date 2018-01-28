@@ -27,14 +27,19 @@ struct Circle
 
 // Basic conversions
 
-inline Pixel ToPixel(Vector2 v)
+inline Pixel ToPixel(const Vector2 v)
 {
 	return Pixel{ static_cast<int>(floor(v.x + .5)), static_cast<int>(floor(v.y + .5)) };
 }
 
-inline Vector2 ToVector2(Pixel p)
+inline Vector2 ToVector2(const Pixel p)
 {
 	return Vector2{ static_cast<double>(p.x), static_cast<double>(p.y) };
+}
+
+inline b2Vec2 Tob2Vec2(const Vector2 v)
+{
+	return b2Vec2(float(v.x), float(v.y));
 }
 
 // SDL conversions

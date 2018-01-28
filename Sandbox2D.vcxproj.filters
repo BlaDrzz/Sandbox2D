@@ -85,13 +85,19 @@
     <ClInclude Include="Sandbox2D\Sandbox2D.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
-    <ClInclude Include="TestState.h">
-      <Filter>Source Files\GameStates</Filter>
-    </ClInclude>
     <ClInclude Include="Sandbox2D\Geometry.h">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Sandbox2D\Physics\PhysicsObject.h">
+      <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sandbox2D\Physics\ContactListener.h">
+      <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sandbox2D\Physics.h">
+      <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Sandbox2D\Physics\PhysicsJoint.h">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClInclude>
   </ItemGroup>
@@ -110,9 +116,6 @@
     </ClCompile>
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp">
       <Filter>Source Files\Sandbox2D\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="TestState.cpp">
-      <Filter>Source Files\GameStates</Filter>
     </ClCompile>
     <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
