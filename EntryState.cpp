@@ -24,13 +24,13 @@ void EntryState::stateStart()
 
 	_poTestObj = new PhysicsObject({ 200,200 }, 0, BodyType::DYNAMIC);
 	_poTestObj->addBoxFixture({ 100, 100 });
-	_poTestObj->setLinearVelocity({ 2000,10 });
 	_poTestObj->addContactListener(this);
+	_poTestObj->getBody()->SetAwake(false);
 
 	_poTestObj2 = new PhysicsObject({ 1000, 250 }, 0, BodyType::DYNAMIC);
 	_poTestObj2->addBoxFixture({ 100, 100 });
-	_poTestObj2->setLinearVelocity({ -2000,10 });
 	_poTestObj2->addContactListener(this);
+	_poTestObj2->getBody()->SetAwake(false);
 }
 
 void EntryState::stateEnd()
@@ -45,6 +45,11 @@ void EntryState::stateEnd()
 void EntryState::stateTick(double deltaTime) 
 {
 	// Executed each game tick, game logic goes here
+	if (S2D->_inputManager->isKeyboardKeyPressed(SDL_SCANCODE_A))
+	{
+		_poTestObj->setLinearVelocity({ 2000,10 });
+		_poTestObj2->setLinearVelocity({ -2000,10 });
+	}
 }
 
 void EntryState::statePaint(Graphics* g)
