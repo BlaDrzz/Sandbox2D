@@ -25,8 +25,8 @@ b2Fixture* PhysicsObject::addBoxFixture(const Vector2 size, const double restitu
 										const double friction, const double density)
 {
 	// Resize to box2D units
-	const auto width = size.x / scale;
-	const auto height = size.y / scale;
+	const auto width = size.x / _box2DScale;
+	const auto height = size.y / _box2DScale;
 
 	// Create shape
 	b2PolygonShape shape;
@@ -54,8 +54,8 @@ b2Fixture* PhysicsObject::addCircleFixture(double radius, Vector2 offset, const 
                                            const double friction, const double density)
 {
 	// Resize to box2D units
-	radius /= scale;
-	offset = { offset.x / scale, offset.y / scale };
+	radius /= _box2DScale;
+	offset = offset / _box2DScale;
 
 	// Create shape
 	b2CircleShape circle;
@@ -86,7 +86,7 @@ b2Fixture* PhysicsObject::addPolygonFixture(const Poly<Vector2>& vertexArr, cons
 	// Convert and resize to box2D units
 	std::vector<b2Vec2> vecArr;
 	for (const auto vec2 : vertexArr)
-		vecArr.push_back(b2Vec2(float(vec2.x / scale), float(vec2.y / scale)));
+		vecArr.push_back(Tob2Vec2(vec2 / _box2DScale));
 
 	// Create shape
 	b2PolygonShape polyShape;
@@ -119,8 +119,8 @@ b2Fixture* PhysicsObject::addChainFixture(Poly<Vector2>& vertexArr, const bool c
 	// Convert and resize to box2D units
 	std::vector<b2Vec2> vecArr;
 	for (const auto vec2 : vertexArr)
-		vecArr.push_back(b2Vec2(float(vec2.x / scale), float(vec2.y / scale)));
-
+		vecArr.push_back(Tob2Vec2(vec2 / _box2DScale));
+	
 	// Create shape
 	b2ChainShape chainShape;
 	if (closed) chainShape.CreateLoop(vecArr.data(), vecArr.size());
@@ -147,14 +147,13 @@ b2Fixture* PhysicsObject::addChainFixture(Poly<Vector2>& vertexArr, const bool c
 Vector2 PhysicsObject::getPosition() const
 {
 	const auto pos = _bodyPtr->GetPosition();
-	return{ pos.x * scale, pos.y * scale };
+	return ToVector2(pos) * _box2DScale;
 }
 
 void PhysicsObject::setPosition(const Vector2& newPos) const
 {
 	_bodyPtr->SetTransform(
-		b2Vec2(float(newPos.x / scale),
-			float(newPos.y / scale)),
+		Tob2Vec2((newPos / _box2DScale)),
 		_bodyPtr->GetAngle()
 	);
 	_bodyPtr->SetAwake(true);
@@ -174,13 +173,33 @@ void PhysicsObject::setAngle(const double newAngle) const
 Vector2 PhysicsObject::getLinearVelocity() const
 {
 	const auto vel = _bodyPtr->GetLinearVelocity();
-	return{ vel.x * scale, vel.y * scale };
+	return ToVector2(vel) * _box2DScale;
 }
 
 void PhysicsObject::setLinearVelocity(const Vector2& newVelocity) const
 {
-	_bodyPtr->SetLinearVelocity(b2Vec2(float(newVelocity.x / scale), float(newVelocity.y / scale)));
+	_bodyPtr->SetLinearVelocity(Tob2Vec2(newVelocity / _box2DScale));
 	_bodyPtr->SetAwake(true);
+}
+
+void PhysicsObject::setLinearDamping(double dampening) const
+{
+	_bodyPtr->SetLinearDamping(float(dampening));
+}
+
+double PhysicsObject::getLinearDamping() const
+{
+	return double(_bodyPtr->GetLinearDamping());
+}
+
+void PhysicsObject::applyLinearImpulse(Vector2 impulse) const
+{
+	_bodyPtr->ApplyLinearImpulse(Tob2Vec2(impulse / _box2DScale), _bodyPtr->GetPosition(), true);
+}
+
+void PhysicsObject::applyForce(Vector2 force) const
+{
+	_bodyPtr->ApplyForceToCenter(Tob2Vec2(force / _box2DScale), true);
 }
 
 double PhysicsObject::getAngularVelocity() const
@@ -194,6 +213,26 @@ void PhysicsObject::setAngularVelocity(const double newVelocity) const
 	_bodyPtr->SetAwake(true);
 }
 
+double PhysicsObject::getAngularDamping() const
+{
+	return _bodyPtr->GetAngularDamping();
+}
+
+void PhysicsObject::setAngularDamping(double dampening) const
+{
+	_bodyPtr->SetAngularDamping(float(dampening));
+}
+
+void PhysicsObject::setFixedRotation(bool newFixedRotation) const
+{
+	_bodyPtr->SetFixedRotation(newFixedRotation);
+}
+
+bool PhysicsObject::isFixedRotation() const
+{
+	return _bodyPtr->IsFixedRotation();
+}
+
 void PhysicsObject::addContactListener(ContactListener* listenerPtr) const
 {
 	_bodyPtr->SetUserData(static_cast<void*>(listenerPtr));
@@ -202,6 +241,26 @@ void PhysicsObject::addContactListener(ContactListener* listenerPtr) const
 void PhysicsObject::removeContactListener() const
 {
 	_bodyPtr->SetUserData(nullptr);
+}
+
+void PhysicsObject::setAwake(bool newAwake) const
+{
+	_bodyPtr->SetAwake(newAwake);
+}
+
+bool PhysicsObject::isAwake() const
+{
+	return _bodyPtr->IsAwake();
+}
+
+void PhysicsObject::setBullet(bool newBullet) const
+{
+	_bodyPtr->SetBullet(newBullet);
+}
+
+bool PhysicsObject::isBullet() const
+{
+	return _bodyPtr->IsBullet();
 }
 
 b2Body* PhysicsObject::createBody(Vector2 pos, const double angle, const BodyType bodyType) const
@@ -221,7 +280,7 @@ b2Body* PhysicsObject::createBody(Vector2 pos, const double angle, const BodyTyp
 		break;
 	}
 
-	pos = { pos.x / scale, pos.y / scale };
+	pos = { pos.x / _box2DScale, pos.y / _box2DScale };
 
 	bodyDef.position.Set(float(pos.x), float(pos.y));
 	bodyDef.angle = float(angle);

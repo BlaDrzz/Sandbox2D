@@ -34,10 +34,8 @@ private:
 	// Private functions
 
 	// Datamembers
-	ButtonWidget* _btnTestState = nullptr;
-	ButtonWidget* _btnPlsDunBreak = nullptr;
 	LabelWidget* _lblInfo = nullptr;
+	ButtonWidget* _btnPhysicsTestState = nullptr;
 
 	PhysicsObject* _poTestObj = nullptr;
-	PhysicsObject* _poTestObj2 = nullptr;
 };

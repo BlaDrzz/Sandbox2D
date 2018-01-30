@@ -43,20 +43,53 @@ public:
 	//! Sets the object's linear velocity
 	void setLinearVelocity(const Vector2& newVelocity) const;
 
+	//! Sets the amount of energy lost each physicsStep
+	void setLinearDamping(double dampening) const;
+	//! Gets the object's current linear damping
+	double getLinearDamping() const;
+
+	//! Applies a sudden impulse to the object
+	void applyLinearImpulse(Vector2 impulse) const;
+	//! Applies a gradual force to the object
+	void applyForce(Vector2 force) const;
+
 	//! Gets the object's current angular velocity
 	double getAngularVelocity() const;
 	//! Sets the object's angular velocity
 	void setAngularVelocity(const double newVelocity) const;
 
+	// Gets the object's current angular damping
+	double getAngularDamping() const;
+	// Sets the amount of angular momentum lost each physicsStep
+	void setAngularDamping(double dampening) const;
+
+	//! Locks the angular rotation
+	//! Object can still be rotated with setAngle(...)
+	void setFixedRotation(bool newFixedRotation) const;
+	//! returns true if the objec's angular rotation is locked
+	bool isFixedRotation() const;
+
 	//! add this object to the contactlistener. This must be an object of a class that is derived from the ContactListener Class
 	//! contacts with this actor will be reported in BeginContact or EndContact
 	void addContactListener(ContactListener *listenerPtr) const;
-
 	//! remove this actor object from the contactlistener. 
 	//! contacts with this actor will no longer be reported in BeginContact or EndContact
 	void removeContactListener() const;
 
-	static const int scale = 100;
+	//! Disables movement of the actor to save some CPU processing time
+	void setAwake(bool newAwake) const;
+	//! returns true if the object is awake
+	bool isAwake() const;
+
+	//! Increases the amount of physics steps, also increases processing time
+	//! Only set to true in small, fast moving objects.
+	void setBullet(bool newBullet) const;
+	//! returns true if the object is a bullet
+	bool isBullet() const;
+
+	
+
+	const double _box2DScale = 100.0;
 	int _userData = 0;
 	void *_userDataPtr = nullptr;
 private:

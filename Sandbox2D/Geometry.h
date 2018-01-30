@@ -37,6 +37,11 @@ inline Vector2 ToVector2(const Pixel p)
 	return Vector2{ static_cast<double>(p.x), static_cast<double>(p.y) };
 }
 
+inline Vector2 ToVector2(const b2Vec2 v)
+{
+	return{ v.x, v.y };
+}
+
 inline b2Vec2 Tob2Vec2(const Vector2 v)
 {
 	return b2Vec2(float(v.x), float(v.y));
@@ -103,6 +108,12 @@ template <typename P>
 Tuple<P> operator*(Tuple<P> a, P b)
 {
 	return{ a.x * b, a.y * b };
+}
+
+template <typename P>
+Tuple<P> operator/(Tuple<P> a, P b)
+{
+	return{ a.x / b, a.y / b };
 }
 
 template <typename P>

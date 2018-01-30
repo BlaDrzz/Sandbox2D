@@ -25,7 +25,6 @@ private:
 
 	//! Box2D/physics
 	b2World* _box2DWorld;
-	double _box2DTime = 0;
 	double	_physicsTimeStep = 1 / 144.0; // cap FPS to run sync with physics
 	Vector2 _gravity;
 public:
@@ -87,4 +86,11 @@ public:
 	InputManager* _inputManager = nullptr;
 	//! Handles all drawing functions
 	Graphics* _graphics = nullptr;
+
+	//! Amount of velocity iterations. 
+	//! Higher = more accurate velocity changes = more processing time per tick
+	int _velocityIterations = 6;
+	//! Amount of position iterations
+	//! Higher = more accurate positioning = more processing time per tick
+	int _positionIterations = 2;
 };
