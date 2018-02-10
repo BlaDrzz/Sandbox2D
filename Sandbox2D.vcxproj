@@ -143,8 +143,8 @@
     <ClInclude Include="Sandbox2D\Graphics.h" />
     <ClInclude Include="Sandbox2D\InputManager.h" />
     <ClInclude Include="Sandbox2D\Logging.h" />
-    <ClInclude Include="Sandbox2D\Physics.h" />
     <ClInclude Include="Sandbox2D\Physics\ContactListener.h" />
+    <ClInclude Include="Sandbox2D\Physics\Physics.h" />
     <ClInclude Include="Sandbox2D\Physics\PhysicsJoint.h" />
     <ClInclude Include="Sandbox2D\Physics\PhysicsObject.h" />
     <ClInclude Include="Sandbox2D\Sandbox2D.h" />

@@ -4,6 +4,7 @@
 #define DELTA(A, B) (A < B ? B - A : A - B)
 #define MIN(A, B) (A < B ? A : B)
 #define MAX(A, B) (A > B ? A : B)
+#define CLAMP(A, LOWER, UPPER) (MIN(MAX(A, LOWER), UPPER))
 
 // Tuple
 template <typename P>

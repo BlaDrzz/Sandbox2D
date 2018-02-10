@@ -94,10 +94,10 @@
     <ClInclude Include="Sandbox2D\Physics\ContactListener.h">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Sandbox2D\Physics.h">
+    <ClInclude Include="Sandbox2D\Physics\PhysicsJoint.h">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="Sandbox2D\Physics\PhysicsJoint.h">
+    <ClInclude Include="Sandbox2D\Physics\Physics.h">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClInclude>
   </ItemGroup>

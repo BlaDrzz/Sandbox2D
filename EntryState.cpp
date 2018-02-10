@@ -36,8 +36,7 @@ void EntryState::stateTick(double deltaTime)
 	// Executed each game tick, game logic goes here
 	if (S2D->_inputManager->isKeyboardKeyDown(SDL_SCANCODE_A))
 	{
-		_poTestObj->applyForce({ 500,0 });
-		
+		_poTestObj->applyForce({ 500,0 });	
 	}
 }
 

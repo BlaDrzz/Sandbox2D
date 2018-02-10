@@ -125,15 +125,16 @@ struct Graphics
 		SDL_RenderPresent(_renderer);
 	}
 
+	//! @param color RGBA values from 0 to 255.
 	void setColor(RGBA color)
 	{
 		_currentDrawingColor = color;
 
 		SDL_SetRenderDrawColor(_renderer,
-			_currentDrawingColor.r,
-			_currentDrawingColor.g,
-			_currentDrawingColor.b,
-			_currentDrawingColor.a
+			CLAMP(_currentDrawingColor.r, 0, 255),
+			CLAMP(_currentDrawingColor.g, 0, 255),
+			CLAMP(_currentDrawingColor.b, 0, 255),
+			CLAMP(_currentDrawingColor.a, 0, 255)
 		);
 	}
 
