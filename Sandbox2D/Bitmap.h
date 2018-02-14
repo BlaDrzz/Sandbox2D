@@ -2,6 +2,14 @@
 
 struct Bitmap
 {
+	SDL_Surface* _surface = nullptr;
+	std::string _path;
+
+	Bitmap(const std::string path) : _path(path)
+	{
+		update();
+	}
+
 	~Bitmap()
 	{
 		if (_surface != nullptr)
@@ -11,24 +19,12 @@ struct Bitmap
 		}
 	}
 
-	SDL_Surface* _surface = nullptr;
-	std::string path;
-
-	void Update() 
+	void update() 
 	{
 		if (_surface != nullptr) SDL_FreeSurface(_surface);
 
 		// Create a new _surface
-		_surface = IMG_Load(path.c_str());
-		if (_surface == nullptr) printf("Cannot load PNG at location: '%s', SDL Error: %s", path.c_str(), SDL_GetError());
+		_surface = IMG_Load(_path.c_str());
+		if (_surface == nullptr) printf("Cannot load PNG at location: '%s', SDL Error: %s", _path.c_str(), SDL_GetError());
 	}
 };
-
-inline Bitmap* make_bitmap(std::string path)
-{
-	Bitmap* b = new Bitmap();
-	b->path = path;
-	b->Update();
-
-	return b;
-}

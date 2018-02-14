@@ -21,13 +21,13 @@ struct BaseCache
 		return typeCache.count(name) > 0 ? typeCache[name] : nullptr;
 	}
 
-	//! Searches for an object with given path and returns the object
+	//! Searches for an object with given _path and returns the object
 	//! Returns nullptr if name was not found
 	T* findByPath(std::string path)
 	{
 		for (auto i : typeCache)
 		{
-			if (i.second->path == path) return i.second;
+			if (i.second->_path == path) return i.second;
 		}
 		return nullptr;
 	}
@@ -62,7 +62,7 @@ struct BaseCache
 		dumpText += Indent(tabAmount) + "[\n";
 		for (auto bmp : typeCache)
 		{
-			dumpText += Indent(tabAmount + 1) + "{ \"" + bmp.first + "\" : \"" + bmp.second->path + "\" },\n";
+			dumpText += Indent(tabAmount + 1) + "{ \"" + bmp.first + "\" : \"" + bmp.second->_path + "\" },\n";
 		}
 		dumpText += Indent(tabAmount) + "]";
 
@@ -74,11 +74,11 @@ struct BitmapCache : BaseCache<Bitmap>
 {
 	Bitmap* CreateCachableBitmap(std::string path)
 	{
-		// Try to find an object with that path alread
+		// Try to find an object with that _path alread
 		Bitmap* bmp = findByPath(path);
 		
-		// If no obj with that path was found, create a new one
-		if (bmp == nullptr) bmp = make_bitmap(path);
+		// If no obj with that _path was found, create a new one
+		if (bmp == nullptr) bmp = new Bitmap(path);
 
 		return bmp;
 	}
@@ -88,10 +88,10 @@ struct FontCache : BaseCache<Font>
 {
 	Font* CreateCachableFont(std::string path, int size, int index = -1)
 	{
-		// Try to find an object with that path already
+		// Try to find an object with that _path already
 		Font* fnt = findByPath(path);
 
-		if (fnt == nullptr) fnt = make_font(path, size, index);
+		if (fnt == nullptr) fnt = new Font(path, size, index);
 
 		return fnt;
 	}
