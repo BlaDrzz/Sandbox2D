@@ -133,6 +133,11 @@ Tuple<P> operator-(Tuple<P> a, Tuple<P> b) {
 	return{ a.x - b.x, a.y - b.y };
 }
 
+template <typename P>
+bool operator==(Tuple<P> a, Tuple<P> b) {
+	return a.x == b.x ? (a.y == b.y ? true : false) : false;
+}
+
 // Advanced maths
 
 template <typename P>
