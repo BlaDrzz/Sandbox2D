@@ -159,14 +159,25 @@ void PhysicsObject::setPosition(const Vector2& newPos) const
 	_bodyPtr->SetAwake(true);
 }
 
-double PhysicsObject::getAngle() const
+double PhysicsObject::getAngleRad() const
 {
 	return _bodyPtr->GetAngle();
 }
 
-void PhysicsObject::setAngle(const double newAngle) const
+double PhysicsObject::getAngleDeg() const
+{
+	return _bodyPtr->GetAngle() * 180 / M_PI;
+}
+
+void PhysicsObject::setAngleRad(const double newAngle) const
 {
 	_bodyPtr->SetTransform(_bodyPtr->GetPosition(), float(newAngle));
+	_bodyPtr->SetAwake(true);
+}
+
+void PhysicsObject::setAngleDeg(const double newAngle) const
+{
+	_bodyPtr->SetTransform(_bodyPtr->GetPosition(), float(newAngle * M_PI / 180));
 	_bodyPtr->SetAwake(true);
 }
 

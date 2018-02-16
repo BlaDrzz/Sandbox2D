@@ -33,10 +33,14 @@ public:
 	//! Sets the object's position (teleport)
 	void setPosition(const Vector2& newPos) const;
 
-	//! Gets the object's angle
-	double getAngle() const;
+	//! Gets the object's angle in radians
+	double getAngleRad() const;
+	//! Gets the object's angle in degrees
+	double getAngleDeg() const;
 	//! Sets the object's angle
-	void setAngle(const double newAngle) const;
+	void setAngleRad(const double newAngle) const;
+	//! Sets the object's angle
+	void setAngleDeg(const double newAngle) const;
 
 	//! Gets the object's current linear velocity
 	Vector2 getLinearVelocity() const;
