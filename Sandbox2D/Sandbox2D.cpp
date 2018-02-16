@@ -204,6 +204,22 @@ void Sandbox2D::fontToCache(std::string name, std::string path, int size) const
 	_cache->fntCache.push(name, _cache->fntCache.CreateCachableFont(path, size));
 }
 
+b2World* Sandbox2D::getb2World() const
+{
+	return _box2DWorld;
+}
+
+void Sandbox2D::setGravity(const Vector2 gravity)
+{
+	_gravity = gravity;
+	_box2DWorld->SetGravity(Tob2Vec2(gravity));
+}
+
+Pixel Sandbox2D::getWindowSize() const
+{
+	return _graphics->_windowSize;
+}
+
 void Sandbox2D::BeginContact(b2Contact* contactPtr)
 {
 	b2Fixture* fixContactListenerPtr = nullptr;

@@ -38,4 +38,6 @@ private:
 	ButtonWidget* _btnPhysicsTestState = nullptr;
 
 	PhysicsObject* _poTestObj = nullptr;
+	PhysicsObject* _poTestObj2 = nullptr;
+	Bitmap* _bmpTest = nullptr;
 };

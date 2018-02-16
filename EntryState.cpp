@@ -18,10 +18,18 @@ void EntryState::stateStart()
 
 	S2D->setGravity({ 0,0 });
 
-	_poTestObj = new PhysicsObject({ 200,200 }, 0, BodyType::DYNAMIC);
-	_poTestObj->addBoxFixture({ 100, 100 });
+	_poTestObj = new PhysicsObject(ToVector2(S2D->getWindowSize()) / double(2), 0, BodyType::DYNAMIC);
+	_poTestObj->addBoxFixture({ 400, 400 });
 	_poTestObj->addContactListener(this);
 	_poTestObj->getBody()->SetLinearDamping(2.0f);
+	_poTestObj->setAngularVelocity(10);
+
+	_poTestObj2 = new PhysicsObject({ 1000,100 }, 0, BodyType::DYNAMIC);
+	_poTestObj2->addBoxFixture({ 200, 200 });
+	_poTestObj2->addContactListener(this);
+	_poTestObj2->setFixedRotation(true);
+
+	_bmpTest = new Bitmap("Resources/blue.png");
 }
 
 void EntryState::stateEnd()
@@ -29,30 +37,61 @@ void EntryState::stateEnd()
 	// Executed at end of state
 	delete _lblInfo;
 	delete _poTestObj;
+	delete _poTestObj2;
+	delete _bmpTest;
 }
 
 void EntryState::stateTick(double deltaTime) 
 {
 	// Executed each game tick, game logic goes here
+	_poTestObj->setLinearVelocity(Vector2{ 0,0 });
+
 	if (S2D->_inputManager->isKeyboardKeyDown(SDL_SCANCODE_A))
 	{
-		_poTestObj->applyForce({ 500,0 });	
+		_poTestObj->applyLinearImpulse({ -1000,0 });	
+	}
+	if (S2D->_inputManager->isKeyboardKeyDown(SDL_SCANCODE_W))
+	{
+		_poTestObj->applyLinearImpulse({ 0,-1000 });
+	}
+	if (S2D->_inputManager->isKeyboardKeyDown(SDL_SCANCODE_S))
+	{
+		_poTestObj->applyLinearImpulse({ 0,1000 });
+	}
+	if (S2D->_inputManager->isKeyboardKeyDown(SDL_SCANCODE_D))
+	{
+		_poTestObj->applyLinearImpulse({ 1000,0 });
 	}
 }
 
 void EntryState::statePaint(Graphics* g)
 {
 	// Executed after game tick, game drawing calls go 
-	_lblInfo->draw();
+	g->_backgroundDrawingColor = MakeRGBA(200, 200, 200);
 
-	const auto poPos = ToPixel(_poTestObj->getPosition());
-
-	const Rect<int> poRect = {
-		{ poPos.x - 50, poPos.y - 50 },
-		{ poPos.x + 50, poPos.y + 50 }
+	g->_viewPort._position = Pixel{
+		int(_poTestObj->getPosition().x) - S2D->getWindowSize().x / 2,
+		int(_poTestObj->getPosition().y) - S2D->getWindowSize().y / 2
 	};
-	g->setColor({ 0,0,255,255 });
-	g->drawRect(true, poRect);
+
+	g->drawRect(true, Rect<int>{
+		int(_poTestObj->getPosition().x) - 200,
+		int(_poTestObj->getPosition().y) - 200,
+		int(_poTestObj->getPosition().x) + 200,
+		int(_poTestObj->getPosition().y) + 200,
+	});
+
+	g->drawBitmap(_bmpTest, ToPixel(_poTestObj->getPosition() - Vector2{ 200,200 }), _poTestObj->getAngleDeg());
+
+	g->drawRect(true, Rect<int>{
+		int(_poTestObj2->getPosition().x) - 100,
+		int(_poTestObj2->getPosition().y) - 100,
+		int(_poTestObj2->getPosition().x) + 100,
+		int(_poTestObj2->getPosition().y) + 100,
+	});
+
+	g->_viewPort.defaults();
+	_lblInfo->draw();
 }
 
 //-------------------------------------------------------

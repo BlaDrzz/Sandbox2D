@@ -61,15 +61,11 @@ public:
 	void fontToCache(std::string name, std::string path, int size) const;
 
 	// Box2D helpers
-	b2World* getb2World() const
-	{
-		return _box2DWorld;
-	}
-	void setGravity(const Vector2 gravity) 
-	{ 
-		_gravity = gravity; 
-		_box2DWorld->SetGravity(Tob2Vec2(gravity)); 
-	}
+	b2World* getb2World() const;
+	void setGravity(const Vector2 gravity);
+
+
+	Pixel getWindowSize() const;
 
 	// Box2D overloads
 	// Box2D virtual overloads
