@@ -2,6 +2,6 @@
 
 struct GameSettings
 {
-	Pixel windowSize = { 842, 480 };
-	std::string windowTitle = "An LVN game";
+	Pixel _windowSize = { 842, 480 };
+	std::string _windowTitle = "An S2D game";
 };

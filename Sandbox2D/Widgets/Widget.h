@@ -14,7 +14,7 @@ struct Widget
 	}
 
 	virtual void tick(double deltaTime) = 0;
-	virtual void draw() = 0;
+	virtual void draw(Graphics* g) = 0;
 };
 
 // Include other widgets, resharper might think these are obsolete includes but THEY ARE NOT!

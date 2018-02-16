@@ -91,7 +91,7 @@ void EntryState::statePaint(Graphics* g)
 	});
 
 	g->_viewPort.defaults();
-	_lblInfo->draw();
+	_lblInfo->draw(g);
 }
 
 //-------------------------------------------------------

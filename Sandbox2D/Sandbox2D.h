@@ -21,6 +21,7 @@ private:
 	PrecisionTimer* _gameTickTimerPtr = nullptr;
 
 	Cache*			_cache = nullptr;
+	Graphics*		_graphics = nullptr;
 	std::vector<GameState*> _states;
 
 	//! Box2D/physics
@@ -51,14 +52,25 @@ public:
 	//! Pops the last gamestate
 	void popState();
 
-	// Cache helpers
+	// Cache helper
+	
+	// Cache bitmap helpers
 
-	//! Gets the _cache object. Do not use unless you know what you are doing
-	Cache* getCache() const;
 	//! Create a _bitmap in _cache
-	void bitmapToCache(std::string name, std::string path) const;
+	void createBitmapInCache(std::string name, std::string path) const;
+	//! Get bitmap by name
+	Bitmap* getBitmapFromCacheByName(std::string name) const;
+	//! Get bitmap by path
+	Bitmap* getBitmapFromCacheByPath(std::string path) const;
+
+	// Cache font helpers
+
 	//! Create a font in _cache
-	void fontToCache(std::string name, std::string path, int size) const;
+	void createFontInCache(std::string name, std::string path, int size) const;
+	//! Get font by name
+	Font* getFontFromCacheByName(std::string name) const;
+	//! Get font by path
+	Font* getFontFromCacheByPath(std::string path) const;
 
 	// Box2D helpers
 	b2World* getb2World() const;
@@ -80,8 +92,6 @@ public:
 	
 	//! Handles all keyboard and mouse input
 	InputManager* _inputManager = nullptr;
-	//! Handles all drawing functions
-	Graphics* _graphics = nullptr;
 
 	//! Amount of velocity iterations. 
 	//! Higher = more accurate velocity changes = more processing time per tick

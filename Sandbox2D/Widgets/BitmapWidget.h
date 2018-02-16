@@ -16,9 +16,9 @@ struct BitmapWidget : Widget
 
 	void tick(double deltaTime) override {}
 
-	void draw() override
+	void draw(Graphics* g) override
 	{
 		if (_hidden) return;
-		S2D->_graphics->drawBitmap(_bitmap, absolutePosition());
+		g->drawBitmap(_bitmap, absolutePosition());
 	}
 };

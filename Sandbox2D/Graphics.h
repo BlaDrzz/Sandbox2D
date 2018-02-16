@@ -45,11 +45,11 @@ struct Graphics
 		}
 
 		// Store _window _size if needed by user
-		_windowSize = settings.windowSize;
+		_windowSize = settings._windowSize;
 
 		// Create _window
 		_window = SDL_CreateWindow(
-			settings.windowTitle.c_str(),
+			settings._windowTitle.c_str(),
 			SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED,
 			_windowSize.x,

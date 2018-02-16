@@ -43,13 +43,13 @@ struct PanelWidget : Widget
 		}
 	}
 
-	void draw() override
+	void draw(Graphics* g) override
 	{
 		if (!_hidden) return;
 		
 		for (auto w : _widgets)
 		{
-			w->draw();
+			w->draw(g);
 		}
 	}
 };

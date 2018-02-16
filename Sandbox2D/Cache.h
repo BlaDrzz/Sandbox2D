@@ -108,7 +108,7 @@ struct Cache
 		fntCache.clear();
 	}
 
-	std::string Dump()
+	std::string dump()
 	{
 		LogInfo("Dumping _cache");
 

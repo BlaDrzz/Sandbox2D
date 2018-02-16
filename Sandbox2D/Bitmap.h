@@ -27,4 +27,13 @@ struct Bitmap
 		_surface = IMG_Load(_path.c_str());
 		if (_surface == nullptr) printf("Cannot load PNG at location: '%s', SDL Error: %s", _path.c_str(), SDL_GetError());
 	}
+
+	Pixel getSize() const
+	{
+		return _surface != nullptr ? 
+			Pixel{
+				_surface->w,
+				_surface->h
+			} : Pixel{ 0, 0 };
+	}
 };

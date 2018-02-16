@@ -2,7 +2,7 @@
 
 struct Font 
 {
-	Font(std::string path, int size, long index = -1) : _path(path), _size(size), _index(index)
+	Font(const std::string path, const int size, const long index = -1) : _path(path), _size(size), _index(index)
 	{
 		update();
 	}

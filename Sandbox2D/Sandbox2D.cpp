@@ -90,8 +90,8 @@ void Sandbox2D::init()
 
 	// TODO: change to reading from ini file
 	GameSettings gameSettings;
-	gameSettings.windowSize = { 1280,720 };
-	gameSettings.windowTitle = "S2D Test environment";
+	gameSettings._windowSize = { 1280,720 };
+	gameSettings._windowTitle = "S2D Test environment";
 
 	// Initialise Graphics
 	_graphics = new Graphics();
@@ -189,19 +189,34 @@ void Sandbox2D::popState()
 	_states.pop_back();
 }
 
-Cache* Sandbox2D::getCache() const
-{
-	return _cache;
-}
-
-void Sandbox2D::bitmapToCache(std::string name, std::string path) const
+void Sandbox2D::createBitmapInCache(const std::string name, const std::string path) const
 {
 	_cache->bmpCache.push(name, _cache->bmpCache.CreateCachableBitmap(path));
 }
 
-void Sandbox2D::fontToCache(std::string name, std::string path, int size) const
+Bitmap* Sandbox2D::getBitmapFromCacheByName(const std::string name) const
+{
+	return _cache->bmpCache.findByName(name);
+}
+
+Bitmap* Sandbox2D::getBitmapFromCacheByPath(const std::string path) const
+{
+	return _cache->bmpCache.findByPath(path);
+}
+
+void Sandbox2D::createFontInCache(const std::string name, const std::string path, const int size) const
 {
 	_cache->fntCache.push(name, _cache->fntCache.CreateCachableFont(path, size));
+}
+
+Font* Sandbox2D::getFontFromCacheByName(const std::string name) const
+{
+	return _cache->fntCache.findByName(name);
+}
+
+Font* Sandbox2D::getFontFromCacheByPath(const std::string path) const
+{
+	return _cache->fntCache.findByPath(path);
 }
 
 b2World* Sandbox2D::getb2World() const
