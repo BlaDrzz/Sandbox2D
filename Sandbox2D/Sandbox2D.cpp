@@ -36,16 +36,17 @@ int Sandbox2D::run()
 	// Main loop _flag
 	bool quit = false;
 
-	// Event handler
+	// Main game loop, runs as fast as it can
 	while (!quit)
 	{
 		const double current = _gameTickTimerPtr->GetGameTime();
 		double elapsed = current - previous;
-		// prevent jumps in time when game is sleeping
+		// prevent jumps in time when game is sleeping or running at less than 5 fps.
 		if (elapsed > 0.25) elapsed = 0.25; 
 		previous = current;
 		lag += elapsed;
 
+		// Ensures that physics time steps are being executed properly
 		while (lag >= _physicsTimeStep)
 		{
 			_inputManager->setOldInputStates();
