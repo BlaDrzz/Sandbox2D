@@ -2,7 +2,7 @@
 
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
-#include "../EntryState.h"
+#include "../GameFiles/EntryState.h"
 #include "Physics/ContactListener.h"
 
 // Static Variable Initialization
@@ -30,17 +30,17 @@ int Sandbox2D::run()
 	_states.back()->stateStart();
 
 	// Main game loop
-	double previous = _gameTickTimerPtr->GetGameTime() - _physicsTimeStep;
-	double lag = 0.00000; // Left over time
+	auto previous = _gameTickTimerPtr->GetGameTime() - _physicsTimeStep;
+	auto lag = 0.00000; // Left over time
 	
 	// Main loop _flag
-	bool quit = false;
+	auto quit = false;
 
 	// Main game loop, runs as fast as it can
 	while (!quit)
 	{
-		const double current = _gameTickTimerPtr->GetGameTime();
-		double elapsed = current - previous;
+		const auto current = _gameTickTimerPtr->GetGameTime();
+		auto elapsed = current - previous;
 		// prevent jumps in time when game is sleeping or running at less than 5 fps.
 		if (elapsed > 0.25) elapsed = 0.25; 
 		previous = current;
@@ -119,7 +119,7 @@ void Sandbox2D::destroy()
 	LogInfo("Destroying Sandbox2D!");
 
 	// Delete any left over gamestates
-	while (_states.size() > 0)
+	while (!_states.empty())
 		this->popState();
 
 	// Delete Box2D related stuff

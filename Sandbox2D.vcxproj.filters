@@ -5,9 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source Files\GameStates">
-      <UniqueIdentifier>{97cd3d45-ba37-47e7-9e40-4f2fbd11e8ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Sandbox2D">
       <UniqueIdentifier>{d553e124-c94f-412d-ab5b-2a2386896fb8}</UniqueIdentifier>
     </Filter>
@@ -22,6 +19,9 @@
     </Filter>
     <Filter Include="Source Files\Sandbox2D\Core\Physics">
       <UniqueIdentifier>{584842c9-5823-432a-8e3a-fa8c6539d31d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameFiles">
+      <UniqueIdentifier>{97cd3d45-ba37-47e7-9e40-4f2fbd11e8ca}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -79,9 +79,6 @@
     <ClInclude Include="Sandbox2D\Logging.h">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="EntryState.h">
-      <Filter>Source Files\GameStates</Filter>
-    </ClInclude>
     <ClInclude Include="Sandbox2D\Sandbox2D.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
@@ -100,6 +97,12 @@
     <ClInclude Include="Sandbox2D\Physics\Physics.h">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="GameFiles\EntryState.h">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\PhysicsTestState.h">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -111,14 +114,17 @@
     <ClCompile Include="Sandbox2D\PrecisionTimer.cpp">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="EntryState.cpp">
-      <Filter>Source Files\GameStates</Filter>
-    </ClCompile>
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClCompile>
     <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\EntryState.cpp">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\PhysicsTestState.cpp">
+      <Filter>Source Files\GameFiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

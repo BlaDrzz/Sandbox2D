@@ -12,15 +12,17 @@ struct ButtonWidget : Widget
 
 	ButtonWidget(Pixel position)
 	{
-		_position = position;
+		ButtonWidget(position, "");
 	}
 	ButtonWidget(Pixel position, std::string text) : _text(text)
 	{
-		_position = position;
+		// Set parent position
+		this->_position = position;
+
+		// Set some defaults
+		_backColor = RGBA{ 230,230,230,255 };
 	}
-	~ButtonWidget()
-	{
-	}
+	~ButtonWidget() {}
 
 	void tick(double deltaTime) override {}
 
@@ -66,10 +68,6 @@ struct ButtonWidget : Widget
 		const auto mousePos = S2D->_inputManager->getMousePos();
 		const Rect<int> buttonRect = { absolutePosition(), absolutePosition() + _size };
 
-		if (Contains(buttonRect, mousePos) && S2D->_inputManager->isMouseButtonReleased(SDL_BUTTON_LEFT))
-		{
-			return true;
-		}
-		return false;
+		return Contains(buttonRect, mousePos) && S2D->_inputManager->isMouseButtonReleased(SDL_BUTTON_LEFT);
 	}
 };

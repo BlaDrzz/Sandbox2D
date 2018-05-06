@@ -3,7 +3,7 @@
 #include "windows.h"
 
 // std lib includes
-#include <math.h>
+#include <cmath>
 #include <vector>			// std lib vector
 #include <string>			// std lib to_string
 #include <thread>
@@ -12,7 +12,7 @@
 #include <fstream>			// SVGParser
 #include <istream>
 #include <iomanip>			// precision
-#include <stdio.h>		    // console
+#include <cstdio>		    // console
 #include <iostream>
 #include <streambuf>
 #include <unordered_map>

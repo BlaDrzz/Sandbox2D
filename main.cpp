@@ -5,7 +5,6 @@
 #ifdef _WIN32
 // Memory management
 #define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
 #include <crtdbg.h>
 #endif
 
@@ -23,7 +22,7 @@ int main(int argc, char* args[])
 	if (S2D == nullptr) return 1; // There was an error creating the Sandbox2D object.
 
 	// run main cycle
-	const int returnValue = S2D->run();
+	const auto returnValue = S2D->run();
 
 	// destroy EntryState
 	S2D->destroy();
