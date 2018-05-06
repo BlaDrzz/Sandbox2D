@@ -5,17 +5,17 @@
 
 // Forward Declarations
 
-// EntryState class
-class EntryState : public GameState, public ContactListener
+// AudioTestState class
+class AudioTestState : public GameState, public ContactListener
 {
 public:
 	// Constructor
-	EntryState();
-	virtual ~EntryState();
+	AudioTestState();
+	virtual ~AudioTestState();
 
 	// C++11 make class non-copyable
-	EntryState(const EntryState&) = delete;
-	EntryState& operator=(const EntryState&) = delete;
+	AudioTestState(const AudioTestState&) = delete;
+	AudioTestState& operator=(const AudioTestState&) = delete;
 
 	// General Methods
 	void stateStart() override;
@@ -34,6 +34,14 @@ private:
 	// Private functions
 
 	// Datamembers
-	ButtonWidget* _btnSwitchToPhysics = nullptr;
-	ButtonWidget* _btnSwitchToAudio = nullptr;
+
+	//The music that will be played
+	Mix_Music *_music = nullptr;
+
+	//The sound effects that will be used
+	Mix_Chunk *_scratch = nullptr;
+	Mix_Chunk *_high = nullptr;
+	Mix_Chunk *_med = nullptr;
+	Mix_Chunk *_low = nullptr;
+
 };
