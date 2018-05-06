@@ -2,18 +2,22 @@
 
 #include "stdafx.h"
 
+#ifdef _WIN32
 // Memory management
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
+#endif
 
 // Implictly creates the S2D singleton if it does not exist already; returns it
 #define S2D (Sandbox2D::GetSingleton())
 
 int main(int argc, char* args[]) 
 {
+#ifdef _WIN32
 	// Memory management
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
 
 	// Create engine
 	if (S2D == nullptr) return 1; // There was an error creating the Sandbox2D object.
