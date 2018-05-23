@@ -1,5 +1,6 @@
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
+#include "Windows.h"
 
 //=======================================================================================
 // PrecisionTimer.cpp by Frank Luna (C) 2008 All Rights Reserved.
@@ -7,8 +8,8 @@
 PrecisionTimer::PrecisionTimer()
 {
 	__int64 countsPerSec;
-	QueryPerformanceFrequency((LARGE_INTEGER*)&countsPerSec);
-	m_SecondsPerCount = 1.0 / (double)countsPerSec;
+	QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(&countsPerSec));
+	m_SecondsPerCount = 1.0 / double(countsPerSec);
 }
 
 // Returns the total time elapsed since reset() was called, NOT counting any
@@ -24,7 +25,7 @@ double PrecisionTimer::GetGameTime() const
 
 	if (m_bStopped)
 	{
-		return (double)(((m_StopTime - m_PausedTime) - m_BaseTime) * m_SecondsPerCount);
+		return static_cast<double>((m_StopTime - m_PausedTime - m_BaseTime) * m_SecondsPerCount);
 	}
 
 	// The distance mCurrTime - mBaseTime includes paused time,
@@ -41,19 +42,19 @@ double PrecisionTimer::GetGameTime() const
 	{
 		//Bart: Get current time
 		QueryPerformanceCounter((LARGE_INTEGER*)&m_CurrTime);
-		return (double)(((m_CurrTime - m_PausedTime) - m_BaseTime) * m_SecondsPerCount);
+		return static_cast<double>((m_CurrTime - m_PausedTime - m_BaseTime) * m_SecondsPerCount);
 	}
 }
 
 double PrecisionTimer::GetDeltaTime() const
 {
-	return (double)m_DeltaTime;
+	return double(m_DeltaTime);
 }
 
 void PrecisionTimer::Reset()
 {
 	__int64 currTime;
-	QueryPerformanceCounter((LARGE_INTEGER*)&currTime);
+	QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&currTime));
 
 	m_BaseTime = currTime;
 	m_PrevTime = currTime;
@@ -65,7 +66,7 @@ void PrecisionTimer::Reset()
 void PrecisionTimer::Start()
 {
 	__int64 startTime;
-	QueryPerformanceCounter((LARGE_INTEGER*)&startTime);
+	QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&startTime));
 
 
 	// Accumulate the time elapsed between stop and start pairs.
