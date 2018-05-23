@@ -106,6 +106,9 @@
     <ClInclude Include="GameFiles\AudioTestState.h">
       <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
+    <ClInclude Include="Sandbox2D\Audio.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

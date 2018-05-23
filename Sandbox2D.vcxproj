@@ -139,6 +139,7 @@
     <ClInclude Include="GameFiles\AudioTestState.h" />
     <ClInclude Include="GameFiles\EntryState.h" />
     <ClInclude Include="GameFiles\PhysicsTestState.h" />
+    <ClInclude Include="Sandbox2D\Audio.h" />
     <ClInclude Include="Sandbox2D\GameState.h" />
     <ClInclude Include="Sandbox2D\Any.h" />
     <ClInclude Include="Sandbox2D\Bitmap.h" />

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "windows.h"
-
 // std lib includes
 #include <cmath>
 #include <vector>			// std lib vector
@@ -39,6 +37,7 @@
 #include "Sandbox2D/Any.h"
 #include "Sandbox2D/Font.h"
 #include "Sandbox2D/Bitmap.h"
+#include "Sandbox2D/Audio.h"
 #include "Sandbox2D/GameSettings.h"
 #include "Sandbox2D/GameState.h"
 #include "Sandbox2D/Cache.h"
