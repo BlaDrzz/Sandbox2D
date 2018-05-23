@@ -2,6 +2,14 @@
 
 struct Font 
 {
+	//! Index in case there are multiple fonts in one TTF file.
+	//! Defaults to -1.
+	long _index;
+	//! Size in px
+	int _size;
+	//! Resource _path
+	std::string _path;
+
 	Font(const std::string path, const int size, const long index = -1) : _path(path), _size(size), _index(index)
 	{
 		update();
@@ -17,14 +25,6 @@ struct Font
 	}
 
 	TTF_Font* _TTFfont = nullptr;
-
-	//! Index in case there are multiple fonts in one TTF file.
-	//! Defaults to -1.
-	long _index;
-	//! Size in px
-	int _size;
-	//! Resource _path
-	std::string _path;
 
 	//! (re-)initialises the TTF_Font.
 	void update()

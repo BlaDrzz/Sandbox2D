@@ -72,7 +72,7 @@ struct BaseCache
 
 struct BitmapCache : BaseCache<Bitmap>
 {
-	Bitmap* CreateCachableBitmap(std::string path)
+	Bitmap* createCachableBitmap(std::string path)
 	{
 		// Try to find an object with that _path alread
 		Bitmap* bmp = findByPath(path);
@@ -86,7 +86,7 @@ struct BitmapCache : BaseCache<Bitmap>
 
 struct FontCache : BaseCache<Font>
 {
-	Font* CreateCachableFont(std::string path, int size, int index = -1)
+	Font* createCachableFont(std::string path, int size, int index = -1)
 	{
 		// Try to find an object with that _path already
 		Font* fnt = findByPath(path);

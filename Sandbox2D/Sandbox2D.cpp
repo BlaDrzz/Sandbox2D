@@ -192,7 +192,7 @@ void Sandbox2D::popState()
 
 void Sandbox2D::createBitmapInCache(const std::string name, const std::string path) const
 {
-	_cache->bmpCache.push(name, _cache->bmpCache.CreateCachableBitmap(path));
+	_cache->bmpCache.push(name, _cache->bmpCache.createCachableBitmap(path));
 }
 
 Bitmap* Sandbox2D::getBitmapFromCacheByName(const std::string name) const
@@ -207,7 +207,7 @@ Bitmap* Sandbox2D::getBitmapFromCacheByPath(const std::string path) const
 
 void Sandbox2D::createFontInCache(const std::string name, const std::string path, const int size) const
 {
-	_cache->fntCache.push(name, _cache->fntCache.CreateCachableFont(path, size));
+	_cache->fntCache.push(name, _cache->fntCache.createCachableFont(path, size));
 }
 
 Font* Sandbox2D::getFontFromCacheByName(const std::string name) const

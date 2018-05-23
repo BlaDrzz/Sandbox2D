@@ -101,7 +101,7 @@ struct Graphics
 		// Set default font
 		cache->fntCache.push(
 			_defaultFont,
-			cache->fntCache.CreateCachableFont("Resources/arial.ttf", 12)
+			cache->fntCache.createCachableFont("Resources/arial.ttf", 12)
 		);
 		
 		LogInfo("Graphics initialised successfully!");
