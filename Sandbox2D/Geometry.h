@@ -1,10 +1,22 @@
 #pragma once
 
-#define SQUARE(X) X*X
-#define DELTA(A, B) (A < B ? B - A : A - B)
-#define MIN(A, B) (A < B ? A : B)
-#define MAX(A, B) (A > B ? A : B)
-#define CLAMP(A, LOWER, UPPER) (MIN(MAX(A, LOWER), UPPER))
+template <typename P>
+P square(const P x) 
+{
+	return x * x;
+}
+
+template <typename P>
+P delta(const P x, const P y)
+{
+	return std::abs(x - y);
+}
+
+template <typename P>
+P clamp(const P val, const P min, const P max)
+{
+	return std::min(std::max(val, min), max);
+}
 
 // Tuple
 template <typename P>
@@ -45,7 +57,7 @@ inline Vector2 ToVector2(const b2Vec2 v)
 
 inline b2Vec2 Tob2Vec2(const Vector2 v)
 {
-	return b2Vec2(float(v.x), float(v.y));
+	return {float(v.x), float(v.y)};
 }
 
 // SDL conversions
@@ -53,10 +65,10 @@ inline b2Vec2 Tob2Vec2(const Vector2 v)
 inline SDL_Rect ToSDL(Rect<int> orig)
 {
 	return SDL_Rect{
-		MIN(orig.x.x, orig.y.x),
-		MIN(orig.x.y, orig.y.y),
-		MAX(orig.x.x, orig.y.x) - MIN(orig.x.x, orig.y.x),
-		MAX(orig.x.y, orig.y.y) - MIN(orig.x.y, orig.y.y)
+		std::min(orig.x.x, orig.y.x),
+		std::min(orig.x.y, orig.y.y),
+		std::max(orig.x.x, orig.y.x) - std::min(orig.x.x, orig.y.x),
+		std::max(orig.x.y, orig.y.y) - std::min(orig.x.y, orig.y.y)
 	};
 }
 
@@ -185,6 +197,18 @@ std::ostream& operator<<(std::ostream& os, Tuple<P> p)
 	return os << "Tuple<" << typeid(P).name() << "> { " << p.x << ", " << p.y << " }";
 }
 
+template <typename P>
+double Distance(Tuple<P> a, Tuple<P> b)
+{
+	return sqrt(square(delta(a.x, b.x)) + square(delta(a.y, b.y)));
+}
+
+template <typename P>
+double Distance(Line<P> line)
+{
+	return Distance(line.a, line.b);
+}
+
 // Checks if point is inside of rect
 template <typename P>
 bool Contains(Rect<P> rect, Tuple<P> point)
@@ -206,9 +230,7 @@ bool Contains(Rect<P> a, Rect<P> b)
 template <typename P>
 bool Contains(Circle<P> a, Circle<P> b)
 {
-	P r = a.radius + b.radius;
-	r *= r;
-	return r < SQUARE(a.position.x + b.position.x) + SQUARE(a.position.y + b.position.y);
+	return a.radius + b.radius <= Distance(a.position, b.position);
 }
 
 template <typename P>
@@ -227,18 +249,6 @@ template <typename P>
 std::ostream& operator<<(std::ostream& os, Line<P> line)
 {
 	return os << "Line<" << typeid(P).name() << "> { " << line.x << ", " << line.y << " }";
-}
-
-template <typename P>
-double Distance(Tuple<P> a, Tuple<P> b)
-{
-	return sqrt(SQUARE(DELTA(a.x, b.x)) + SQUARE(DELTA(a.y, b.y)));
-}
-
-template <typename P>
-double Distance(Line<P> line)
-{
-	return Distance(line.a, line.b);
 }
 
 template <typename P> using Poly = std::vector<P>;

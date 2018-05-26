@@ -146,10 +146,10 @@ struct Graphics
 		_currentDrawingColor = color;
 
 		SDL_SetRenderDrawColor(_renderer,
-			CLAMP(_currentDrawingColor.r, 0, 255),
-			CLAMP(_currentDrawingColor.g, 0, 255),
-			CLAMP(_currentDrawingColor.b, 0, 255),
-			CLAMP(_currentDrawingColor.a, 0, 255)
+			clamp(int(_currentDrawingColor.r), 0, 255),
+			clamp(int(_currentDrawingColor.g), 0, 255),
+			clamp(int(_currentDrawingColor.b), 0, 255),
+			clamp(int(_currentDrawingColor.a), 0, 255)
 		);
 	}
 
