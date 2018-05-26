@@ -34,14 +34,7 @@ private:
 	// Private functions
 
 	// Datamembers
+	Music* _music = nullptr;
 
-	//The music that will be played
-	Mix_Music *_music = nullptr;
-
-	//The sound effects that will be used
-	Mix_Chunk *_scratch = nullptr;
-	Mix_Chunk *_high = nullptr;
-	Mix_Chunk *_med = nullptr;
-	Mix_Chunk *_low = nullptr;
-
+	SoundFX* _scratch = nullptr;
 };

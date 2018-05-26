@@ -15,51 +15,37 @@ void AudioTestState::stateStart()
 {
 	// Executed at start of state
 	
-	// Load the music
-	_music = Mix_LoadMUS("Resources/beat.wav");
-	if (_music == nullptr) Log("Something went wrong!");
+	// Load music
+	_music = S2D->createMusicInCache("Music", "Resources/beat.wav");
 
-	//Load the sound effects
-	_scratch = Mix_LoadWAV("Resources/scratch.wav");
-	_high = Mix_LoadWAV("Resources/high.wav");
-	_med = Mix_LoadWAV("Resources/medium.wav");
-	_low = Mix_LoadWAV("Resources/low.wav");
+	// Load sound
+	_scratch = S2D->createSoundInCache("Sound", "Resources/scratch.wav");
 }
 
 void AudioTestState::stateEnd()
 {
 	// Executed at end of state
 
-	// Free the music
-	Mix_FreeMusic(_music);
-
-	// Free the sound effects
-	Mix_FreeChunk(_scratch);
-	Mix_FreeChunk(_high);
-	Mix_FreeChunk(_med);
-	Mix_FreeChunk(_low);
 }
 
 void AudioTestState::stateTick(double deltaTime) 
 {
 	// Executed each game tick, game logic goes here
 
-	if (S2D->_inputManager->isKeyboardKeyPressed(SDL_SCANCODE_Z)) Mix_PlayChannel(-1, _scratch, 0);
-	if (S2D->_inputManager->isKeyboardKeyPressed(SDL_SCANCODE_X)) Mix_PlayChannel(-1, _high, 0);
-	if (S2D->_inputManager->isKeyboardKeyPressed(SDL_SCANCODE_C)) Mix_PlayChannel(-1, _med, 0);
-	if (S2D->_inputManager->isKeyboardKeyPressed(SDL_SCANCODE_V)) Mix_PlayChannel(-1, _low, 0);
+	if (S2D->_inputManager->isKeyboardKeyPressed(SDL_SCANCODE_Z)) _scratch->play();
 
 	if (S2D->_inputManager->isKeyboardKeyPressed(SDL_SCANCODE_M))
 	{
 		//If there is no music playing
-		if (Mix_PlayingMusic() == 0) Mix_PlayMusic(_music, -1);
+		if (!S2D->isMusicPlaying()) _music->start();
 		else
 		{
 			// Music is paused?
-			if (Mix_PausedMusic() == 1) Mix_ResumeMusic();
-			else Mix_PauseMusic();
+			if (S2D->isMusicPaused()) _music->resume();
+			else _music->pause();
 		}
 	}
+
 }
 
 void AudioTestState::statePaint(Graphics* g)

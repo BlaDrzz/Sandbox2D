@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../stdafx.h"
-
 //class GameState;
 class PrecisionTimer;
 class InputManager;
@@ -57,7 +55,7 @@ public:
 	// Cache bitmap helpers
 
 	//! Create a _bitmap in _cache
-	void createBitmapInCache(std::string name, std::string path) const;
+	Bitmap* createBitmapInCache(std::string name, std::string path) const;
 	//! Get bitmap by name
 	Bitmap* getBitmapFromCacheByName(std::string name) const;
 	//! Get bitmap by path
@@ -66,16 +64,34 @@ public:
 	// Cache font helpers
 
 	//! Create a font in _cache
-	void createFontInCache(std::string name, std::string path, int size) const;
+	Font* createFontInCache(std::string name, std::string path, int size) const;
 	//! Get font by name
 	Font* getFontFromCacheByName(std::string name) const;
 	//! Get font by path
 	Font* getFontFromCacheByPath(std::string path) const;
 
+	//! Create a font in _cache
+	Music* createMusicInCache(std::string name, std::string path) const;
+	//! Get font by name
+	Music* getMusicFromCacheByName(std::string name) const;
+	//! Get font by path
+	Music* getMusicFromCacheByPath(std::string path) const;
+
+	//! Create a font in _cache
+	SoundFX* createSoundInCache(std::string name, std::string path) const;
+	//! Get font by name
+	SoundFX* getSoundFromCacheByName(std::string name) const;
+	//! Get font by path
+	SoundFX* getSoundFromCacheByPath(std::string path) const;
+
 	// Box2D helpers
 	b2World* getb2World() const;
 	void setGravity(const Vector2 gravity);
 
+	// Audio
+	// Globals
+	static bool isMusicPlaying() { return Mix_PlayingMusic(); }
+	static bool isMusicPaused() { return Mix_PausedMusic(); }
 
 	Pixel getWindowSize() const;
 

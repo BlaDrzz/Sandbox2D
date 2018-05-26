@@ -190,9 +190,9 @@ void Sandbox2D::popState()
 	_states.pop_back();
 }
 
-void Sandbox2D::createBitmapInCache(const std::string name, const std::string path) const
+Bitmap* Sandbox2D::createBitmapInCache(const std::string name, const std::string path) const
 {
-	_cache->bmpCache.push(name, _cache->bmpCache.createCachableBitmap(path));
+	return _cache->bmpCache.push(name, _cache->bmpCache.createCachableBitmap(path));
 }
 
 Bitmap* Sandbox2D::getBitmapFromCacheByName(const std::string name) const
@@ -205,9 +205,9 @@ Bitmap* Sandbox2D::getBitmapFromCacheByPath(const std::string path) const
 	return _cache->bmpCache.findByPath(path);
 }
 
-void Sandbox2D::createFontInCache(const std::string name, const std::string path, const int size) const
+Font* Sandbox2D::createFontInCache(const std::string name, const std::string path, const int size) const
 {
-	_cache->fntCache.push(name, _cache->fntCache.createCachableFont(path, size));
+	return _cache->fntCache.push(name, _cache->fntCache.createCachableFont(path, size));
 }
 
 Font* Sandbox2D::getFontFromCacheByName(const std::string name) const
@@ -218,6 +218,36 @@ Font* Sandbox2D::getFontFromCacheByName(const std::string name) const
 Font* Sandbox2D::getFontFromCacheByPath(const std::string path) const
 {
 	return _cache->fntCache.findByPath(path);
+}
+
+Music* Sandbox2D::createMusicInCache(const std::string name, const std::string path) const
+{
+	return _cache->musCache.push(name, _cache->musCache.createCachableMusic(path));
+}
+
+Music* Sandbox2D::getMusicFromCacheByName(const std::string name) const
+{
+	return _cache->musCache.findByName(name);
+}
+
+Music* Sandbox2D::getMusicFromCacheByPath(const std::string path) const
+{
+	return _cache->musCache.findByPath(path);
+}
+
+SoundFX* Sandbox2D::createSoundInCache(const std::string name, const std::string path) const
+{
+	return _cache->sfxCache.push(name, _cache->sfxCache.createCachableSound(path));
+}
+
+SoundFX* Sandbox2D::getSoundFromCacheByName(const std::string name) const
+{
+	return _cache->sfxCache.findByName(name);
+}
+
+SoundFX* Sandbox2D::getSoundFromCacheByPath(const std::string path) const
+{
+	return _cache->sfxCache.findByPath(path);
 }
 
 b2World* Sandbox2D::getb2World() const

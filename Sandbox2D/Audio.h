@@ -10,39 +10,6 @@ struct Audio
 	virtual void update() = 0;
 };
 
-struct SoundFX : Audio
-{
-	Mix_Chunk* _sound = nullptr;
-
-	SoundFX(const std::string path)
-	{
-		this->_path = path;
-		update();
-	}
-
-	~SoundFX()
-	{
-		if (_sound != nullptr)
-		{
-			Mix_FreeChunk(_sound);
-			_sound = nullptr;
-		}
-	}
-
-	void update() override
-	{
-		if (_sound != nullptr) Mix_FreeChunk(_sound);
-
-		_sound = Mix_LoadWAV(_path.c_str());
-		if (_sound == nullptr) LogError("Error loading file " + _path);
-	}
-
-	void play(const int loop = 0)
-	{
-		Mix_PlayChannel(-1, _sound, loop);
-	}
-};
-
 struct Music : Audio
 {
 	Mix_Music* _music = nullptr;
@@ -50,7 +17,7 @@ struct Music : Audio
 	Music(const std::string path)
 	{
 		this->_path = path;
-		update();
+		Music::update();
 	}
 
 	~Music()
@@ -86,5 +53,38 @@ struct Music : Audio
 	{
 		if (Mix_PlayingMusic() != 0 && Mix_PausedMusic() == 1) Mix_ResumeMusic();
 		else LogWarning("Music " + _path + " is not playing or not paused!");
+	}
+};
+
+struct SoundFX : Audio
+{
+	Mix_Chunk* _sound = nullptr;
+
+	SoundFX(const std::string path)
+	{
+		this->_path = path;
+		SoundFX::update();
+	}
+
+	~SoundFX()
+	{
+		if (_sound != nullptr)
+		{
+			Mix_FreeChunk(_sound);
+			_sound = nullptr;
+		}
+	}
+
+	void update() override
+	{
+		if (_sound != nullptr) Mix_FreeChunk(_sound);
+
+		_sound = Mix_LoadWAV(_path.c_str());
+		if (_sound == nullptr) LogError("Error loading file " + _path);
+	}
+
+	void play(const int loop = 0) const
+	{
+		Mix_PlayChannel(-1, _sound, loop);
 	}
 };

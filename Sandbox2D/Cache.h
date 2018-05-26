@@ -6,12 +6,19 @@ struct BaseCache
 	std::unordered_map<std::string, T*> typeCache;
 	
 	//! push an object to _cache
-	void push(std::string name, T* object)
+	T* push(std::string name, T* object)
 	{
 		// Return if a _bitmap already exists with that name
-		if (typeCache.count(name) != 0) return LogWarning("Object name already exists, please erase the old reference first!");
+		if (typeCache.count(name) != 0)
+		{
+			LogWarning("Object name already exists, please erase the old reference first!");
+			return nullptr; 
+		}
 
 		typeCache[name] = object;
+
+		// Return the object
+		return object;
 	}
 	
 	//! Searches for an object with given name and returns the object
@@ -72,10 +79,10 @@ struct BaseCache
 
 struct BitmapCache : BaseCache<Bitmap>
 {
-	Bitmap* createCachableBitmap(std::string path)
+	Bitmap* createCachableBitmap(const std::string path)
 	{
 		// Try to find an object with that _path alread
-		Bitmap* bmp = findByPath(path);
+		auto bmp = findByPath(path);
 		
 		// If no obj with that _path was found, create a new one
 		if (bmp == nullptr) bmp = new Bitmap(path);
@@ -86,14 +93,43 @@ struct BitmapCache : BaseCache<Bitmap>
 
 struct FontCache : BaseCache<Font>
 {
-	Font* createCachableFont(std::string path, int size, int index = -1)
+	Font* createCachableFont(const std::string path, int size, int index = -1)
 	{
 		// Try to find an object with that _path already
-		Font* fnt = findByPath(path);
+		auto fnt = findByPath(path);
 
+		// If no obj with that _path was found, create a new one
 		if (fnt == nullptr) fnt = new Font(path, size, index);
 
 		return fnt;
+	}
+};
+
+struct MusicCache : BaseCache<Music>
+{
+	Music* createCachableMusic(const std::string path)
+	{
+		// Try to find an object with that _path alread
+		auto mus = findByPath(path);
+
+		// If no obj with that _path was found, create a new one
+		if (mus == nullptr) mus = new Music(path);
+
+		return mus;
+	}
+};
+
+struct SoundFXCache : BaseCache<SoundFX>
+{
+	SoundFX* createCachableSound(const std::string path)
+	{
+		// Try to find an object with that _path alread
+		auto sfx = findByPath(path);
+
+		// If no obj with that _path was found, create a new one
+		if (sfx == nullptr) sfx = new SoundFX(path);
+
+		return sfx;
 	}
 };
 
@@ -101,11 +137,15 @@ struct Cache
 {
 	BitmapCache bmpCache;
 	FontCache fntCache;
+	MusicCache musCache;
+	SoundFXCache sfxCache;
 
 	~Cache()
 	{
 		bmpCache.clear();
 		fntCache.clear();
+		musCache.clear();
+		sfxCache.clear();
 	}
 
 	std::string dump()
@@ -116,6 +156,8 @@ struct Cache
 
 		dump += bmpCache.dump(1) + "\n";
 		dump += fntCache.dump(1) + "\n";
+		dump += musCache.dump(1) + "\n";
+		dump += sfxCache.dump(1) + "\n";
 
 		return dump += "]";
 	}
