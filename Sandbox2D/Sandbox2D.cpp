@@ -64,12 +64,12 @@ int Sandbox2D::run()
 
 			// Do physics magic
 			_box2DWorld->Step(float(_physicsTimeStep), _velocityIterations, _positionIterations);
-
-			// Execute the game paint
-			_graphics->renderAll(_states.back());
 			
 			lag -= _physicsTimeStep;
 		}
+
+		// Execute the game paint
+		_graphics->renderAll(_states.back());
 	}
 	return 0;
 }
