@@ -129,6 +129,7 @@
     <ClCompile Include="GameFiles\AudioTestState.cpp" />
     <ClCompile Include="GameFiles\EntryState.cpp" />
     <ClCompile Include="GameFiles\PhysicsTestState.cpp" />
+    <ClCompile Include="Sandbox2D\Graphics.cpp" />
     <ClCompile Include="Sandbox2D\InputManager.cpp" />
     <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp" />
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp" />
@@ -143,7 +144,6 @@
     <ClInclude Include="Sandbox2D\GameState.h" />
     <ClInclude Include="Sandbox2D\Any.h" />
     <ClInclude Include="Sandbox2D\Bitmap.h" />
-    <ClInclude Include="Sandbox2D\Cache.h" />
     <ClInclude Include="Sandbox2D\Font.h" />
     <ClInclude Include="Sandbox2D\Geometry.h" />
     <ClInclude Include="Sandbox2D\Graphics.h" />

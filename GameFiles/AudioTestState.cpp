@@ -16,10 +16,10 @@ void AudioTestState::stateStart()
 	// Executed at start of state
 	
 	// Load music
-	_music = S2D->createMusicInCache("Music", "Resources/beat.wav");
+	_music = new Music("Resources/beat.wav");
 
 	// Load sound
-	_scratch = S2D->createSoundInCache("Sound", "Resources/scratch.wav");
+	_scratch = new SoundFX("Resources/scratch.wav");
 }
 
 void AudioTestState::stateEnd()

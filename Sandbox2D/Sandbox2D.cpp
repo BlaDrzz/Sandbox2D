@@ -83,9 +83,6 @@ void Sandbox2D::init()
 	_gameTickTimerPtr = new PrecisionTimer();
 	_gameTickTimerPtr->Reset();
 
-	// Initialse Cache
-	_cache = new Cache();
-
 	// Initialise InputManager and InputEvents
 	_inputManager = new InputManager();
 
@@ -95,8 +92,7 @@ void Sandbox2D::init()
 	gameSettings._windowTitle = "S2D Test environment";
 
 	// Initialise Graphics
-	_graphics = new Graphics();
-	_graphics->init(GetSingleton(), gameSettings, _cache);
+	_graphics = new Graphics(gameSettings);
 
 	// Initialise Box2D
 	_gravity = { 0, 9.81 };
@@ -133,12 +129,8 @@ void Sandbox2D::destroy()
 	delete _inputManager;
 	_inputManager = nullptr;
 
-	_graphics->cleanup();
 	delete _graphics;
 	_graphics = nullptr;
-
-	delete _cache;
-	_cache = nullptr;
 
 	// Quit SDL subsystems
 	std::thread tMix(Mix_Quit);
@@ -188,66 +180,6 @@ void Sandbox2D::popState()
 	// Delete the gamestate
 	delete _states.back();
 	_states.pop_back();
-}
-
-Bitmap* Sandbox2D::createBitmapInCache(const std::string name, const std::string path) const
-{
-	return _cache->bmpCache.push(name, _cache->bmpCache.createCachableBitmap(path));
-}
-
-Bitmap* Sandbox2D::getBitmapFromCacheByName(const std::string name) const
-{
-	return _cache->bmpCache.findByName(name);
-}
-
-Bitmap* Sandbox2D::getBitmapFromCacheByPath(const std::string path) const
-{
-	return _cache->bmpCache.findByPath(path);
-}
-
-Font* Sandbox2D::createFontInCache(const std::string name, const std::string path, const int size) const
-{
-	return _cache->fntCache.push(name, _cache->fntCache.createCachableFont(path, size));
-}
-
-Font* Sandbox2D::getFontFromCacheByName(const std::string name) const
-{
-	return _cache->fntCache.findByName(name);
-}
-
-Font* Sandbox2D::getFontFromCacheByPath(const std::string path) const
-{
-	return _cache->fntCache.findByPath(path);
-}
-
-Music* Sandbox2D::createMusicInCache(const std::string name, const std::string path) const
-{
-	return _cache->musCache.push(name, _cache->musCache.createCachableMusic(path));
-}
-
-Music* Sandbox2D::getMusicFromCacheByName(const std::string name) const
-{
-	return _cache->musCache.findByName(name);
-}
-
-Music* Sandbox2D::getMusicFromCacheByPath(const std::string path) const
-{
-	return _cache->musCache.findByPath(path);
-}
-
-SoundFX* Sandbox2D::createSoundInCache(const std::string name, const std::string path) const
-{
-	return _cache->sfxCache.push(name, _cache->sfxCache.createCachableSound(path));
-}
-
-SoundFX* Sandbox2D::getSoundFromCacheByName(const std::string name) const
-{
-	return _cache->sfxCache.findByName(name);
-}
-
-SoundFX* Sandbox2D::getSoundFromCacheByPath(const std::string path) const
-{
-	return _cache->sfxCache.findByPath(path);
 }
 
 b2World* Sandbox2D::getb2World() const

@@ -71,7 +71,7 @@ void PhysicsTestState::statePaint(Graphics* g)
 	// Executed after game tick, game drawing calls go 
 	g->_backgroundDrawingColor = MakeRGBA(200, 200, 200);
 
-	g->_viewPort._position = Pixel{
+	g->_viewPort.position = Pixel{
 		int(_poTestObj->getPosition().x) - S2D->getWindowSize().x / 2,
 		int(_poTestObj->getPosition().y) - S2D->getWindowSize().y / 2
 	};
@@ -85,7 +85,7 @@ void PhysicsTestState::statePaint(Graphics* g)
 		int(_poTestObj2->getPosition().y) + 100,
 	});
 
-	g->_viewPort.defaults();
+	g->_viewPort = ViewPort();
 	_lblInfo->draw(g);
 }
 

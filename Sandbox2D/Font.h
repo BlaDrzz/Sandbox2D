@@ -4,36 +4,36 @@ struct Font
 {
 	//! Index in case there are multiple fonts in one TTF file.
 	//! Defaults to -1.
-	long _index;
+	long index;
 	//! Size in px
-	int _size;
+	int size;
 	//! Resource _path
-	std::string _path;
+	std::string path;
 
-	Font(const std::string path, const int size, const long index = -1) : _path(path), _size(size), _index(index)
+	Font(const std::string path, const int size, const long index = -1) : index(index), size(size), path(path)
 	{
 		update();
 	}
 
 	~Font()
 	{
-		if (_TTFfont != nullptr)
+		if (TTFfont != nullptr)
 		{
-			TTF_CloseFont(_TTFfont);
-			_TTFfont = nullptr;
+			TTF_CloseFont(TTFfont);
+			TTFfont = nullptr;
 		}
 	}
 
-	TTF_Font* _TTFfont = nullptr;
+	TTF_Font* TTFfont = nullptr;
 
 	//! (re-)initialises the TTF_Font.
 	void update()
 	{
-		if (_TTFfont != nullptr) TTF_CloseFont(_TTFfont);
+		if (TTFfont != nullptr) TTF_CloseFont(TTFfont);
 
-		if (_index == -1) _TTFfont = TTF_OpenFont(_path.c_str(), _size);
-		else _TTFfont = TTF_OpenFontIndex(_path.c_str(), _size, _index);
+		if (index == -1) TTFfont = TTF_OpenFont(path.c_str(), size);
+		else TTFfont = TTF_OpenFontIndex(path.c_str(), size, index);
 
-		if (_TTFfont == nullptr) std::cout << TTF_GetError() << std::endl;
+		if (TTFfont == nullptr) std::cout << TTF_GetError() << std::endl;
 	}
 };

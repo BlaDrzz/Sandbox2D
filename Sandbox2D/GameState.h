@@ -1,6 +1,6 @@
 #pragma once
 
-struct Graphics;
+class Graphics;
 
 class GameState 
 {

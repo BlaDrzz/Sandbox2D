@@ -3,7 +3,7 @@
 //class GameState;
 class PrecisionTimer;
 class InputManager;
-struct Graphics;
+class Graphics;
 
 class Sandbox2D : public b2ContactListener, public b2DestructionListener
 {
@@ -18,7 +18,6 @@ private:
 	// Engine specific
 	PrecisionTimer* _gameTickTimerPtr = nullptr;
 
-	Cache*			_cache = nullptr;
 	Graphics*		_graphics = nullptr;
 	std::vector<GameState*> _states;
 
@@ -50,39 +49,6 @@ public:
 	//! Pops the last gamestate
 	void popState();
 
-	// Cache helper
-	
-	// Cache bitmap helpers
-
-	//! Create a _bitmap in _cache
-	Bitmap* createBitmapInCache(std::string name, std::string path) const;
-	//! Get bitmap by name
-	Bitmap* getBitmapFromCacheByName(std::string name) const;
-	//! Get bitmap by path
-	Bitmap* getBitmapFromCacheByPath(std::string path) const;
-
-	// Cache font helpers
-
-	//! Create a font in _cache
-	Font* createFontInCache(std::string name, std::string path, int size) const;
-	//! Get font by name
-	Font* getFontFromCacheByName(std::string name) const;
-	//! Get font by path
-	Font* getFontFromCacheByPath(std::string path) const;
-
-	//! Create a font in _cache
-	Music* createMusicInCache(std::string name, std::string path) const;
-	//! Get font by name
-	Music* getMusicFromCacheByName(std::string name) const;
-	//! Get font by path
-	Music* getMusicFromCacheByPath(std::string path) const;
-
-	//! Create a font in _cache
-	SoundFX* createSoundInCache(std::string name, std::string path) const;
-	//! Get font by name
-	SoundFX* getSoundFromCacheByName(std::string name) const;
-	//! Get font by path
-	SoundFX* getSoundFromCacheByPath(std::string path) const;
 
 	// Box2D helpers
 	b2World* getb2World() const;

@@ -40,7 +40,6 @@
 #include "Sandbox2D/Audio.h"
 #include "Sandbox2D/GameSettings.h"
 #include "Sandbox2D/GameState.h"
-#include "Sandbox2D/Cache.h"
 #include "Sandbox2D/Sandbox2D.h"
 #include "Sandbox2D/Graphics.h"
 #include "Sandbox2D/Widgets/Widget.h"
