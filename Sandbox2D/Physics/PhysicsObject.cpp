@@ -181,6 +181,11 @@ void PhysicsObject::setAngleDeg(const double newAngle) const
 	_bodyPtr->SetAwake(true);
 }
 
+void PhysicsObject::applyTorque(const double torque) const
+{
+	_bodyPtr->ApplyTorque(torque, true);
+}
+
 Vector2 PhysicsObject::getLinearVelocity() const
 {
 	const auto vel = _bodyPtr->GetLinearVelocity();

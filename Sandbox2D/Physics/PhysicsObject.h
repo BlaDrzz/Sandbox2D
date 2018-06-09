@@ -38,9 +38,12 @@ public:
 	//! Gets the object's angle in degrees
 	double getAngleDeg() const;
 	//! Sets the object's angle
-	void setAngleRad(const double newAngle) const;
+	void setAngleRad(double newAngle) const;
 	//! Sets the object's angle
-	void setAngleDeg(const double newAngle) const;
+	void setAngleDeg(double newAngle) const;
+
+	//! Apply a torque to the object
+	void applyTorque(double torque) const;
 
 	//! Gets the object's current linear velocity
 	Vector2 getLinearVelocity() const;
