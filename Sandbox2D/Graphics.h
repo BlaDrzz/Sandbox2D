@@ -11,7 +11,7 @@ class Graphics
 {
 public:	
 	ViewPort _viewPort;
-	Pixel	_windowSize = { 0, 0 };
+	
 	RGBA	_backgroundDrawingColor	= { 255, 255, 255, 255 };
 	RGBA	_currentDrawingColor	= { 0, 0, 0, 255 };
 
@@ -48,10 +48,15 @@ public:
 		double angle = 0, Pixel center = { 0, 0 }, SDL_RendererFlip flip = SDL_FLIP_NONE) const;
 	void drawBitmap(Bitmap* bmp, Pixel position, double angle = 0, Pixel center = { 0, 0 }) const;
 
+	// Getters/setters
+	Pixel getWindowSize() const { return _windowSize; }
+
 private:
 	// SDL speficic
 	SDL_Window *	_window = nullptr;
 	SDL_Renderer*	_renderer = nullptr;
 
+	// Engine specific
+	Pixel	_windowSize = { 0, 0 };
 	Font*	_defaultFont = nullptr;
 };

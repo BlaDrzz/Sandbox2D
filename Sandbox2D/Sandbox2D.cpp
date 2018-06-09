@@ -195,7 +195,7 @@ void Sandbox2D::setGravity(const Vector2 gravity)
 
 Pixel Sandbox2D::getWindowSize() const
 {
-	return _graphics->_windowSize;
+	return _graphics->getWindowSize();
 }
 
 void Sandbox2D::BeginContact(b2Contact* contactPtr)
