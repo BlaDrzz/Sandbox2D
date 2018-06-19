@@ -46,18 +46,3 @@ void EntryState::statePaint(Graphics* g)
 	_btnSwitchToPhysics->draw(g);
 	_btnSwitchToAudio->draw(g);
 }
-
-//-------------------------------------------------------
-// ContactListener overloaded member function definitions
-//-------------------------------------------------------
-void EntryState::beginContact(PhysicsObject* actThisPtr, PhysicsObject* actOtherPtr)
-{
-}
-
-void EntryState::endContact(PhysicsObject* actThisPtr, PhysicsObject* actOtherPtr)
-{
-}
-
-void EntryState::contactImpulse(PhysicsObject* actThisPtr, double impulse)
-{
-}	

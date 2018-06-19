@@ -6,7 +6,7 @@
 // Forward Declarations
 
 // EXAMPLESTATE class
-class EXAMPLESTATE : public GameState, public ContactListener
+class EXAMPLESTATE : public GameState
 {
 public:
 	// Constructor
@@ -22,13 +22,6 @@ public:
 	void stateEnd() override;
 	void stateTick(double deltaTime) override;
 	void statePaint(Graphics* g) override;
-
-	//--------------------------------------------------------
-	// ContactListener overloaded member function declarations
-	//--------------------------------------------------------
-	void beginContact(PhysicsObject *actThisPtr, PhysicsObject *actOtherPtr) override;
-	void endContact(PhysicsObject *actThisPtr, PhysicsObject *actOtherPtr) override;
-	void contactImpulse(PhysicsObject *actThisPtr, double impulse) override;
 
 private:
 	// Private functions
