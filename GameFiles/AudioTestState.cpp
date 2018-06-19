@@ -24,6 +24,8 @@ void AudioTestState::stateEnd()
 {
 	// Executed at end of state
 
+	delete _music;
+	delete _scratch;
 }
 
 void AudioTestState::stateTick(double deltaTime) 
