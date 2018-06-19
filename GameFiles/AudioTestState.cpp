@@ -1,5 +1,3 @@
-#pragma once
-
 // Include files
 #include "../stdafx.h"
 #include "AudioTestState.h"
