@@ -27,6 +27,4 @@ private:
 	// Private functions
 
 	// Datamembers
-	ButtonWidget* _btnSwitchToPhysics = nullptr;
-	ButtonWidget* _btnSwitchToAudio = nullptr;
 };
