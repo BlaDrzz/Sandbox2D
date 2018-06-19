@@ -97,14 +97,11 @@
     <ClInclude Include="GameFiles\EntryState.h">
       <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
-    <ClInclude Include="GameFiles\PhysicsTestState.h">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="GameFiles\AudioTestState.h">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClInclude>
     <ClInclude Include="Sandbox2D\Audio.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\GlobalState.h">
+      <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,14 +123,11 @@
     <ClCompile Include="GameFiles\EntryState.cpp">
       <Filter>Source Files\GameFiles</Filter>
     </ClCompile>
-    <ClCompile Include="GameFiles\PhysicsTestState.cpp">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClCompile>
-    <ClCompile Include="GameFiles\AudioTestState.cpp">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClCompile>
     <ClCompile Include="Sandbox2D\Graphics.cpp">
       <Filter>Source Files\Sandbox2D\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\GlobalState.cpp">
+      <Filter>Source Files\GameFiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

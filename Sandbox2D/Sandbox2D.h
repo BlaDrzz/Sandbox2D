@@ -1,9 +1,11 @@
 #pragma once
 
+
 //class GameState;
 class PrecisionTimer;
 class InputManager;
 class Graphics;
+class GlobalState;
 
 class Sandbox2D : public b2ContactListener, public b2DestructionListener
 {
@@ -52,7 +54,7 @@ public:
 
 	// Box2D helpers
 	b2World* getb2World() const;
-	void setGravity(const Vector2 gravity);
+	void setGravity(Vector2 gravity);
 
 	// Audio
 	// Globals
@@ -71,14 +73,20 @@ public:
 	void SayGoodbye(b2Fixture* fixturePtr) override;
 
 	// Public datamembers
+
+	//! Global State which runs all the time. \n
+	//! Global stateStart is executed BEFORE the active state stateStart, \n
+	//! Global stateEnd is executed AFTER the active state stateEnd, \n
+	//! Global stateTick is executed BEFORE the active state stateTick.
+	GlobalState* globalState = nullptr;
 	
 	//! Handles all keyboard and mouse input
-	InputManager* _inputManager = nullptr;
+	InputManager* inputManager = nullptr;
 
 	//! Amount of velocity iterations. 
 	//! Higher = more accurate velocity changes = more processing time per tick
-	int _velocityIterations = 6;
+	int velocityIterations = 6;
 	//! Amount of position iterations
 	//! Higher = more accurate positioning = more processing time per tick
-	int _positionIterations = 2;
+	int positionIterations = 2;
 };

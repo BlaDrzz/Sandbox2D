@@ -3,6 +3,7 @@
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
 #include "../GameFiles/EntryState.h"
+#include "../GameFiles/GlobalState.h"
 #include "Physics/ContactListener.h"
 
 // Static Variable Initialization
@@ -24,7 +25,11 @@ int Sandbox2D::run()
 {
 	// Initialise the game
 	init();
-	
+
+	// Start global state
+	globalState = new GlobalState();
+	globalState->globalStart();
+
 	// Start entry state
 	_states.push_back(new EntryState());
 	_states.back()->stateStart();
@@ -49,7 +54,7 @@ int Sandbox2D::run()
 		// Ensures that physics time steps are being executed properly
 		while (lag >= _physicsTimeStep)
 		{
-			_inputManager->setOldInputStates();
+			inputManager->setOldInputStates();
 			// Handle all events in queue
 			SDL_Event event;
 			while (SDL_PollEvent(&event))
@@ -57,18 +62,21 @@ int Sandbox2D::run()
 				// User requests quit
 				if (event.type == SDL_QUIT) quit = true;
 			}
-			_inputManager->setCurrInputStates();
+			inputManager->setCurrInputStates();
 
-			// Execute the game tick
+			// Execute the Global state's stateTick
+			globalState->globalTick(_physicsTimeStep);
+
+			// Execute the active state's stateTick
 			_states.back()->stateTick(_physicsTimeStep);
 
 			// Do physics magic
-			_box2DWorld->Step(float(_physicsTimeStep), _velocityIterations, _positionIterations);
+			_box2DWorld->Step(float(_physicsTimeStep), velocityIterations, positionIterations);
 			
 			lag -= _physicsTimeStep;
 		}
 
-		// Execute the game paint
+		// Execute the active state's statePaint
 		_graphics->renderAll(_states.back());
 	}
 	return 0;
@@ -84,7 +92,7 @@ void Sandbox2D::init()
 	_gameTickTimerPtr->Reset();
 
 	// Initialise InputManager and InputEvents
-	_inputManager = new InputManager();
+	inputManager = new InputManager();
 
 	// TODO: change to reading from ini file
 	GameSettings gameSettings;
@@ -118,6 +126,10 @@ void Sandbox2D::destroy()
 	while (!_states.empty())
 		this->popState();
 
+	// Delete the global state
+	globalState->globalEnd();
+	delete globalState;
+
 	// Delete Box2D related stuff
 	delete _box2DWorld;
 	_box2DWorld = nullptr;
@@ -126,21 +138,16 @@ void Sandbox2D::destroy()
 	delete _gameTickTimerPtr;
 	_gameTickTimerPtr = nullptr;
 
-	delete _inputManager;
-	_inputManager = nullptr;
+	delete inputManager;
+	inputManager = nullptr;
 
 	delete _graphics;
 	_graphics = nullptr;
 
 	// Quit SDL subsystems
-	std::thread tMix(Mix_Quit);
-	std::thread tTTF(TTF_Quit);
-	std::thread tIMG(IMG_Quit);
-
-	tMix.join();
-	tTTF.join();
-	tIMG.join();
-
+	Mix_Quit();
+	TTF_Quit();
+	IMG_Quit();
 	SDL_Quit();
 	LogInfo("SDL cleanup finished!");
 
