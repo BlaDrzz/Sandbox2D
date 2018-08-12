@@ -86,17 +86,17 @@ void Graphics::renderAll(GameState* game)
 	// Reset the _renderer
 	SDL_RenderClear(_renderer);
 
-	setColor(_currentDrawingColor);
+	setColor(currentDrawingColor);
 
 	// User defined draw functions
 	game->statePaint(this);
 
 	// Set background color
 	SDL_SetRenderDrawColor(_renderer,
-		_backgroundDrawingColor.r,
-		_backgroundDrawingColor.g,
-		_backgroundDrawingColor.b,
-		_backgroundDrawingColor.a
+		backgroundDrawingColor.r,
+		backgroundDrawingColor.g,
+		backgroundDrawingColor.b,
+		backgroundDrawingColor.a
 	);
 
 	// Render the final screen
@@ -105,19 +105,19 @@ void Graphics::renderAll(GameState* game)
 
 void Graphics::setColor(const RGBA color)
 {
-	_currentDrawingColor = color;
+	currentDrawingColor = color;
 
 	SDL_SetRenderDrawColor(_renderer,
-		clamp(int(_currentDrawingColor.r), 0, 255),
-		clamp(int(_currentDrawingColor.g), 0, 255),
-		clamp(int(_currentDrawingColor.b), 0, 255),
-		clamp(int(_currentDrawingColor.a), 0, 255)
+		clamp(int(currentDrawingColor.r), 0, 255),
+		clamp(int(currentDrawingColor.g), 0, 255),
+		clamp(int(currentDrawingColor.b), 0, 255),
+		clamp(int(currentDrawingColor.a), 0, 255)
 	);
 }
 
 void Graphics::drawRect(const bool fillRect, const Rect<int>& rect) const
 {
-	auto convertedRect = ToSDL(rect - Rect<int>{_viewPort.position, _viewPort.position});
+	auto convertedRect = ToSDL(rect - Rect<int>{viewPort.position, viewPort.position});
 
 	if (fillRect) SDL_RenderFillRect(_renderer, &convertedRect);
 	else SDL_RenderDrawRect(_renderer, &convertedRect);
@@ -131,10 +131,10 @@ void Graphics::drawRect(const bool fillRect, const Pixel p1, const Pixel p2) con
 SDL_Surface* Graphics::createTextSurface(const std::string text, Font* font) const
 {
 	const SDL_Color foreground = {
-		_currentDrawingColor.r,
-		_currentDrawingColor.g,
-		_currentDrawingColor.b,
-		_currentDrawingColor.a
+		currentDrawingColor.r,
+		currentDrawingColor.g,
+		currentDrawingColor.b,
+		currentDrawingColor.a
 	};
 
 	return TTF_RenderText_Blended(
@@ -179,12 +179,12 @@ void Graphics::drawString(const std::string string, const Rect<int> srcRect, con
 	Rect<int> destinationRect;
 	if (destRect.y.x == -1 && destRect.y.y == -1)
 		destinationRect = {
-		destRect.x.x - _viewPort.position.x,
-		destRect.x.y - _viewPort.position.y,
-		textSurface->w - _viewPort.position.x + destRect.x.x,
-		textSurface->h - _viewPort.position.y + destRect.x.y
+		destRect.x.x - viewPort.position.x,
+		destRect.x.y - viewPort.position.y,
+		textSurface->w - viewPort.position.x + destRect.x.x,
+		textSurface->h - viewPort.position.y + destRect.x.y
 	};
-	else destinationRect = sourceRect - Rect<int>{_viewPort.position, _viewPort.position};
+	else destinationRect = sourceRect - Rect<int>{viewPort.position, viewPort.position};
 
 	auto sourceSDLRect = ToSDL(sourceRect);
 	auto destinationSDLRect = ToSDL(destinationRect);
@@ -207,10 +207,10 @@ void Graphics::drawString(const std::string string, const Pixel p, Font* font) c
 void Graphics::drawLine(const Line<int>& line) const
 {
 	SDL_RenderDrawLine(_renderer,
-		line.x.x - _viewPort.position.x,
-		line.x.y - _viewPort.position.y,
-		line.y.x - _viewPort.position.x,
-		line.y.y - _viewPort.position.y);
+		line.x.x - viewPort.position.x,
+		line.x.y - viewPort.position.y,
+		line.y.x - viewPort.position.x,
+		line.y.y - viewPort.position.y);
 }
 
 void Graphics::drawLine(const Pixel p1, const Pixel p2) const
@@ -230,7 +230,7 @@ void Graphics::drawBitmap(Bitmap* bmp, const Rect<int>& sourceRect, const Rect<i
 	}
 
 	auto sourceSDLRect = ToSDL(sourceRect);
-	auto destinationSDLRect = ToSDL(destinationRect - Rect<int>{_viewPort.position, _viewPort.position});
+	auto destinationSDLRect = ToSDL(destinationRect - Rect<int>{viewPort.position, viewPort.position});
 
 	// Render the new texture on top of the existing ones and delete temporary texture
 	SDL_RenderCopyEx(

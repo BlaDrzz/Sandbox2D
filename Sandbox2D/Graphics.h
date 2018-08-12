@@ -10,10 +10,10 @@ struct ViewPort
 class Graphics
 {
 public:	
-	ViewPort _viewPort;
+	ViewPort viewPort;
 	
-	RGBA	_backgroundDrawingColor	= { 255, 255, 255, 255 };
-	RGBA	_currentDrawingColor	= { 0, 0, 0, 255 };
+	RGBA	backgroundDrawingColor	= { 255, 255, 255, 255 };
+	RGBA	currentDrawingColor	= { 0, 0, 0, 255 };
 
 	// Con-/Destructor
 	Graphics(GameSettings &settings);
@@ -25,7 +25,7 @@ public:
 	
 	void renderAll(GameState* game);
 
-	//! @param color RGBA values from 0 to 255.
+	// color RGBA values from 0 to 255.
 	void setColor(RGBA color);
 
 	// drawRect overloads

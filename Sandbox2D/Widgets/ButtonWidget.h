@@ -31,7 +31,7 @@ struct ButtonWidget : Widget
 		if (_hidden) return;
 
 		// Store initial state
-		const RGBA previousColor = g->_currentDrawingColor;
+		const RGBA previousColor = g->currentDrawingColor;
 
 		const Pixel pointA = absolutePosition();
 		const Pixel pointB = pointA + _size;

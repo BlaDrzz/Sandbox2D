@@ -23,6 +23,9 @@
     <Filter Include="Source Files\GameFiles">
       <UniqueIdentifier>{97cd3d45-ba37-47e7-9e40-4f2fbd11e8ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameFiles\States">
+      <UniqueIdentifier>{36ee915c-6172-479f-839f-056f7379dabd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -94,14 +97,14 @@
     <ClInclude Include="Sandbox2D\Physics\Physics.h">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="GameFiles\EntryState.h">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClInclude>
     <ClInclude Include="Sandbox2D\Audio.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
+    <ClInclude Include="GameFiles\EntryState.h">
+      <Filter>Source Files\GameFiles\States</Filter>
+    </ClInclude>
     <ClInclude Include="GameFiles\GlobalState.h">
-      <Filter>Source Files\GameFiles</Filter>
+      <Filter>Source Files\GameFiles\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -120,14 +123,14 @@
     <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp">
       <Filter>Source Files\Sandbox2D\Core\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="GameFiles\EntryState.cpp">
-      <Filter>Source Files\GameFiles</Filter>
-    </ClCompile>
     <ClCompile Include="Sandbox2D\Graphics.cpp">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClCompile>
+    <ClCompile Include="GameFiles\EntryState.cpp">
+      <Filter>Source Files\GameFiles\States</Filter>
+    </ClCompile>
     <ClCompile Include="GameFiles\GlobalState.cpp">
-      <Filter>Source Files\GameFiles</Filter>
+      <Filter>Source Files\GameFiles\States</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
