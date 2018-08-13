@@ -5,6 +5,7 @@
 // Include files
 #include "../stdafx.h"
 #include "EntryState.h"
+#include "LocalSpaceState.h"
 
 // Defines
 #define S2D (Sandbox2D::GetSingleton())
@@ -16,6 +17,7 @@ EntryState::~EntryState() {}
 void EntryState::stateStart()
 {
 	// Executed at start of state
+	S2D->pushState(new LocalSpaceState());
 }
 
 void EntryState::stateEnd()
@@ -30,5 +32,4 @@ void EntryState::stateTick(double deltaTime)
 void EntryState::statePaint(Graphics* g)
 {
 	// Executed after game tick, game drawing calls go 
-	g->drawLine({ 0,0 }, { 100,100 });
 }

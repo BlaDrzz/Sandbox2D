@@ -130,6 +130,9 @@
   <ItemGroup>
     <ClCompile Include="GameFiles\EntryState.cpp" />
     <ClCompile Include="GameFiles\GlobalState.cpp" />
+    <ClCompile Include="GameFiles\LocalSpaceState.cpp" />
+    <ClCompile Include="GameFiles\PlayerController.cpp" />
+    <ClCompile Include="GameFiles\Ship.cpp" />
     <ClCompile Include="Sandbox2D\Graphics.cpp" />
     <ClCompile Include="Sandbox2D\InputManager.cpp" />
     <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp" />
@@ -140,6 +143,9 @@
   <ItemGroup>
     <ClInclude Include="GameFiles\EntryState.h" />
     <ClInclude Include="GameFiles\GlobalState.h" />
+    <ClInclude Include="GameFiles\LocalSpaceState.h" />
+    <ClInclude Include="GameFiles\PlayerController.h" />
+    <ClInclude Include="GameFiles\Ship.h" />
     <ClInclude Include="Sandbox2D\Audio.h" />
     <ClInclude Include="Sandbox2D\GameState.h" />
     <ClInclude Include="Sandbox2D\Any.h" />
