@@ -106,6 +106,15 @@
     <ClInclude Include="GameFiles\GlobalState.h">
       <Filter>Source Files\GameFiles\States</Filter>
     </ClInclude>
+    <ClInclude Include="GameFiles\Ship.h">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\PlayerController.h">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\LocalSpaceState.h">
+      <Filter>Source Files\GameFiles\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -130,6 +139,15 @@
       <Filter>Source Files\GameFiles\States</Filter>
     </ClCompile>
     <ClCompile Include="GameFiles\GlobalState.cpp">
+      <Filter>Source Files\GameFiles\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\Ship.cpp">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\PlayerController.cpp">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\LocalSpaceState.cpp">
       <Filter>Source Files\GameFiles\States</Filter>
     </ClCompile>
   </ItemGroup>
