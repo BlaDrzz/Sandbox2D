@@ -21,7 +21,8 @@ Ship::~Ship()
 
 void Ship::tick(const double deltaTime)
 {
-	// TODO: hard setting of an angle or impulse is a no-go. Consider PID or speeding up/slowing down rotation taking maneuverThrusterStrength into account.
+	// TODO: hard setting of an angle is a no-go. 
+	// TODO: Consider using slerp (requires engine to be upgraded)
 	_shipObject->setAngleRad(targetAngle);
 }
 
