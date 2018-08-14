@@ -13,6 +13,7 @@ inline tm TimeNow()
 	return localTime;
 }
 
+//! Creates a log
 inline bool CreateLog()
 {
 	std::ofstream log;

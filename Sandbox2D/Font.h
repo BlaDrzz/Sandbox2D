@@ -1,20 +1,39 @@
 #pragma once
 
+/**
+* \brief Represents a Font
+*/
 struct Font 
 {
-	//! Index in case there are multiple fonts in one TTF file.
-	//! Defaults to -1.
+	/**
+	* \brief Index in case there are multiple fonts in one TTF file (Defaults to -1)
+	*/
 	long index;
-	//! Size in px
+	
+	/**
+	* \brief Size of the font in px
+	*/
 	int size;
-	//! Resource _path
+	
+	/**
+	* \brief Resource path
+	*/
 	std::string path;
 
+	/**
+	* \brief Constructor
+	* @param path: a string as path
+	* @param size: an integer
+	* @param index: a long (default = -1)
+	*/
 	Font(const std::string path, const int size, const long index = -1) : index(index), size(size), path(path)
 	{
 		update();
 	}
 
+	/**
+	* \brief Destructor
+	*/
 	~Font()
 	{
 		if (TTFfont != nullptr)
@@ -24,9 +43,14 @@ struct Font
 		}
 	}
 
+	/**
+	* \brief TTF Font
+	*/
 	TTF_Font* TTFfont = nullptr;
 
-	//! (re-)initialises the TTF_Font.
+	/**
+	* \brief (re-)initialises the TTF_Font
+	*/
 	void update()
 	{
 		if (TTFfont != nullptr) TTF_CloseFont(TTFfont);

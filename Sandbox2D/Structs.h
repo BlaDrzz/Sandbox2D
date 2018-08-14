@@ -1,5 +1,6 @@
 #pragma once
 
+//! Represents an RGBA color
 struct RGBA 
 {
 	Uint8 r;

@@ -2,6 +2,9 @@
 
 #define S2D (Sandbox2D::GetSingleton())
 
+/**
+* \brief Represents a buttonwidget (Subclass of Widget)
+*/
 struct ButtonWidget : Widget
 {
 	Pixel _size = { 0, 0 };
@@ -10,10 +13,20 @@ struct ButtonWidget : Widget
 	std::string _text = "";
 	Rect<int> _textPadding = { 5, 5, 5, 5 };
 
+	/**
+	* \brief Constructor
+	* @param position: a Pixel
+	*/
 	ButtonWidget(Pixel position)
 	{
 		ButtonWidget(position, "");
 	}
+
+	/**
+	* \brief Constructor
+	* @param position: a Pixel
+	* @param text: a string
+	*/
 	ButtonWidget(Pixel position, std::string text) : _text(text)
 	{
 		// Set parent position
@@ -22,10 +35,22 @@ struct ButtonWidget : Widget
 		// Set some defaults
 		_backColor = RGBA{ 230,230,230,255 };
 	}
+
+	/**
+	* \brief Destructor
+	*/
 	~ButtonWidget() {}
 
+	/**
+	* \brief Tick function
+	* @param deltaTime: a double
+	*/
 	void tick(double deltaTime) override {}
 
+	/**
+	* \brief Draw function
+	* @param g: pointer to a Graphics object
+	*/
 	void draw(Graphics* g) override
 	{
 		if (_hidden) return;
@@ -53,6 +78,10 @@ struct ButtonWidget : Widget
 		g->setColor(previousColor);
 	}
 
+	/**
+	* \brief Resize to text
+	* @param g: pointer to a Graphics object
+	*/
 	void resizeToText(Graphics* g)
 	{
 		const Pixel textSize = g->calculateTextSize(_text);
@@ -63,6 +92,10 @@ struct ButtonWidget : Widget
 		};
 	}
 
+	/**
+	* \brief Check if pressed
+	* @return A boolean
+	*/
 	bool isPressed() const
 	{
 		const auto mousePos = S2D->inputManager->getMousePos();
