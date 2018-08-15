@@ -2,7 +2,10 @@
 
 #define _LOGPATH "log.txt"
 
-//! Returns a tm struct with timeNow
+/**
+* \brief Returns a tm struct with timeNow
+* @return A tm struct with timeNow
+*/
 inline tm TimeNow()
 {
 	// Generate localtime
@@ -13,6 +16,10 @@ inline tm TimeNow()
 	return localTime;
 }
 
+/**
+* \brief Creates a log
+* @return A boolean
+*/
 inline bool CreateLog()
 {
 	std::ofstream log;
@@ -23,7 +30,11 @@ inline bool CreateLog()
 	return true;
 }
 
-//! Appends a message to an already existing file
+/**
+* \brief Appends a message to an already existing file
+* @param smg: a string as message
+* @param path: a string as path
+*/
 inline void LogToFile(std::string msg, std::string path)
 {
 	std::ofstream log;
@@ -33,7 +44,10 @@ inline void LogToFile(std::string msg, std::string path)
 	log.close();
 }
 
-//! Logs a message to the console and to logs.txt
+/**
+* \brief Logs a message to the console and to logs.txt
+* @param smg: a string as message
+*/
 inline void Log(std::string msg)
 {
 	// Prefix message with timestamp
@@ -46,19 +60,28 @@ inline void Log(std::string msg)
 	LogToFile(timeStampedMessage, _LOGPATH);
 }
 
-//! Logs a message with info prefix
+/**
+* \brief Logs a message with info prefix
+* @param smg: a string as message
+*/
 inline void LogInfo(std::string msg)
 {
 	Log("[INFO] " + msg);
 }
 
-//! Logs a message with warning prefix
+/**
+* \brief Logs a message with warning prefix
+* @param smg: a string as message
+*/
 inline void LogWarning(std::string msg)
 {
 	Log("[WARNING] " + msg);
 }
 
-//! Logs a message with errir prefix
+/**
+* \brief Logs a message with errir prefix
+* @param smg: a string as message
+*/
 inline void LogError(std::string msg)
 {
 	Log("[ERROR] " + msg);
