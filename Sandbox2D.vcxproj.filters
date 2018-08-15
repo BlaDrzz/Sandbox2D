@@ -106,6 +106,9 @@
     <ClInclude Include="GameFiles\GlobalState.h">
       <Filter>Source Files\GameFiles\States</Filter>
     </ClInclude>
+    <ClInclude Include="Sandbox2D\IniFile.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -131,6 +134,9 @@
     </ClCompile>
     <ClCompile Include="GameFiles\GlobalState.cpp">
       <Filter>Source Files\GameFiles\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Sandbox2D\IniFile.cpp">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

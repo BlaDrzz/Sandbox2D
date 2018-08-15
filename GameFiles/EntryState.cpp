@@ -20,6 +20,7 @@ void EntryState::stateStart()
 
 void EntryState::stateEnd()
 {
+	// Executed at end of state
 }
 
 void EntryState::stateTick(double deltaTime) 
@@ -30,5 +31,4 @@ void EntryState::stateTick(double deltaTime)
 void EntryState::statePaint(Graphics* g)
 {
 	// Executed after game tick, game drawing calls go 
-	g->drawLine({ 0,0 }, { 100,100 });
 }
