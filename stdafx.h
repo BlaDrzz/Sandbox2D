@@ -38,7 +38,7 @@
 #include "Sandbox2D/InputManager.h"
 #include "Sandbox2D/TextUtils.h"
 #include "Sandbox2D/Logging.h"
-#include "Sandbox2D/IniReader.h"
+#include "Sandbox2D/IniFile.h"
 #include "Sandbox2D/Any.h"
 #include "Sandbox2D/Font.h"
 #include "Sandbox2D/Bitmap.h"

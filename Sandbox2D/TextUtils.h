@@ -40,10 +40,13 @@ inline std::vector<std::string> FileToVec(const std::string path)
 {
 	std::vector<std::string> result;
 
-	std::ifstream file;
-	std::string line;
+	std::ifstream file(path);
+	if (!file.good())
+	{
+		return {};
+	}
 
-	file.open(path);
+	std::string line;
 	while (std::getline(file, line))
 	{
 		result.push_back(line);

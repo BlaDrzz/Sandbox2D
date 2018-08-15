@@ -131,7 +131,7 @@
     <ClCompile Include="GameFiles\EntryState.cpp" />
     <ClCompile Include="GameFiles\GlobalState.cpp" />
     <ClCompile Include="Sandbox2D\Graphics.cpp" />
-    <ClCompile Include="Sandbox2D\IniReader.cpp" />
+    <ClCompile Include="Sandbox2D\IniFile.cpp" />
     <ClCompile Include="Sandbox2D\InputManager.cpp" />
     <ClCompile Include="Sandbox2D\Physics\PhysicsObject.cpp" />
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp" />
@@ -148,7 +148,7 @@
     <ClInclude Include="Sandbox2D\Font.h" />
     <ClInclude Include="Sandbox2D\Geometry.h" />
     <ClInclude Include="Sandbox2D\Graphics.h" />
-    <ClInclude Include="Sandbox2D\IniReader.h" />
+    <ClInclude Include="Sandbox2D\IniFile.h" />
     <ClInclude Include="Sandbox2D\InputManager.h" />
     <ClInclude Include="Sandbox2D\Logging.h" />
     <ClInclude Include="Sandbox2D\Physics\ContactListener.h" />
