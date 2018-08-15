@@ -22,6 +22,7 @@ void EntryState::stateStart()
 
 void EntryState::stateEnd()
 {
+	// Executed at end of state
 }
 
 void EntryState::stateTick(double deltaTime) 

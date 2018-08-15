@@ -6,6 +6,8 @@
 #include <string>			// std lib to_string
 #include <thread>
 #include <future>
+#include <locale>
+#include <cctype>
 #include <sstream>			// std lib stringstream
 #include <fstream>			// SVGParser
 #include <istream>
@@ -13,6 +15,8 @@
 #include <cstdio>		    // console
 #include <iostream>
 #include <streambuf>
+#include <algorithm> 
+#include <functional> 
 #include <unordered_map>
 
 // SDL includes
@@ -34,6 +38,7 @@
 #include "Sandbox2D/InputManager.h"
 #include "Sandbox2D/TextUtils.h"
 #include "Sandbox2D/Logging.h"
+#include "Sandbox2D/IniFile.h"
 #include "Sandbox2D/Any.h"
 #include "Sandbox2D/Font.h"
 #include "Sandbox2D/Bitmap.h"
