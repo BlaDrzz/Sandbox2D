@@ -46,7 +46,8 @@ struct Bitmap
 
 		// Create a new _surface
 		_surface = IMG_Load(_path.c_str());
-		if (_surface == nullptr) {
+		if (_surface == nullptr) 
+		{
 			std::stringstream error;
 			error << _path.c_str() << "\n, SDL Error: \n" << SDL_GetError();
 			LogError("Cannot load PNG at location: " + error.str());
