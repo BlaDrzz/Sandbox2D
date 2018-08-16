@@ -27,4 +27,15 @@ private:
 	LabelWidget* _shipPosLabel = nullptr;
 
 	Ship* _playerShip = nullptr;
+
+	PanelWidget* fullPanel = nullptr;
+	PanelWidget* downLeftPanel = nullptr;
+	PanelWidget* energyWidget = nullptr;
+	PanelWidget* oxygenWidget = nullptr;
+	PanelWidget* fuelWidget = nullptr;
+	BitmapWidget* circleWithBar1 = nullptr;
+	BitmapWidget* circleWithBar2 = nullptr;
+	BitmapWidget* circleWithBar3 = nullptr;
+
+	void createHUD();
 };

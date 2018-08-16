@@ -8,6 +8,9 @@ PlayerController::PlayerController()
 {
 	_playerShip = new Ship({ 0, 0 });
 	_shipPosLabel = new LabelWidget("Ship's location: ", { 10, 10 });
+
+	createHUD();
+
 }
 
 PlayerController::~PlayerController()
@@ -42,8 +45,40 @@ void PlayerController::drawHud(Graphics* g)
 	g->setColor(MakeRGBA(255, 0, 0));
 	_shipPosLabel->_text = "Ship's location: " + std::to_string(_playerShip->getShipPosition().x) + ", " + std::to_string(_playerShip->getShipPosition().y);
 	_shipPosLabel->draw(g);
+
+	circleWithBar1->draw(g);
+	circleWithBar2->draw(g);
+	circleWithBar3->draw(g);
+	//downLeftPanel->draw(g);
+	//fullPanel->draw(g);
+
 }
 
+void PlayerController::createHUD()
+{
+	Pixel windowSize = S2D->getWindowSize();
+	int windowWidth = windowSize.x;
+	int windowHeight = windowSize.y;
+	Log(std::to_string(windowHeight));
+
+	fullPanel = new PanelWidget({ 0,0 });
+	downLeftPanel = new PanelWidget({ 40,windowHeight-40 });
+	energyWidget = new PanelWidget({ 0,-50 });
+	oxygenWidget = new PanelWidget({ 0,-100 });
+	fuelWidget = new PanelWidget({ 0,-150 });
+	Bitmap* circleWithBarBmp = new Bitmap("Resources/HUD_circle_with_bar.png");
+	circleWithBar1 = new BitmapWidget(circleWithBarBmp, { 0,0 });
+	circleWithBar2 = new BitmapWidget(circleWithBarBmp, { 0,0 });
+	circleWithBar3 = new BitmapWidget(circleWithBarBmp, { 0,0 });
+
+	energyWidget->add(circleWithBar1);
+	oxygenWidget->add(circleWithBar2);
+	fuelWidget->add(circleWithBar3);
+	downLeftPanel->add(energyWidget);
+	downLeftPanel->add(oxygenWidget);
+	downLeftPanel->add(fuelWidget);
+	fullPanel->add(downLeftPanel);
+}
 //-------------------------------------------------------
 // ContactListener overloaded member funRction definitions
 //-------------------------------------------------------
