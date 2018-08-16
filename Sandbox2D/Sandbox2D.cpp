@@ -1,5 +1,3 @@
-#pragma once
-
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
 #include "../GameFiles/EntryState.h"
