@@ -1,6 +1,5 @@
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
-#include "../SDL/include/SDL_config.h"
 
 #ifdef _WIN32
 #include <windows.h>
