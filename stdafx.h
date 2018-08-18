@@ -20,7 +20,7 @@
 #include <unordered_map>
 
 // SDL includes
-#ifdef WIN32
+#ifdef _WIN32
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
