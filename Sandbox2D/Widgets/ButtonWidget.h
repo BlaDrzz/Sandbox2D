@@ -7,17 +7,17 @@
 */
 struct ButtonWidget : Widget
 {
-	Pixel _size = { 0, 0 };
-	RGBA _backColor = { 0, 0, 0, 0 };
-	RGBA _fontColor = { 0, 0, 0, 255 };
-	std::string _text = "";
-	Rect<int> _textPadding = { 5, 5, 5, 5 };
+	Pixel size = { 0, 0 };
+	RGBA backColor = { 0, 0, 0, 0 };
+	RGBA fontColor = { 0, 0, 0, 255 };
+	std::string text = "";
+	Rect<int> textPadding = { 5, 5, 5, 5 };
 
 	/**
 	* \brief Constructor
 	* @param position: a Pixel
 	*/
-	ButtonWidget(Pixel position)
+	ButtonWidget(const Pixel position)
 	{
 		ButtonWidget(position, "");
 	}
@@ -27,13 +27,13 @@ struct ButtonWidget : Widget
 	* @param position: a Pixel
 	* @param text: a string
 	*/
-	ButtonWidget(Pixel position, std::string text) : _text(text)
+	ButtonWidget(const Pixel position, const std::string text) : text(text)
 	{
 		// Set parent position
-		this->_position = position;
+		this->position = position;
 
 		// Set some defaults
-		_backColor = RGBA{ 230,230,230,255 };
+		backColor = RGBA{ 230,230,230,255 };
 	}
 
 	/**
@@ -53,26 +53,26 @@ struct ButtonWidget : Widget
 	*/
 	void draw(Graphics* g) override
 	{
-		if (_hidden) return;
+		if (hidden) return;
 
 		// Store initial state
-		const RGBA previousColor = g->currentDrawingColor;
+		const auto previousColor = g->currentDrawingColor;
 
-		const Pixel pointA = absolutePosition();
-		const Pixel pointB = pointA + _size;
+		const auto pointA = absolutePosition();
+		const auto pointB = pointA + size;
 
 		// Resize text if needed
-		if (_size.x == 0 || _size.y == 0) resizeToText(g);
+		if (size.x == 0 || size.y == 0) resizeToText(g);
 
-		const Pixel textPosition = { pointA.x + _textPadding.x.x, pointA.y + _textPadding.x.y };
+		const Pixel textPosition = { pointA.x + textPadding.x.x, pointA.y + textPadding.x.y };
 
 		// Draw Background
-		g->setColor(_backColor);
+		g->setColor(backColor);
 		g->drawRect(true, pointA, pointB);
 
 		// Draw Text
-		g->setColor(_fontColor);
-		g->drawString(_text, textPosition);
+		g->setColor(fontColor);
+		g->drawString(text, textPosition);
 
 		// Make sure to reset back to initial state
 		g->setColor(previousColor);
@@ -84,11 +84,11 @@ struct ButtonWidget : Widget
 	*/
 	void resizeToText(Graphics* g)
 	{
-		const Pixel textSize = g->calculateTextSize(_text);
+		const auto textSize = g->calculateTextSize(text);
 
-		_size = {
-			_textPadding.x.x + textSize.x + _textPadding.y.x,
-			_textPadding.x.y + textSize.y + _textPadding.y.y
+		size = {
+			textPadding.x.x + textSize.x + textPadding.y.x,
+			textPadding.x.y + textSize.y + textPadding.y.y
 		};
 	}
 
@@ -99,7 +99,7 @@ struct ButtonWidget : Widget
 	bool isPressed() const
 	{
 		const auto mousePos = S2D->inputManager->getMousePos();
-		const Rect<int> buttonRect = { absolutePosition(), absolutePosition() + _size };
+		const Rect<int> buttonRect = { absolutePosition(), absolutePosition() + size };
 
 		return Contains(buttonRect, mousePos) && S2D->inputManager->isMouseButtonReleased(SDL_BUTTON_LEFT);
 	}

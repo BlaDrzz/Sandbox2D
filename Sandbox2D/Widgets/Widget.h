@@ -10,9 +10,9 @@ struct Widget
 	*/
 	virtual ~Widget() {};
 
-	Pixel _position;
-	Widget* _parent = nullptr;
-	bool _hidden = false;
+	Pixel position = { 0, 0 };
+	Widget* parent = nullptr;
+	bool hidden = false;
 
 	/**
 	* \brief Get absolute position of the widget
@@ -20,7 +20,7 @@ struct Widget
 	*/
 	Pixel absolutePosition() const
 	{
-		return _position + (_parent == nullptr ? Pixel{ 0,0 } : _parent->absolutePosition());
+		return position + (parent == nullptr ? Pixel{ 0,0 } : parent->absolutePosition());
 	}
 
 	/**
