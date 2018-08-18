@@ -10,17 +10,17 @@ struct BitmapWidget : Widget
 	/**
 	* \brief Bitmap* _bitmap
 	*/
-	Bitmap* _bitmap;
+	Bitmap* bitmap;
 
 	/**
 	* \brief Constructor
 	* @param bitmap: pointer to a bitmap
 	* @param position: a Pixel
 	*/
-	BitmapWidget(Bitmap* bitmap, Pixel position)
+	BitmapWidget(Bitmap* bitmap, const Pixel position)
 	{
-		_bitmap = bitmap;
-		_position = position;
+		this->bitmap = bitmap;
+		this->position = position;
 	}
 
 	/**
@@ -40,7 +40,7 @@ struct BitmapWidget : Widget
 	*/
 	void draw(Graphics* g) override
 	{
-		if (_hidden) return;
-		g->drawBitmap(_bitmap, absolutePosition());
+		if (hidden) return;
+		g->drawBitmap(bitmap, absolutePosition());
 	}
 };

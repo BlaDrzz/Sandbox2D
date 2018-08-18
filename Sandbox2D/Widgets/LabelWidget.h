@@ -7,16 +7,16 @@
 */
 struct LabelWidget : Widget
 {
-	std::string _text;
+	std::string text;
 
 	/**
 	* \brief Constructor
 	* @param text: a string
 	* @param position: a Pixel
 	*/
-	LabelWidget(std::string text, Pixel position) : _text(text)
+	LabelWidget(const std::string text, const Pixel position) : text(text)
 	{
-		_position = position;
+		this->position = position;
 	}
 	
 	/**
@@ -36,7 +36,7 @@ struct LabelWidget : Widget
 	*/
 	void draw(Graphics* g) override
 	{
-		if (_hidden) return;
-		g->drawString(_text, absolutePosition());
+		if (hidden) return;
+		g->drawString(text, absolutePosition());
 	}
 };
