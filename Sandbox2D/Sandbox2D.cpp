@@ -93,17 +93,28 @@ void Sandbox2D::init()
 	inputManager = new InputManager();
 
 	// TODO: change to reading from ini file
-	IniFile* gameIni = new IniFile("Config/gamesettings.ini");
-	gameIni->parse();
+	
 
 	GameSettings gameSettings;
-	gameSettings._windowSize = { 
-		std::stoi(gameIni->getValue("graphics", "width")),
-		std::stoi(gameIni->getValue("graphics", "height"))
-	};
-	gameSettings._windowTitle = gameIni->getValue("game", "title");
+	try
+	{
+		IniFile* gameIni = new IniFile("Config/gamesettings.ini");
+		gameIni->parse();
 
-	delete gameIni;
+		gameSettings._windowSize = {
+			std::stoi(gameIni->getValue("graphics", "width")),
+			std::stoi(gameIni->getValue("graphics", "height"))
+		};
+		gameSettings._windowTitle = gameIni->getValue("game", "title");
+
+		delete gameIni;
+	} 
+	catch(std::invalid_argument &e)
+	{
+		LogError(e.what());
+		gameSettings._windowSize = { 1280, 720 };
+		gameSettings._windowTitle = "Sandbox2D testing environment";
+	}
 
 	// Initialise Graphics
 	_graphics = new Graphics(gameSettings);
