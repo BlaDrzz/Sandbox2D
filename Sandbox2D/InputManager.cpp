@@ -23,7 +23,7 @@ Pixel InputManager::getMousePos() const
 void InputManager::setOldInputStates()
 {
 	// Set current states to old states
-	std::memcpy(_oldKeyboardState, _currKeyboardState, _keyboardStateLength);
+	memcpy(_oldKeyboardState, _currKeyboardState, _keyboardStateLength);
 	_oldMouseState = _currMouseState;
 }
 
