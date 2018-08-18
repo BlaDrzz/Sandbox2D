@@ -40,7 +40,7 @@ void PlayerController::drawHud(Graphics* g)
 {
 	g->viewPort.position = { 0, 0 };
 	g->setColor(MakeRGBA(255, 0, 0));
-	_shipPosLabel->_text = "Ship's location: " + std::to_string(_playerShip->getShipPosition().x) + ", " + std::to_string(_playerShip->getShipPosition().y);
+	_shipPosLabel->text = "Ship's location: " + std::to_string(_playerShip->getShipPosition().x) + ", " + std::to_string(_playerShip->getShipPosition().y);
 	_shipPosLabel->draw(g);
 }
 
