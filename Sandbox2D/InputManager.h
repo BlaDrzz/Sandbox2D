@@ -82,6 +82,30 @@ public:
 	*/
 	bool isMouseButtonReleased(int button) const;
 
+	/**
+	 * \brief 
+	 * @param key the name of the key in the keymap
+	 * @return the corresponding SDL_SCANCODE_
+	 */
+	SDL_Scancode getKeymapScancode(std::string key);
+
+	/**
+	 * \brief write an SDL_Scancode to the keymap
+	 * @param key a descriptive name for the key
+	 * @param scancode for example: SDL_SCANCODE_1
+	 */
+	void writeScancodeToKeymap(std::string key, SDL_Scancode scancode);
+
+	/**
+	 * \brief write the internal keymap to Config/controls.ini
+	 */
+	void writeKeymapToConfig();
+
+	/**
+	 * \brief load the keymap from Config/controls.ini
+	 */
+	void loadKeymapFromConfig();
+
 private:
 	/**
 	* \brief A friend class Sandbox2D
@@ -122,6 +146,11 @@ private:
 	* \brief Pixel _mouseLocation
 	*/
 	Pixel _mouseLocation;
+
+	/**
+	 * \brief Holds all the information from Config/controls.ini
+	 */
+	std::unordered_map<std::string, SDL_Scancode> _keymap;
 
 	/**
 	* \brief sets the old input states
