@@ -1,5 +1,3 @@
-#pragma once
-
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
 #include "../GameFiles/EntryState.h"
@@ -95,9 +93,17 @@ void Sandbox2D::init()
 	inputManager = new InputManager();
 
 	// TODO: change to reading from ini file
+	IniFile* gameIni = new IniFile("Config/gamesettings.ini");
+	gameIni->parse();
+
 	GameSettings gameSettings;
-	gameSettings._windowSize = { 1280,720 };
-	gameSettings._windowTitle = "S2D Test environment";
+	gameSettings._windowSize = { 
+		std::stoi(gameIni->getValue("graphics", "width")),
+		std::stoi(gameIni->getValue("graphics", "height"))
+	};
+	gameSettings._windowTitle = gameIni->getValue("game", "title");
+
+	delete gameIni;
 
 	// Initialise Graphics
 	_graphics = new Graphics(gameSettings);

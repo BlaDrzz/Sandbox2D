@@ -5,7 +5,9 @@ Graphics::Graphics(GameSettings &settings)
 	// Initialise SDL
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0)
 	{
-		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
+		std::stringstream error;
+		error << SDL_GetError();
+		LogError("SDL could not initialize! SDL Error: " + error.str());
 		return;
 	}
 
@@ -24,7 +26,9 @@ Graphics::Graphics(GameSettings &settings)
 
 	if (_window == nullptr)
 	{
-		printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
+		std::stringstream error;
+		error << SDL_GetError();
+		LogError("Window could not be created! SDL Error: " + error.str());
 		return;
 	}
 
@@ -42,7 +46,9 @@ Graphics::Graphics(GameSettings &settings)
 
 	if (_renderer == nullptr)
 	{
-		printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
+		std::stringstream error;
+		error << SDL_GetError();
+		LogError("Renderer could not be created! SDL Error: " + error.str());
 		return;
 	}
 	SDL_SetRenderDrawColor(_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -52,14 +58,18 @@ Graphics::Graphics(GameSettings &settings)
 	// Initialise PNG loading
 	if (!(fImg.get() & imgFlags))
 	{
-		printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+		std::stringstream error;
+		error << IMG_GetError();
+		LogError("SDL_image could not initialize! SDL_image Error: " + error.str());
 		return;
 	}
 
 	// Initialise TTF
 	if (fTtf.get() < 0)
 	{
-		printf("SDL_TTF could not initialize! SDL_TTF Error: %s\n", TTF_GetError());
+		std::stringstream error;
+		error << TTF_GetError();
+		LogError("SDL_TTF could not initialize! SDL_TTF Error: " + error.str());
 		return;
 	}
 
@@ -159,7 +169,9 @@ void Graphics::drawString(const std::string string, const Rect<int> srcRect, con
 	const auto texture = SDL_CreateTextureFromSurface(_renderer, textSurface);
 	if (texture == nullptr)
 	{
-		printf("Unable to create texture! SDL Error: %s\n", SDL_GetError());
+		std::stringstream error;
+		error << SDL_GetError();
+		LogError("Unable to create texture! SDL Error: " + error.str());
 		return;
 	}
 
@@ -225,7 +237,9 @@ void Graphics::drawBitmap(Bitmap* bmp, const Rect<int>& sourceRect, const Rect<i
 	const auto texture = SDL_CreateTextureFromSurface(_renderer, bitmapSurface);
 	if (texture == nullptr)
 	{
-		printf("Unable to create texture! SDL Error: %s\n", SDL_GetError());
+		std::stringstream error;
+		error << SDL_GetError();
+		LogError("Unable to create texture! SDL Error: " + error.str());
 		return;
 	}
 

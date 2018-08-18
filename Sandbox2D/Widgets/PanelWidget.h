@@ -9,9 +9,9 @@ struct PanelWidget : Widget
 	* \brief Constructor
 	* @param position: a Pixel
 	*/
-	PanelWidget(Pixel position)
+	PanelWidget(const Pixel position)
 	{
-		_position = position;
+		this->position = position;
 	};
 
 	/**
@@ -19,9 +19,9 @@ struct PanelWidget : Widget
 	* @param position: a Pixel
 	* @param widgetArr: a reference of a std::vector<Widget*> object
 	*/
-	PanelWidget(Pixel position, const std::vector<Widget*> &widgetArr) : _widgets(widgetArr)
+	PanelWidget(const Pixel position, std::vector<Widget*> widgetArr) : _widgets(std::move(widgetArr))
 	{
-		_position = position;
+		this->position = position;
 	};
 	
 	/**
@@ -31,10 +31,7 @@ struct PanelWidget : Widget
 	{
 		for (auto w : _widgets)
 		{
-			if (w != nullptr)
-			{
-				delete w;
-			}
+			delete w;
 		}
 	}
 
@@ -45,7 +42,7 @@ struct PanelWidget : Widget
 	*/
 	Widget* add(Widget* widget)
 	{
-		widget->_parent = this;
+		widget->parent = this;
 
 		_widgets.push_back(widget);
 
@@ -59,7 +56,7 @@ struct PanelWidget : Widget
 	* \brief Tick function
 	* @param deltaTime: a double
 	*/
-	void tick(double deltaTime) override
+	void tick(const double deltaTime) override
 	{
 		for (auto w : _widgets)
 		{
@@ -73,7 +70,7 @@ struct PanelWidget : Widget
 	*/
 	void draw(Graphics* g) override
 	{
-		if (!_hidden) return;
+		if (hidden) return;
 		
 		for (auto w : _widgets)
 		{
