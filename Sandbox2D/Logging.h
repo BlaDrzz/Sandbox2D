@@ -10,10 +10,17 @@ inline tm TimeNow()
 {
 	// Generate localtime
 	time_t rawTime = time(nullptr);
+#ifdef _WIN32
 	tm localTime;
 	localtime_s(&localTime, &rawTime);
-
+    
 	return localTime;
+#else
+	tm* localTime;
+	localTime = localtime(&rawTime);
+    
+	return *localTime;
+#endif
 }
 
 /**

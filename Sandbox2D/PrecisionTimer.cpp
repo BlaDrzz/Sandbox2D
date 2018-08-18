@@ -1,20 +1,27 @@
 #include "../stdafx.h"
 #include "PrecisionTimer.h"
-#include "Windows.h"
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <ctime>
+#endif
 
 //=======================================================================================
 // PrecisionTimer.cpp by Frank Luna (C) 2008 All Rights Reserved.
 //=======================================================================================
 PrecisionTimer::PrecisionTimer()
 {
+#ifdef _WIN32
 	__int64 countsPerSec;
 	QueryPerformanceFrequency(reinterpret_cast<LARGE_INTEGER*>(&countsPerSec));
 	m_SecondsPerCount = 1.0 / double(countsPerSec);
+#endif
 }
 
 // Returns the total time elapsed since reset() was called, NOT counting any
 // time when the clock is stopped.
-double PrecisionTimer::GetGameTime() const
+double PrecisionTimer::GetGameTime()
 {
 
 
@@ -25,7 +32,11 @@ double PrecisionTimer::GetGameTime() const
 
 	if (m_bStopped)
 	{
+#ifdef _WIN32
 		return static_cast<double>((m_StopTime - m_PausedTime - m_BaseTime) * m_SecondsPerCount);
+#else
+        return static_cast<double>((m_CurrTime - m_PausedTime - m_BaseTime) / CLOCKS_PER_SEC);
+#endif
 	}
 
 	// The distance mCurrTime - mBaseTime includes paused time,
@@ -41,8 +52,13 @@ double PrecisionTimer::GetGameTime() const
 	else
 	{
 		//Bart: Get current time
+#ifdef _WIN32
 		QueryPerformanceCounter((LARGE_INTEGER*)&m_CurrTime);
 		return static_cast<double>((m_CurrTime - m_PausedTime - m_BaseTime) * m_SecondsPerCount);
+#else
+        m_CurrTime = std::clock();
+        return static_cast<double>((m_CurrTime - m_PausedTime - m_BaseTime) / CLOCKS_PER_SEC);
+#endif
 	}
 }
 
@@ -53,8 +69,12 @@ double PrecisionTimer::GetDeltaTime() const
 
 void PrecisionTimer::Reset()
 {
+#ifdef _WIN32
 	__int64 currTime;
 	QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&currTime));
+#else
+    std::clock_t currTime { std::clock() };
+#endif
 
 	m_BaseTime = currTime;
 	m_PrevTime = currTime;
@@ -65,9 +85,12 @@ void PrecisionTimer::Reset()
 
 void PrecisionTimer::Start()
 {
+#ifdef _WIN32
 	__int64 startTime;
 	QueryPerformanceCounter(reinterpret_cast<LARGE_INTEGER*>(&startTime));
-
+#else
+    std::clock_t startTime { std::clock() };
+#endif
 
 	// Accumulate the time elapsed between stop and start pairs.
 	//
@@ -87,8 +110,12 @@ void PrecisionTimer::Stop()
 {
 	if (!m_bStopped)
 	{
+#ifdef _WIN32
 		__int64 currTime;
 		QueryPerformanceCounter((LARGE_INTEGER*)&currTime);
+#else
+        std::clock_t currTime { std::clock() };
+#endif
 
 		m_StopTime = currTime;
 		m_bStopped = true;
@@ -103,12 +130,20 @@ void PrecisionTimer::Tick()
 		return;
 	}
 
+#ifdef _WIN32
 	__int64 currTime;
 	QueryPerformanceCounter((LARGE_INTEGER*)&currTime);
+#else
+    std::clock_t currTime { std::clock() };
+#endif
 	m_CurrTime = currTime;
 
 	// Time difference between this frame and the previous.
+#ifdef _WIN32
 	m_DeltaTime = (m_CurrTime - m_PrevTime - m_PausedTime) * m_SecondsPerCount;
+#else
+    m_DeltaTime = (m_CurrTime - m_PausedTime - m_BaseTime) / CLOCKS_PER_SEC;
+#endif
 
 	// Force nonnegative.  The DXSDK's CDXUTTimer mentions that if the 
 	// processor goes into a power save mode or we get shuffled to another

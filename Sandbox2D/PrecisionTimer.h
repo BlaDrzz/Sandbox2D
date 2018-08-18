@@ -17,7 +17,7 @@ public:
 
 	// Returns the total time elapsed since reset() was called, NOT counting any
 	// time when the clock is stopped.	
-	double GetGameTime() const;  // in seconds
+	double GetGameTime();  // in seconds
 
 	// Returns the elapsed time since tick was called
 	double GetDeltaTime() const; // in seconds
@@ -44,11 +44,20 @@ private:
 	//---------------------------
 	// Datamembers
 	//---------------------------
+#ifdef _WIN32
+
 	__int64 m_BaseTime = 0;
 	__int64 m_PausedTime = 0;
 	__int64 m_StopTime = 0;
 	__int64 m_PrevTime = 0;
 	__int64 m_CurrTime = 0;
+#else
+	std::clock_t m_BaseTime = 0;
+	std::clock_t m_PausedTime = 0;
+	std::clock_t m_StopTime = 0;
+	std::clock_t m_PrevTime = 0;
+	std::clock_t m_CurrTime = 0;
+#endif
 
 	bool m_bStopped = false;
 };
