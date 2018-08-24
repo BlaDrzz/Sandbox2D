@@ -109,6 +109,12 @@
     <ClInclude Include="Sandbox2D\IniFile.h">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Sandbox2D\Database.h">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLite\sqlite3.h">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -136,6 +142,12 @@
       <Filter>Source Files\GameFiles\States</Filter>
     </ClCompile>
     <ClCompile Include="Sandbox2D\IniFile.cpp">
+      <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Sandbox2D\Database.cpp">
+      <Filter>Source Files\Sandbox2D\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLite\sqlite3.c">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClCompile>
   </ItemGroup>

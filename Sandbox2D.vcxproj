@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="GameFiles\EntryState.cpp" />
     <ClCompile Include="GameFiles\GlobalState.cpp" />
+    <ClCompile Include="Sandbox2D\Database.cpp" />
     <ClCompile Include="Sandbox2D\Graphics.cpp" />
     <ClCompile Include="Sandbox2D\IniFile.cpp" />
     <ClCompile Include="Sandbox2D\InputManager.cpp" />
@@ -137,11 +138,13 @@
     <ClCompile Include="Sandbox2D\Sandbox2D.cpp" />
     <ClCompile Include="Sandbox2D\PrecisionTimer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SQLite\sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameFiles\EntryState.h" />
     <ClInclude Include="GameFiles\GlobalState.h" />
     <ClInclude Include="Sandbox2D\Audio.h" />
+    <ClInclude Include="Sandbox2D\Database.h" />
     <ClInclude Include="Sandbox2D\GameState.h" />
     <ClInclude Include="Sandbox2D\Any.h" />
     <ClInclude Include="Sandbox2D\Bitmap.h" />
@@ -165,6 +168,7 @@
     <ClInclude Include="Sandbox2D\Widgets\LabelWidget.h" />
     <ClInclude Include="Sandbox2D\Widgets\PanelWidget.h" />
     <ClInclude Include="Sandbox2D\Widgets\Widget.h" />
+    <ClInclude Include="SQLite\sqlite3.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
