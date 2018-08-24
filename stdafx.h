@@ -42,6 +42,7 @@
 #include "Sandbox2D/Physics/ContactListener.h"
 
 // S2D includes
+#include "Sandbox2D/Database.h"
 #include "Sandbox2D/InputManager.h"
 #include "Sandbox2D/TextUtils.h"
 #include "Sandbox2D/Logging.h"
