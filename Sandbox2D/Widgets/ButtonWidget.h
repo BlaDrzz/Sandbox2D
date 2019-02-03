@@ -2,6 +2,14 @@
 
 #define S2D (Sandbox2D::GetSingleton())
 
+enum class BUTTON_ALIGN
+{
+	TOPLEFT,
+	TOPRIGHT,
+	BOTTOMLEFT,
+	BOTTOMRIGHT
+};
+
 /**
 * \brief Represents a buttonwidget (Subclass of Widget)
 */
@@ -12,6 +20,7 @@ struct ButtonWidget : Widget
 	RGBA fontColor = { 0, 0, 0, 255 };
 	std::string text = "";
 	Rect<int> textPadding = { 5, 5, 5, 5 };
+	BUTTON_ALIGN alignment = BUTTON_ALIGN::TOPLEFT;
 
 	/**
 	* \brief Constructor
@@ -58,11 +67,31 @@ struct ButtonWidget : Widget
 		// Store initial state
 		const auto previousColor = g->currentDrawingColor;
 
-		const auto pointA = absolutePosition();
-		const auto pointB = pointA + size;
-
 		// Resize text if needed
 		if (size.x == 0 || size.y == 0) resizeToText(g);
+
+
+		auto pointA = absolutePosition();
+		auto pointB = pointA + size;
+
+		switch (alignment)
+		{
+		default:
+		case BUTTON_ALIGN::TOPLEFT:
+			break;
+		case BUTTON_ALIGN::TOPRIGHT:
+			pointA.x = pointA.x - size.x;
+			pointB.x = pointB.x - size.x;
+			break;
+		case BUTTON_ALIGN::BOTTOMLEFT:
+			pointA.y = pointA.y - size.x;
+			pointB.y = pointB.y - size.x;
+			break;
+		case BUTTON_ALIGN::BOTTOMRIGHT:
+			pointA = pointA - size;
+			pointB = pointB - size;
+			break;
+		}
 
 		const Pixel textPosition = { pointA.x + textPadding.x.x, pointA.y + textPadding.x.y };
 
@@ -99,7 +128,26 @@ struct ButtonWidget : Widget
 	bool isPressed() const
 	{
 		const auto mousePos = S2D->inputManager->getMousePos();
-		const Rect<int> buttonRect = { absolutePosition(), absolutePosition() + size };
+		Rect<int> buttonRect = { absolutePosition(), absolutePosition() + size };
+
+		switch (alignment)
+		{
+		default:
+		case BUTTON_ALIGN::TOPLEFT:
+			break;
+		case BUTTON_ALIGN::TOPRIGHT:
+			buttonRect.x.x = buttonRect.x.x - size.x;
+			buttonRect.y.x = buttonRect.y.x - size.x;
+			break;
+		case BUTTON_ALIGN::BOTTOMLEFT:
+			buttonRect.x.y = buttonRect.x.y - size.x;
+			buttonRect.y.y = buttonRect.y.y - size.x;
+			break;
+		case BUTTON_ALIGN::BOTTOMRIGHT:
+			buttonRect.x = buttonRect.x - size;
+			buttonRect.y = buttonRect.y - size;
+			break;
+		}
 
 		return Contains(buttonRect, mousePos) && S2D->inputManager->isMouseButtonReleased(SDL_BUTTON_LEFT);
 	}

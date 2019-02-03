@@ -39,10 +39,10 @@ inline bool CreateLog()
 
 /**
 * \brief Appends a message to an already existing file
-* @param smg: a string as message
+* @param msg: a string as message
 * @param path: a string as path
 */
-inline void LogToFile(std::string msg, std::string path)
+inline void LogToFile(const std::string msg, const std::string path)
 {
 	std::ofstream log;
 
@@ -53,12 +53,12 @@ inline void LogToFile(std::string msg, std::string path)
 
 /**
 * \brief Logs a message to the console and to logs.txt
-* @param smg: a string as message
+* @param msg
 */
-inline void Log(std::string msg)
+inline void Log(const std::string msg)
 {
 	// Prefix message with timestamp
-	const std::string timeStampedMessage = TimeToString(TimeNow()) + ": " + msg;
+	const auto timeStampedMessage = TimeToString(TimeNow()) + ": " + msg;
 
 	// Log to console
 	std::cout << timeStampedMessage << std::endl;
@@ -69,27 +69,27 @@ inline void Log(std::string msg)
 
 /**
 * \brief Logs a message with info prefix
-* @param smg: a string as message
+* @param msg: a string as message
 */
-inline void LogInfo(std::string msg)
+inline void LogInfo(const std::string msg)
 {
 	Log("[INFO] " + msg);
 }
 
 /**
 * \brief Logs a message with warning prefix
-* @param smg: a string as message
+* @param msg: a string as message
 */
-inline void LogWarning(std::string msg)
+inline void LogWarning(const std::string msg)
 {
 	Log("[WARNING] " + msg);
 }
 
 /**
 * \brief Logs a message with errir prefix
-* @param smg: a string as message
+* @param msg: a string as message
 */
-inline void LogError(std::string msg)
+inline void LogError(const std::string msg)
 {
 	Log("[ERROR] " + msg);
 }

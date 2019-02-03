@@ -5,6 +5,7 @@
 // Include files
 #include "../stdafx.h"
 #include "EntryState.h"
+#include "PlayState.h"
 
 // Defines
 #define S2D (Sandbox2D::GetSingleton())
@@ -15,20 +16,23 @@ EntryState::~EntryState() {}
 
 void EntryState::stateStart()
 {
-	// Executed at start of state
+	_btnStart = new ButtonWidget(Pixel{ 10, 10 }, "Start new game");
 }
 
 void EntryState::stateEnd()
 {
-	// Executed at end of state
+	delete _btnStart;
 }
 
-void EntryState::stateTick(double deltaTime) 
+void EntryState::stateTick(double deltaTime)
 {
-	// Executed each game tick, game logic goes here
+	if (_btnStart->isPressed())
+	{
+		S2D->pushState(new PlayState());
+	}
 }
 
 void EntryState::statePaint(Graphics* g)
 {
-	// Executed after game tick, game drawing calls go 
+	_btnStart->draw(g);
 }

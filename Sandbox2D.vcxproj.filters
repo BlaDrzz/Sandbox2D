@@ -26,6 +26,15 @@
     <Filter Include="Source Files\GameFiles\States">
       <UniqueIdentifier>{36ee915c-6172-479f-839f-056f7379dabd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameFiles\World">
+      <UniqueIdentifier>{0cc067c1-fe51-459e-b5bd-fa03192d8568}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameFiles\World\Tiles">
+      <UniqueIdentifier>{e6017848-df37-45e3-90e0-db3f3ca11d15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameFiles\Buildings">
+      <UniqueIdentifier>{2cdc5bc2-c421-4e8f-8a5e-9ae914715964}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -41,9 +50,6 @@
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
     <ClInclude Include="Sandbox2D\InputManager.h">
-      <Filter>Source Files\Sandbox2D\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Sandbox2D\Any.h">
       <Filter>Source Files\Sandbox2D\Core</Filter>
     </ClInclude>
     <ClInclude Include="Sandbox2D\GameSettings.h">
@@ -109,6 +115,33 @@
     <ClInclude Include="Sandbox2D\IniFile.h">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="GameFiles\PlayState.h">
+      <Filter>Source Files\GameFiles\States</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\WorldMap.h">
+      <Filter>Source Files\GameFiles\World</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\WorldTile.h">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\GrassTile.h">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\WorldGenerator.h">
+      <Filter>Source Files\GameFiles\World</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\Kingdom.h">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\Building.h">
+      <Filter>Source Files\GameFiles\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\Capital.h">
+      <Filter>Source Files\GameFiles\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\PlayerController.h">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -137,6 +170,27 @@
     </ClCompile>
     <ClCompile Include="Sandbox2D\IniFile.cpp">
       <Filter>Source Files\Sandbox2D\Core\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\PlayState.cpp">
+      <Filter>Source Files\GameFiles\States</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\WorldMap.cpp">
+      <Filter>Source Files\GameFiles\World</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\GrassTile.cpp">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\WorldGenerator.cpp">
+      <Filter>Source Files\GameFiles\World</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\Kingdom.cpp">
+      <Filter>Source Files\GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\Capital.cpp">
+      <Filter>Source Files\GameFiles\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\PlayerController.cpp">
+      <Filter>Source Files\GameFiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

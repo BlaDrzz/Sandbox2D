@@ -128,8 +128,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameFiles\Capital.cpp" />
     <ClCompile Include="GameFiles\EntryState.cpp" />
     <ClCompile Include="GameFiles\GlobalState.cpp" />
+    <ClCompile Include="GameFiles\GrassTile.cpp" />
+    <ClCompile Include="GameFiles\Kingdom.cpp" />
+    <ClCompile Include="GameFiles\PlayerController.cpp" />
+    <ClCompile Include="GameFiles\PlayState.cpp" />
+    <ClCompile Include="GameFiles\WorldGenerator.cpp" />
+    <ClCompile Include="GameFiles\WorldMap.cpp" />
     <ClCompile Include="Sandbox2D\Graphics.cpp" />
     <ClCompile Include="Sandbox2D\IniFile.cpp" />
     <ClCompile Include="Sandbox2D\InputManager.cpp" />
@@ -139,11 +146,19 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameFiles\Building.h" />
+    <ClInclude Include="GameFiles\Capital.h" />
     <ClInclude Include="GameFiles\EntryState.h" />
     <ClInclude Include="GameFiles\GlobalState.h" />
+    <ClInclude Include="GameFiles\GrassTile.h" />
+    <ClInclude Include="GameFiles\Kingdom.h" />
+    <ClInclude Include="GameFiles\PlayerController.h" />
+    <ClInclude Include="GameFiles\PlayState.h" />
+    <ClInclude Include="GameFiles\WorldGenerator.h" />
+    <ClInclude Include="GameFiles\WorldMap.h" />
+    <ClInclude Include="GameFiles\WorldTile.h" />
     <ClInclude Include="Sandbox2D\Audio.h" />
     <ClInclude Include="Sandbox2D\GameState.h" />
-    <ClInclude Include="Sandbox2D\Any.h" />
     <ClInclude Include="Sandbox2D\Bitmap.h" />
     <ClInclude Include="Sandbox2D\Font.h" />
     <ClInclude Include="Sandbox2D\Geometry.h" />

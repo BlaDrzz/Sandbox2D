@@ -35,3 +35,13 @@ inline RGBA MakeRGBA(const Uint8 red, const Uint8 green, const Uint8 blue)
 {
 	return RGBA{ red, green, blue, 255 };
 }
+
+struct Colors
+{
+	static RGBA red();
+	static RGBA green();
+	static RGBA blue();
+};
+inline RGBA Colors::red() { return MakeRGBA(255, 0, 0); }
+inline RGBA Colors::green() { return MakeRGBA(0, 255, 0); }
+inline RGBA Colors::blue() { return MakeRGBA(0, 0, 255); }

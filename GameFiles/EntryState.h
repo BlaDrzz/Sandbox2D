@@ -51,4 +51,5 @@ private:
 	// Private functions
 
 	// Datamembers
+	ButtonWidget *_btnStart = nullptr;
 };
