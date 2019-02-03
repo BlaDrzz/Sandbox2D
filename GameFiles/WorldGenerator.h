@@ -1,6 +1,7 @@
 #pragma once
 
 class WorldMap;
+class WorldTile;
 
 class WorldGenerator
 {
@@ -12,5 +13,7 @@ public:
 	WorldGenerator(const WorldGenerator&) = delete;
 	WorldGenerator& operator=(const WorldGenerator&) = delete;
 
-	WorldMap *generateWorldMap(int size);
+	WorldMap* generateWorldMap(int size);
+private:
+	WorldTile* pickTileBasedOnValue(int value, Pixel position);
 };

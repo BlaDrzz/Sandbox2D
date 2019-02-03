@@ -35,6 +35,9 @@
     <Filter Include="Source Files\GameFiles\Buildings">
       <UniqueIdentifier>{2cdc5bc2-c421-4e8f-8a5e-9ae914715964}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameFiles\World\Generators">
+      <UniqueIdentifier>{d5ad9d34-4206-4ca9-a989-3bf3f0030c00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -127,9 +130,6 @@
     <ClInclude Include="GameFiles\GrassTile.h">
       <Filter>Source Files\GameFiles\World\Tiles</Filter>
     </ClInclude>
-    <ClInclude Include="GameFiles\WorldGenerator.h">
-      <Filter>Source Files\GameFiles\World</Filter>
-    </ClInclude>
     <ClInclude Include="GameFiles\Kingdom.h">
       <Filter>Source Files\GameFiles</Filter>
     </ClInclude>
@@ -141,6 +141,24 @@
     </ClInclude>
     <ClInclude Include="GameFiles\PlayerController.h">
       <Filter>Source Files\GameFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\WorldGenerator.h">
+      <Filter>Source Files\GameFiles\World\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\PerlinNoise.h">
+      <Filter>Source Files\GameFiles\World\Generators</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\WaterTile.h">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\SandTile.h">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\SnowTile.h">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFiles\StoneTile.h">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -180,9 +198,6 @@
     <ClCompile Include="GameFiles\GrassTile.cpp">
       <Filter>Source Files\GameFiles\World\Tiles</Filter>
     </ClCompile>
-    <ClCompile Include="GameFiles\WorldGenerator.cpp">
-      <Filter>Source Files\GameFiles\World</Filter>
-    </ClCompile>
     <ClCompile Include="GameFiles\Kingdom.cpp">
       <Filter>Source Files\GameFiles</Filter>
     </ClCompile>
@@ -191,6 +206,24 @@
     </ClCompile>
     <ClCompile Include="GameFiles\PlayerController.cpp">
       <Filter>Source Files\GameFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\WorldGenerator.cpp">
+      <Filter>Source Files\GameFiles\World\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\PerlinNoise.cpp">
+      <Filter>Source Files\GameFiles\World\Generators</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\WaterTile.cpp">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\SandTile.cpp">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\SnowTile.cpp">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFiles\StoneTile.cpp">
+      <Filter>Source Files\GameFiles\World\Tiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

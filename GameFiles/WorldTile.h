@@ -15,7 +15,7 @@ public:
 	virtual void tick(double deltaTime) = 0;
 	virtual void draw(Graphics* g) = 0;
 
-	void setOwner(Kingdom* newOwner)
+	virtual void setOwner(Kingdom* newOwner)
 	{
 		_owner = newOwner;
 	}

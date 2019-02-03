@@ -133,8 +133,13 @@
     <ClCompile Include="GameFiles\GlobalState.cpp" />
     <ClCompile Include="GameFiles\GrassTile.cpp" />
     <ClCompile Include="GameFiles\Kingdom.cpp" />
+    <ClCompile Include="GameFiles\PerlinNoise.cpp" />
     <ClCompile Include="GameFiles\PlayerController.cpp" />
     <ClCompile Include="GameFiles\PlayState.cpp" />
+    <ClCompile Include="GameFiles\SandTile.cpp" />
+    <ClCompile Include="GameFiles\SnowTile.cpp" />
+    <ClCompile Include="GameFiles\StoneTile.cpp" />
+    <ClCompile Include="GameFiles\WaterTile.cpp" />
     <ClCompile Include="GameFiles\WorldGenerator.cpp" />
     <ClCompile Include="GameFiles\WorldMap.cpp" />
     <ClCompile Include="Sandbox2D\Graphics.cpp" />
@@ -152,8 +157,13 @@
     <ClInclude Include="GameFiles\GlobalState.h" />
     <ClInclude Include="GameFiles\GrassTile.h" />
     <ClInclude Include="GameFiles\Kingdom.h" />
+    <ClInclude Include="GameFiles\PerlinNoise.h" />
     <ClInclude Include="GameFiles\PlayerController.h" />
     <ClInclude Include="GameFiles\PlayState.h" />
+    <ClInclude Include="GameFiles\SandTile.h" />
+    <ClInclude Include="GameFiles\SnowTile.h" />
+    <ClInclude Include="GameFiles\StoneTile.h" />
+    <ClInclude Include="GameFiles\WaterTile.h" />
     <ClInclude Include="GameFiles\WorldGenerator.h" />
     <ClInclude Include="GameFiles\WorldMap.h" />
     <ClInclude Include="GameFiles\WorldTile.h" />

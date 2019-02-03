@@ -25,6 +25,7 @@ void WorldMap::tick(const double deltaTime)
 
 void WorldMap::draw(Graphics* g)
 {
+	g->backgroundDrawingColor = Colors::black();
 	for (auto tile : _tiles)
 	{
 		tile->draw(g);

@@ -32,7 +32,6 @@ void Kingdom::selectTile(const Pixel position)
 	if (Contains(Rect<int>{ Pixel{ 0, 0 }, _worldMap->getSize() }, position))
 	{
 		_currentlySelectedTile = _worldMap->findTileAtPosition(position);
-		_currentlySelectedTile->setOwner(this);
 	}
 
 }
